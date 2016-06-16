@@ -45,15 +45,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Actions\Download.cs" />
-     <Compile Include="Assets\Scripts\Actions\Login.cs" />
-     <Compile Include="Assets\Scripts\Objects\Address.cs" />
-     <Compile Include="Assets\Scripts\Objects\Button.cs" />
-     <Compile Include="Assets\Scripts\Systems\EventSystem.cs" />
-     <Compile Include="Assets\Scripts\Systems\LanguageManager.cs" />
+     <Compile Include="Assets\Scripts\Objects\EventSystem.cs" />
+     <Compile Include="Assets\Scripts\Objects\User.cs" />
+     <Compile Include="Assets\Scripts\Screens\Download.cs" />
+     <Compile Include="Assets\Scripts\Screens\GenericScene.cs" />
+     <Compile Include="Assets\Scripts\Screens\Home.cs" />
+     <Compile Include="Assets\Scripts\Screens\Login.cs" />
+     <Compile Include="Assets\Scripts\Screens\Profile.cs" />
+     <Compile Include="Assets\Scripts\Screens\Register.cs" />
+     <Compile Include="Assets\StaticMapsKit\Scripts\GoogleMaps.cs" />
+     <Compile Include="Assets\StaticMapsKit\Scripts\YandexMaps.cs" />
      <None Include="Assets\Lang\en.txt" />
      <None Include="Assets\Lang\pt.txt" />
      <None Include="Assets\Options\data.txt" />
+     <None Include="Assets\StaticMapsKit\README.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
