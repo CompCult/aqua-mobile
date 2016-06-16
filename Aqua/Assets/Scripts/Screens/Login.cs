@@ -29,7 +29,8 @@ public class Login : GenericScene {
 			EnableNotification (4, InvalidPassLength);
 		else if (EmailField.text.Length < 5)
 			EnableNotification (4, InvalidMailLength);
-		else {
+		else 
+		{
 			WWWForm form = new WWWForm ();
 			form.AddField ("login", EmailField.text);
 			form.AddField ("password", CalculateSHA1(PasswordField.text));
@@ -43,24 +44,25 @@ public class Login : GenericScene {
     IEnumerator WaitForRequest(WWW www)
     {
         yield return www;
-        string response = www.text;
+        string Response = www.text;
 
-		if (www.error == null) {
-
-			if (response == "0")
+		if (www.error == null) 
+		{
+			if (Response.Equals("0"))
 				EnableNotification(3, InvalidLogin);
-			else {
-				Debug.Log("User connected with ID " + response);
+			else 
+			{
+				Debug.Log("User connected with ID " + Response);
 
-				EventSystem.CreateUser(int.Parse(response));
+				EventSystem.CreateUser(int.Parse(Response));
 				LoadScene(HomeScene);
 			}
 		} 
 		else 
 		{
-			string error = www.error.Split(' ')[0];
+			string Error = www.error.Split(' ')[0];
 
-			if (error.Equals("404"))
+			if (Error.Equals("404"))
 				EnableNotification(3, InvalidLogin);
 			else 
 				EnableNotification(4, ServerFailed);

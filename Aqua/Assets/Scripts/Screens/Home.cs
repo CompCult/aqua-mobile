@@ -23,6 +23,7 @@ public class Home : MonoBehaviour {
 			TryGetUser();
 	}
 
+	// Update name and level on screen
 	void UpdateUserOnScreen()
 	{
 		UserName.text = EventSystem.GetUser().GetName();
@@ -44,7 +45,8 @@ public class Home : MonoBehaviour {
     {
         yield return www;
 
-		if (www.error == null) {
+		if (www.error == null) 
+		{
 			string json = www.text;
 
 			EventSystem.CreateUser(json);

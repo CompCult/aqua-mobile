@@ -47,7 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Objects\EventSystem.cs" />
      <Compile Include="Assets\Scripts\Objects\User.cs" />
-     <Compile Include="Assets\Scripts\Screens\Download.cs" />
      <Compile Include="Assets\Scripts\Screens\GenericScene.cs" />
      <Compile Include="Assets\Scripts\Screens\Home.cs" />
      <Compile Include="Assets\Scripts\Screens\Login.cs" />
