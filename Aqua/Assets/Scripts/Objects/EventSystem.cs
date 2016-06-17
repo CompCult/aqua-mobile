@@ -36,8 +36,4 @@ public class EventSystem : MonoBehaviour {
     	return GlobalUser;
     }
 
-    public int printUser() 
-    {
-    	return GlobalUser.GetID();
-    }
 }

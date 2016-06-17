@@ -5,13 +5,19 @@ using System.Collections;
 
 public class Register : GenericScene {
 
-	public InputField EmailField,
+	public InputField NameField,
+					  EmailField,
 					  PasswordField,
 					  RepeatPasswordField;
 
-	string URL = "http://aqua-web.herokuapp.com/api/user/";
-	string pvtkey = "6b2b7f9bc0";
-	string LoginScene = "Login";
+	public void Start()
+	{
+		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+		
+		BackScene = "Login";
+		URL = "http://aqua-web.herokuapp.com/api/user/";
+		pvtkey = "6b2b7f9bc0";
+	}
 
 	public void TryRegister() 
 	{
@@ -24,6 +30,7 @@ public class Register : GenericScene {
 		else 
 		{
 			WWWForm form = new WWWForm ();
+			form.AddField ("name", NameField.text);
 			form.AddField ("email", EmailField.text);
 			form.AddField ("password", CalculateSHA1(PasswordField.text));
 			WWW www = new WWW (URL + pvtkey, form);
@@ -46,7 +53,7 @@ public class Register : GenericScene {
 			if (response == "1") 
 			{
 				Destroy(GameObject.Find("EventSystem"));
-				EnableNotification(3, SuccessRegistered, LoginScene);
+				EnableNotification(3, SuccessRegistered, BackScene);
 			}
 			else
 				EnableNotification(3, AlreadyRegistered);	

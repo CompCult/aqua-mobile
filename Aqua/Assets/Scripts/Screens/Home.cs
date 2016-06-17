@@ -2,36 +2,34 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Home : MonoBehaviour {
+public class Home : GenericScene {
 
 	// Page elements
-	public EventSystem EventSystem;
 	public Text UserName,
 		   		UserLevel;
 
-	// Page connection variables to use
-	string URL = "http://aqua-web.herokuapp.com/api/user/";
-	string pvtkey = "6b2b7f9bc0";
-
 	// Use this for initialization
-	void Start()
+	public void Start()
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+		
+		BackScene = "Login";
+		URL = "http://aqua-web.herokuapp.com/api/user/";
+		pvtkey = "6b2b7f9bc0";
 
 		// Check if the user is already loaded
-		if (!EventSystem.GetUser().GetLoaded())
-			TryGetUser();
+		TryGetUser();
 	}
 
 	// Update name and level on screen
-	void UpdateUserOnScreen()
+	public void UpdateUserOnScreen()
 	{
 		UserName.text = EventSystem.GetUser().GetName();
 		UserLevel.text = "Level " + EventSystem.GetUser().GetLevel().ToString();
 	}
 
 	// Try to connect with the db using the ID to get user data
-    void TryGetUser() 
+    public void TryGetUser() 
 	{
 		URL += EventSystem.GetUser().GetID() + "/" + pvtkey;
 		Debug.Log("Connecting at URL: " + URL);

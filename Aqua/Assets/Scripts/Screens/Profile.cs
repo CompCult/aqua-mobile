@@ -5,8 +5,6 @@ using System.Collections;
 
 public class Profile : GenericScene {
 
-	public EventSystem EventSystem;
-
 	// Page Elements
 	public InputField NameField,
 	                  EmailField,
@@ -20,20 +18,20 @@ public class Profile : GenericScene {
 				  GroupsButton,
 				  UpdateButton;
 
-	// Page connection variables to use
-	string URL = "http://aqua-web.herokuapp.com/api/user/";
-	string pvtkey = "6b2b7f9bc0";
-
 	// Use this at scene initialization
-	void Start () 
+	public void Start () 
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+		
+		BackScene = "Home";
+		URL = "http://aqua-web.herokuapp.com/api/user/";
+		pvtkey = "6b2b7f9bc0";
 
 		FillFields();
 	}
 	
 	// Fill all the fields with the given information during login
-	void FillFields()
+	public void FillFields()
 	{
 		User GlobalUser = EventSystem.GetUser();
 
@@ -76,7 +74,7 @@ public class Profile : GenericScene {
 	}
 
 	// Checks if the fields Email and Password are filled correctly
-	bool AreFieldsFilled()
+	private bool AreFieldsFilled()
 	{
 		if (EmailField.text.Length < 5) 
 		{

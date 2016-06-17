@@ -11,7 +11,7 @@ public class GoogleMaps : MonoBehaviour
     private string url = "http://maps.googleapis.com/maps/api/staticmap?";
 
     // to get your api key visit https://console.developers.google.com/flows/enableapi?apiid=static_maps_backend&keyType=SERVER_SIDE
-    public string ApiKey = "";
+    public string ApiKey = "AIzaSyCZB4-V1JgCoxMZWI5hutfPf-_7dgnNdCI";
     public bool loadOnStart = true;
     public bool autoAdjustCenter = true;
     public GoogleMapLocation centerLocation;

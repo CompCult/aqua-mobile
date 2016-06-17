@@ -11,7 +11,12 @@ public class GenericScene : MonoBehaviour {
 	// page elements
 	public Text NotificationArea;
 
-	protected string InvalidLogin = "E-mail ou senha inválidos.",
+	protected EventSystem EventSystem;
+
+	protected string URL,
+				     pvtkey,
+					 BackScene,
+					 InvalidLogin = "E-mail ou senha inválidos.",
 					 PasswordDontMatch = "As senhas não confirmam.",
 					 AlreadyRegistered = "Esse e-mail já está em uso.",
 					 SuccessRegistered = "Registrado com sucesso.",
@@ -23,13 +28,33 @@ public class GenericScene : MonoBehaviour {
 					 RefillPasswordError = "Preencha sua senha novamente para atualizar as informações.",
 					 NoErrorGet = "Nenhum erro cabível";
 
-	// Loads the Scene in parameters
+	public void Update()
+	{
+		if (Input.GetKeyUp(KeyCode.Escape)) 
+    		LoadScene();
+	}
+
 	public void LoadScene(string Scene) 
 	{
 		SceneManager.LoadScene(Scene);
 	}
+
+	public void LoadScene()
+	{
+		if (BackScene != null) 
+		{
+			if (BackScene.Equals("Login"))
+				Destroy(GameObject.Find("EventSystem"));
+
+			SceneManager.LoadScene(BackScene);
+		}
+		else
+		{
+			Application.Quit();
+		}
+	}
 	
-	// Convert input to SHA1
+	// Convert input string to SHA1
 	public string CalculateSHA1 (string input)
 	{
 		using (SHA1Managed sha1 = new SHA1Managed())
@@ -60,7 +85,7 @@ public class GenericScene : MonoBehaviour {
 		NotificationArea.enabled = true;
 		NotificationArea.text = message;
 
-		StartCoroutine (NotificationTimer (seconds, scene));
+		StartCoroutine(NotificationTimer(seconds, scene));
 	}
 
 	IEnumerator NotificationTimer(int seconds) 

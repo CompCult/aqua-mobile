@@ -7,23 +7,23 @@ using System.Collections;
 public class Login : GenericScene {
 
 	// Page Elements
-	public InputField EmailField,
-	                  PasswordField;
-
-	public EventSystem EventSystem;
+	public InputField EmailField, PasswordField;
 
 	// Page connection variables to use
-	string URL = "http://aqua-web.herokuapp.com/api/auth/";
-	string pvtkey = "f51e8e6754";
-	string HomeScene = "Home";
+	private string HomeScene = "Home";
 
-	void Start()
+
+	public void Start()
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+		
+		BackScene = null;
+		URL = "http://aqua-web.herokuapp.com/api/auth/";
+		pvtkey = "f51e8e6754";
 	}
 
 	// Try to connect with the db using the email's text field and password's text field
-    void TryConnection() 
+    private void TryConnection() 
 	{
 		if (PasswordField.text.Length < 5)
 			EnableNotification (4, InvalidPassLength);
