@@ -102,21 +102,26 @@ public class Profile : GenericScene {
         yield return www;
         string response = www.text;
 
-		if (www.error == null) {
-
-			if (response == "1") {
+		if (www.error == null) 
+		{
+			if (response == "1") 
+			{
 				Debug.Log("Updating information for USER ID " + response);
-				Debug.Log(response);
 				
 				FillFields();
 
 				EnableNotification(3, UpdateInfoSuccess);
-			} else {
+			} 
+			else 
+			{
 				EnableNotification(3, UpdateInfoFail);
 			}
 
-		} else {
-			Debug.Log("Error on get: " + response);
+		} 
+		else 
+		{
+			Debug.Log("Error updating at URL: " + URL + EventSystem.GetUser().GetID() + "/" + pvtkey);
+			Debug.Log("Error: " + www.error);
 
 			EnableNotification(5, ServerFailed);
 		}

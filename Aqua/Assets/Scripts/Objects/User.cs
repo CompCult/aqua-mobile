@@ -10,6 +10,7 @@ public class User {
 		coins,
 		xp;
 	
+	// These strings needs declaration
 	public string name = "",
 			email = "",
 			password = "",

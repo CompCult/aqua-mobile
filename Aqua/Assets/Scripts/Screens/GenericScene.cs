@@ -26,7 +26,10 @@ public class GenericScene : MonoBehaviour {
 					 UpdateInfoSuccess = "Informações atualizadas.",
 					 UpdateInfoFail = "Falha ao atualizar informações.",
 					 RefillPasswordError = "Preencha sua senha novamente para atualizar as informações.",
-					 NoErrorGet = "Nenhum erro cabível";
+					 NoErrorGet = "Nenhum erro cabível",
+					 ConnectingMessage = "Conectando...",
+					 YourLocation = "Sua localização",
+					 SelectFieldOnScreen = "Selecione uma notificação";
 
 	public void Update()
 	{
@@ -70,6 +73,12 @@ public class GenericScene : MonoBehaviour {
 
 			return sb.ToString();
 		}
+	}
+
+	public void EnableNotification(string message)
+	{
+		NotificationArea.enabled = true;
+		NotificationArea.text = message;
 	}
 
 	public void EnableNotification(int seconds, string message)

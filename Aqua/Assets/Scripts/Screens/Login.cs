@@ -31,12 +31,14 @@ public class Login : GenericScene {
 			EnableNotification (4, InvalidMailLength);
 		else 
 		{
+			EnableNotification(ConnectingMessage);
+			
 			WWWForm form = new WWWForm ();
 			form.AddField ("login", EmailField.text);
 			form.AddField ("password", CalculateSHA1(PasswordField.text));
 			WWW www = new WWW (URL + pvtkey, form);
 
-			StartCoroutine (WaitForRequest (www));
+			StartCoroutine(WaitForRequest (www));
 		}
 	}
  
