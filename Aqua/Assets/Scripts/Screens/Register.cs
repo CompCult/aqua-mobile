@@ -19,27 +19,42 @@ public class Register : GenericScene {
 		pvtkey = "6b2b7f9bc0";
 	}
 
-	public void TryRegister() 
+	private bool AreFieldsFilled()
 	{
-		if (!PasswordField.text.Equals (RepeatPasswordField.text))
-			EnableNotification (4, PasswordDontMatch);
-		else if (PasswordField.text.Length < 5 || RepeatPasswordField.text.Length < 5)
-			EnableNotification (4, InvalidPassLength);
-		else if (EmailField.text.Length < 5)
-			EnableNotification (4, InvalidMailLength);
-		else 
-		{
-			WWWForm form = new WWWForm ();
-			form.AddField ("name", NameField.text);
-			form.AddField ("email", EmailField.text);
-			form.AddField ("password", CalculateSHA1(PasswordField.text));
-			WWW www = new WWW (URL + pvtkey, form);
+		if (NameField.text.Length < 2) 
+			return EnableNotification (4, InvalidMailLength);
 
-			StartCoroutine (WaitForRequest (www));
-		}
+		else if (EmailField.text.Length < 5) 
+			return EnableNotification (4, InvalidMailLength);
+
+		else if (!PasswordField.text.Equals(RepeatPasswordField.text)) 
+			return EnableNotification (4, PasswordDontMatch);
+
+		else if (PasswordField.text.Length < 5 || RepeatPasswordField.text.Length < 5) 
+			return EnableNotification (4, InvalidPassLength);
+			
+		return true;
 	}
 
-	IEnumerator WaitForRequest(WWW www)
+	public void TryRegister() 
+	{
+		if (!AreFieldsFilled())
+			return;
+
+		WWWForm form = new WWWForm ();
+		form.AddField ("name", NameField.text);
+		form.AddField ("email", EmailField.text);
+		form.AddField ("password", CalculateSHA1(PasswordField.text));
+		WWW www = new WWW (URL + pvtkey, form);
+
+		if (Coroutine != null)
+			StopCoroutine(Coroutine);
+
+		Coroutine = SendNewUserForm(www);
+		StartCoroutine(Coroutine);
+	}
+
+	private IEnumerator SendNewUserForm(WWW www)
 	{
 		yield return www;
 

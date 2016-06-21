@@ -68,7 +68,7 @@ public class Map : GenericScene {
 	// Access the address of the selected notification using google maps API
 	IEnumerator UpdateMapOnScreen(Report SelectedReport)
 	{
-		var request = new WWW(SelectedReport.GetQuerryToAddress());
+		var request = new WWW(SelectedReport.GetQueryToAddress());
         yield return request;
 
         MapField.GetComponent<Renderer>().material.mainTexture = request.texture;

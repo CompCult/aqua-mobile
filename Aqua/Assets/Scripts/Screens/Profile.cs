@@ -10,7 +10,6 @@ public class Profile : GenericScene {
 	                  EmailField,
 	                  PasswordField,
 	                  CPFField,
-	                  CEPField,
 	                  BirthField,
 	                  CameraPasswordField;
 
@@ -22,10 +21,7 @@ public class Profile : GenericScene {
 	public void Start () 
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-		
 		BackScene = "Home";
-		URL = "http://aqua-web.herokuapp.com/api/user/";
-		pvtkey = "6b2b7f9bc0";
 
 		FillFields();
 	}
@@ -35,24 +31,112 @@ public class Profile : GenericScene {
 	{
 		User GlobalUser = EventSystem.GetUser();
 
-		Debug.Log ("Showing user: " + GlobalUser.GetName() + " with ID " + GlobalUser.GetID());
-
 		NameField.text = GlobalUser.GetName();
 		EmailField.text = GlobalUser.GetEmail();
-		PasswordField.text = GlobalUser.GetPassword();
 		CPFField.text = GlobalUser.GetCPF();
 		BirthField.text = GlobalUser.GetBirth();
 		CameraPasswordField.text = GlobalUser.GetCameraPassword();
-		//CEPField.text = GlobalUser.GetCEP();
 	}
 
-	// Action performed after clicking "Update Button"
-	public void UpdateInformation()
+	// Checks if the fields Email and Password are filled correctly
+	private bool AreFieldsFilled()
+	{
+		if (EmailField.text.Length < 5) 
+			return EnableNotification(5, InvalidMailLength);
+
+		else if (PasswordField.text.Length == 0)
+			return EnableNotification(5, RefillPasswordError);
+
+		else if (PasswordField.text.Length < 5) 
+			return EnableNotification(5, InvalidPassLength);
+		
+		return true;
+	}
+
+	// Send the new user information to DB
+	public void UpdateGlobalUserOnDB()
 	{
 		if (!AreFieldsFilled())
 			return;
 
+		Address Address = EventSystem.GetUser().GetAddress();
+
+		if (Address != null)
+			UpdateAddressOnDB();
+		else
+			UpdateUserOnDB();
+	}
+
+	// Send updated data to db
+	public void UpdateAddressOnDB()
+	{
 		User GlobalUser = EventSystem.GetUser();
+		Address Address = GlobalUser.GetAddress();
+
+		URL = "http://aqua-web.herokuapp.com/api/address/";
+		pvtkey = "6b2b7f9bc0";
+		
+		bool IsCreatingAddress;
+
+		WWWForm form = new WWWForm ();
+		form.AddField ("zipcode", Address.GetZIP());
+		form.AddField ("street", Address.GetStreet());
+		form.AddField ("number", Address.GetNumber());
+		form.AddField ("district", Address.GetDistrict());
+		form.AddField ("city", Address.GetCity());
+		form.AddField ("state", Address.GetState());
+		form.AddField ("complement", Address.GetComplement());
+		WWW www;
+
+		if (GlobalUser.GetAddressID() == 0) // There is no Address in the current user. Creates a new Address on DB
+		{
+			www = new WWW (URL + "/" + pvtkey, form);
+			IsCreatingAddress = true;
+		}
+		else
+		{
+			www = new WWW (URL + GlobalUser.GetAddressID() + "/" + pvtkey, form);
+			IsCreatingAddress = false;
+		}
+
+		StartCoroutine (SendAddressForm(www, IsCreatingAddress));
+	}
+
+	// Wait until receive some data from server
+    private IEnumerator SendAddressForm(WWW www, bool IsCreatingAddress)
+    {
+        yield return www;
+        string response = www.text;
+
+		if (www.error == null) 
+		{
+			Debug.Log("Updating Address information...");
+			Debug.Log("Response: " + response);
+
+			if (IsCreatingAddress) 
+			{
+				User aux = EventSystem.GetUser();
+				aux.SetAddressID(int.Parse(response));
+
+				Debug.Log("Trying to update user Address ID to " + response);
+				EventSystem.UpdateGlobalUser(aux);
+			}
+
+			UpdateUserOnDB();
+		} 
+		else 
+		{
+			Debug.Log("Error: " + www.error);
+		}
+     }
+
+	// Send updated data to db
+	public void UpdateUserOnDB()
+	{
+		User GlobalUser = EventSystem.GetUser();
+
+		URL = "http://aqua-web.herokuapp.com/api/user/";
+		pvtkey = "6b2b7f9bc0";
 
 		GlobalUser.SetName(NameField.text);
 		GlobalUser.SetEmail(EmailField.text);
@@ -60,7 +144,7 @@ public class Profile : GenericScene {
 		GlobalUser.SetBirth(BirthField.text);
 		GlobalUser.SetCPF(CPFField.text);
 
-		EventSystem.CreateUser(GlobalUser);
+		EventSystem.UpdateGlobalUser(GlobalUser);
 
 		WWWForm form = new WWWForm ();
 		form.AddField ("name", GlobalUser.GetName());
@@ -68,62 +152,28 @@ public class Profile : GenericScene {
 		form.AddField ("password", GlobalUser.GetPassword());
 		form.AddField ("birth", GlobalUser.GetBirth());
 		form.AddField ("cpf", GlobalUser.GetCPF());
+		form.AddField ("address", GlobalUser.GetAddressID());
 		WWW www = new WWW (URL + EventSystem.GetUser().GetID() + "/" + pvtkey, form);
 
-		StartCoroutine (WaitForRequest (www));
-	}
+		Debug.Log("New User Address ID: " + GlobalUser.GetAddressID());
 
-	// Checks if the fields Email and Password are filled correctly
-	private bool AreFieldsFilled()
-	{
-		if (EmailField.text.Length < 5) 
-		{
-			EnableNotification(5, InvalidMailLength);
-			return false;
-		}
-
-		if (PasswordField.text.Length < 5) 
-		{
-			EnableNotification(5, InvalidPassLength);
-			return false;
-		}
-
-		if (PasswordField.text.Length > 28) {
-			EnableNotification(5, RefillPasswordError);
-			return false;
-		}
-		
-		return true;
+		StartCoroutine (SendUserForm(www));
 	}
 
 	// Wait until receive some data from server
-    IEnumerator WaitForRequest(WWW www)
+    private IEnumerator SendUserForm(WWW www)
     {
         yield return www;
         string response = www.text;
 
 		if (www.error == null) 
 		{
-			if (response == "1") 
-			{
-				Debug.Log("Updating information for USER ID " + response);
-				
-				FillFields();
-
-				EnableNotification(3, UpdateInfoSuccess);
-			} 
-			else 
-			{
-				EnableNotification(3, UpdateInfoFail);
-			}
-
+			Debug.Log("Updating user information...");
+			Debug.Log("Response: " + response);
 		} 
 		else 
 		{
-			Debug.Log("Error updating at URL: " + URL + EventSystem.GetUser().GetID() + "/" + pvtkey);
 			Debug.Log("Error: " + www.error);
-
-			EnableNotification(5, ServerFailed);
 		}
      }    
 }

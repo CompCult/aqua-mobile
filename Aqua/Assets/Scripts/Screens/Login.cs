@@ -25,10 +25,10 @@ public class Login : GenericScene {
 	// Try to connect with the db using the email's text field and password's text field
     private void TryConnection() 
 	{
-		if (PasswordField.text.Length < 5)
-			EnableNotification (4, InvalidPassLength);
-		else if (EmailField.text.Length < 5)
+		if (EmailField.text.Length < 5)
 			EnableNotification (4, InvalidMailLength);
+		else if (PasswordField.text.Length < 5)
+			EnableNotification (4, InvalidPassLength);
 		else 
 		{
 			EnableNotification(ConnectingMessage);
@@ -43,7 +43,7 @@ public class Login : GenericScene {
 	}
  
  	// Wait until receive some data from server
-    IEnumerator WaitForRequest(WWW www)
+    private IEnumerator WaitForRequest(WWW www)
     {
         yield return www;
         string Response = www.text;
@@ -56,7 +56,7 @@ public class Login : GenericScene {
 			{
 				Debug.Log("User connected with ID " + Response);
 
-				EventSystem.CreateUser(int.Parse(Response));
+				EventSystem.UpdateGlobalUser(int.Parse(Response));
 				LoadScene(HomeScene);
 			}
 		} 

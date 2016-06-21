@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Objects\Address.cs" />
      <Compile Include="Assets\Scripts\Objects\EventSystem.cs" />
      <Compile Include="Assets\Scripts\Objects\Report.cs" />
      <Compile Include="Assets\Scripts\Objects\User.cs" />
@@ -56,10 +57,10 @@
      <Compile Include="Assets\Scripts\Screens\Login.cs" />
      <Compile Include="Assets\Scripts\Screens\Map.cs" />
      <Compile Include="Assets\Scripts\Screens\Profile.cs" />
+     <Compile Include="Assets\Scripts\Screens\ProfileAddress.cs" />
      <Compile Include="Assets\Scripts\Screens\Register.cs" />
      <None Include="Assets\Lang\en.txt" />
      <None Include="Assets\Lang\pt.txt" />
-     <None Include="Assets\Options\data.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

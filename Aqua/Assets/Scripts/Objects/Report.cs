@@ -6,7 +6,7 @@ public class Report {
 	private string Address;
 	private double Latitude, Longitude;
 	private string Status = "Pendente";
-	private string Querry;
+	private string Query;
 
 	public Report(string Address, double Latitude, double Longitude)
 	{
@@ -25,55 +25,25 @@ public class Report {
 			this.Status = Status;
 	}
 
-	public string GetQuerryToAddress()
+	public string GetQueryToAddress()
 	{
-		if (Querry == null)
+		if (Query == null)
 		{
-			Querry = ("http://maps.googleapis.com/maps/api/staticmap?center=" + Latitude + "," + Longitude
-					  + "&zoom=17&size=640x640&scale=1&maptype=roadmap&key=AIzaSyCZB4-V1JgCoxMZWI5hutfPf-_7dgnNdCI&format=png&markers=color:blue%7Clabel:" 
-					  + Status[0] + "%7C" + Latitude + "," + Longitude);
+			Query = ("http://maps.googleapis.com/maps/api/staticmap?center=" 
+					+ Latitude + "," + Longitude
+					+ "&zoom=17&size=640x640&scale=1&maptype=roadmap&key=AIzaSyCZB4-V1JgCoxMZWI5hutfPf-_7dgnNdCI&format=png&markers=color:blue%7Clabel:" 
+					+ Status[0] + "%7C" + Latitude + "," + Longitude);
 		}
 
-		return Querry;
+		return Query;
 	}
 	
-	public string GetAddress()
-	{
-		return Address;
-	}
-
-	public void SetAddress(string Address)
-	{
-		this.Address = Address;
-	}
-
-	public double GetLongitude()
-	{
-		return Longitude;
-	}
-
-	public void SetLongitude(double Longitude)
-	{
-		this.Longitude = Longitude;
-	}
-
-	public double GetLatitude()
-	{
-		return Latitude;
-	}
-
-	public void SetLatitude(double Latitude)
-	{
-		this.Latitude = Latitude;
-	}
-
-	public string GetStatus()
-	{
-		return Status;
-	}
-
-	public void SetStatus(string Status)
-	{
-		this.Status = Status;
-	}
+	public string GetAddress() { return Address; }
+	public void SetAddress(string Address) { this.Address = Address; }
+	public double GetLongitude() { return Longitude; }
+	public void SetLongitude(double Longitude) { this.Longitude = Longitude; }
+	public double GetLatitude() { return Latitude; }
+	public void SetLatitude(double Latitude) { this.Latitude = Latitude; }
+	public string GetStatus() { return Status; }
+	public void SetStatus(string Status) { this.Status = Status; }
 }

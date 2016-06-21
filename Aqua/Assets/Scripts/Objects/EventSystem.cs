@@ -10,7 +10,7 @@ public class EventSystem : MonoBehaviour {
     public void Start()
     {
         Location = new double[2];
-        UpdateUserLocation();
+        UpdateGlobalUserLocation();
     }
 
 	public void Awake() 
@@ -18,39 +18,39 @@ public class EventSystem : MonoBehaviour {
         DontDestroyOnLoad(transform.gameObject);
     }
 
-    public void CreateUser(int id) 
+    public void UpdateGlobalUser(int id) 
     {
     	GlobalUser = new User(id);
     }
 
-    public void CreateUser(string json)
+    public void UpdateGlobalUser(User GlobalUser) 
+    { 
+        this.GlobalUser = GlobalUser; 
+    }
+
+    public void UpdateGlobalUser(string json)
     {
         User aux = new User(0);
         aux = aux.CreateUserByJson(json);
 
-        aux.SetLoaded(true);
-
-        GlobalUser = aux;
+        UpdateGlobalUser(aux);
     }
 
-    public void CreateUser(User GlobalUser)
+    public void UpdateGlobalUserAddress(Address Address) 
+    { 
+        GlobalUser.SetAddress(Address); 
+    }
+
+    public void UpdateGlobalUserAddress(string json)
     {
-        this.GlobalUser = GlobalUser;
+        Address aux = new Address();
+        aux = aux.CreateAddressByJSON(json);
+
+        UpdateGlobalUserAddress(aux);
     }
 
-    public User GetUser() 
-    {
-    	return GlobalUser;
-    }
-
-    public double[] GetUserLocation()
-    {
-        UpdateUserLocation();
-        return Location;
-    }
-
-        // Updates the user location
-    public void UpdateUserLocation()
+    // Updates the user location
+    public void UpdateGlobalUserLocation()
     {
         StartCoroutine(RetriveLocationFromGPS());
     }
@@ -96,5 +96,7 @@ public class EventSystem : MonoBehaviour {
         // Stop service if there is no need to query location updates continuously
         Input.location.Stop();
     }
-
+    
+    public User GetUser() { return GlobalUser; }
+    public double[] GetUserLocation() { UpdateGlobalUserLocation(); return Location; }
 }

@@ -12,6 +12,7 @@ public class GenericScene : MonoBehaviour {
 	public Text NotificationArea;
 
 	protected EventSystem EventSystem;
+	protected IEnumerator Coroutine;
 
 	protected string URL,
 				     pvtkey,
@@ -23,13 +24,15 @@ public class GenericScene : MonoBehaviour {
 					 ServerFailed = "Ocorreu um erro no servidor. Tente novamente mais tarde.",
 					 InvalidPassLength = "A senha deve ter pelo menos 5 caracteres.",
 					 InvalidMailLength = "O e-mail deve conter pelo menos 5 caracteres.",
+					 InvalidNameLength = "Insira um nome válido.",
 					 UpdateInfoSuccess = "Informações atualizadas.",
 					 UpdateInfoFail = "Falha ao atualizar informações.",
 					 RefillPasswordError = "Preencha sua senha novamente para atualizar as informações.",
 					 NoErrorGet = "Nenhum erro cabível",
 					 ConnectingMessage = "Conectando...",
 					 YourLocation = "Sua localização",
-					 SelectFieldOnScreen = "Selecione uma notificação";
+					 SelectFieldOnScreen = "Selecione uma notificação",
+					 EmailAlreadyRegistered = "E-mail já registrado";
 
 	public void Update()
 	{
@@ -75,39 +78,38 @@ public class GenericScene : MonoBehaviour {
 		}
 	}
 
-	public void EnableNotification(string message)
+	public bool EnableNotification(string Message)
+	{
+		return EnableNotification(10, Message, null);
+	}
+
+	public bool EnableNotification(int Seconds, string Message)
+	{
+		return EnableNotification(Seconds, Message, null);
+	}
+
+	public bool EnableNotification(int Seconds, string Message, string Scene)
 	{
 		NotificationArea.enabled = true;
-		NotificationArea.text = message;
+
+		if (Message != null)
+			NotificationArea.text = Message;
+
+		if (Coroutine != null)
+			StopCoroutine(Coroutine);
+
+		Coroutine = NotificationTimer(Seconds, Scene);
+		StartCoroutine(Coroutine);
+
+		return false;
 	}
 
-	public void EnableNotification(int seconds, string message)
+	private IEnumerator NotificationTimer(int Seconds, string Scene) 
 	{
-		NotificationArea.enabled = true;
-		NotificationArea.text = message;
-
-		StartCoroutine (NotificationTimer (seconds));
-	}
-
-	public void EnableNotification(int seconds, string message, string scene)
-	{
-		NotificationArea.enabled = true;
-		NotificationArea.text = message;
-
-		StartCoroutine(NotificationTimer(seconds, scene));
-	}
-
-	IEnumerator NotificationTimer(int seconds) 
-	{
-		yield return new WaitForSeconds(seconds);
-		NotificationArea.enabled = false;
-	}
-
-	IEnumerator NotificationTimer(int seconds, string scene) 
-	{
-		yield return new WaitForSeconds(seconds);
+		yield return new WaitForSeconds(Seconds);
 		NotificationArea.enabled = false;
 
-		LoadScene(scene);
+		if (Scene != null)
+			LoadScene(Scene);
 	}
 }

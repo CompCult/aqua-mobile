@@ -9,5 +9,4 @@ public class ForgotPassword : GenericScene {
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 		this.BackScene = "Login";
 	}
-
 }
