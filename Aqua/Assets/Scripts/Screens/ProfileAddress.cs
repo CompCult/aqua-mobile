@@ -15,17 +15,15 @@ public class ProfileAddress : GenericScene {
 
 	public Button UpdateButton;
 
-	// Use this at scene initialization
 	public void Start () 
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 		BackScene = "Profile";
 
-		FillFields();
+		FillFieldsWithAddressInfo();
 	}
 
-	// Fill all the fields with the given information during login
-	public void FillFields()
+	private void FillFieldsWithAddressInfo()
 	{
 		Address Address = EventSystem.GetUser().GetAddress();
 
@@ -54,10 +52,9 @@ public class ProfileAddress : GenericScene {
 		Address.SetState(StateField.text);
 		Address.SetComplement(ComplementField.text);
 
-		// Updates the global user with the given information
 		User.SetAddress(Address);
 		EventSystem.UpdateGlobalUser(User);
 
-		EnableNotification(4, UpdateInfoSuccess, BackScene);
+		EnableNotification(2, UpdateInfoSuccess, BackScene);
 	}
 }

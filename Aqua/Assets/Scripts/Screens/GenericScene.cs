@@ -30,6 +30,9 @@ public class GenericScene : MonoBehaviour {
 					 RefillPasswordError = "Preencha sua senha novamente para atualizar as informações.",
 					 NoErrorGet = "Nenhum erro cabível",
 					 ConnectingMessage = "Conectando...",
+					 SendingMessage = "Enviando...",
+					 SentMessage = "Enviado!",
+					 NotSentMessage = "Falha ao enviar",
 					 YourLocation = "Sua localização",
 					 SelectFieldOnScreen = "Selecione uma notificação",
 					 EmailAlreadyRegistered = "E-mail já registrado";
@@ -42,22 +45,22 @@ public class GenericScene : MonoBehaviour {
 
 	public void LoadScene(string Scene) 
 	{
-		SceneManager.LoadScene(Scene);
-	}
-
-	public void LoadScene()
-	{
-		if (BackScene != null) 
+		if (Scene != null) 
 		{
-			if (BackScene.Equals("Login"))
+			if (Scene.Equals("Login"))
 				Destroy(GameObject.Find("EventSystem"));
 
-			SceneManager.LoadScene(BackScene);
+			SceneManager.LoadScene(Scene);
 		}
 		else
 		{
 			Application.Quit();
 		}
+	}
+
+	public void LoadScene()
+	{
+		LoadScene(BackScene);
 	}
 	
 	// Convert input string to SHA1

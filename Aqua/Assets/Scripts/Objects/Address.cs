@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Address {
 
-	private int id;
+	public int id;
 
-	private string zipcode = "", 
+	public string zipcode = "", 
 				   street = "", 
 				   number = "", 
 				   district = "", 
@@ -13,8 +13,6 @@ public class Address {
 				   state = "", 
 				   complement = "";
 	
-	public Address(){}
-
 	public Address CreateAddressByJSON(string json)
 	{
 		return JsonUtility.FromJson<Address>(json);

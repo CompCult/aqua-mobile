@@ -4,85 +4,89 @@ using System.Collections;
 
 public class Home : GenericScene {
 
-	// Page elements
 	public Text NameField,
 		   		LevelField;
 
-	// Use this for initialization
 	public void Start()
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 		BackScene = "Login";
 
-		TryGetUser();
+		PrepareGetUserForm();
 	}
 
-	// Update name and level on screen
-	public void UpdateUserOnScreen()
+	public void UpdateNameAndLevelOnScreen()
 	{
 		NameField.text = EventSystem.GetUser().GetName();
 		LevelField.text = "Level " + EventSystem.GetUser().GetLevel().ToString();
 	}
 
-	// Try to connect with the db using the ID to get user data
-    public void TryGetUser() 
+    public void PrepareGetUserForm() 
 	{
-		URL = "http://aqua-web.herokuapp.com/api/user/";
+		URL = "http://aqua-web.herokuapp.com/api/user";
 		pvtkey = "6b2b7f9bc0";
 
-		Debug.Log("Trying to get user data at " + URL + EventSystem.GetUser().GetID() + "/" + pvtkey);
+		Debug.Log("Trying to Get User at " + URL + "/" + EventSystem.GetUser().GetID() + "/" + pvtkey);
 
-		WWW www = new WWW (URL + EventSystem.GetUser().GetID() + "/" + pvtkey);
-		StartCoroutine(ReceiveUserForm(www));
+		WWW www = new WWW (URL + "/" + EventSystem.GetUser().GetID() + "/" + pvtkey);
+		StartCoroutine(ReceiveUserFromDB(www));
 	}
 
-	public void TryGetAddress() 
-	{
-		URL = "http://aqua-web.herokuapp.com/api/address/";
-		pvtkey = "fc64ec6244";
-
-		Debug.Log("Trying to get user address at: " + URL + EventSystem.GetUser().GetAddressID() + "/" + pvtkey);
-
-		WWW www = new WWW (URL + EventSystem.GetUser().GetAddressID() + "/" + pvtkey);
-		StartCoroutine(ReceiveAddressForm(www));
-	}
-
- 	// Wait until receive some data from server
-    private IEnumerator ReceiveUserForm(WWW www)
+    private IEnumerator ReceiveUserFromDB(WWW www)
     {
         yield return www;
 
-		if (www.error == null) 
+        string Response = www.text;
+        string Error = www.error;
+
+		if (Error == null) 
 		{
-			string json = www.text;
+			EventSystem.UpdateGlobalUser(Response);
+			UpdateNameAndLevelOnScreen();
 
-			EventSystem.UpdateGlobalUser(json);
-			UpdateUserOnScreen();
-
+			Debug.Log("User JSON: " + Response);
 			Debug.Log("Connected with an user with Address ID " + EventSystem.GetUser().GetAddressID());
 
-			TryGetAddress();
+			if (EventSystem.GetUser().GetAddressID() != 0) // If the user have a registered address, get it.
+				PrepareGetAddressForm();
 		}
 		else 
 		{
-			Debug.Log("Error on User Get: " + www.error);
+			Debug.Log("Error on User Get: " + Error);
+			
+			LoadScene(BackScene);
 		}
      }   
 
-    private IEnumerator ReceiveAddressForm(WWW www)
+	public void PrepareGetAddressForm() 
+	{
+		URL = "http://aqua-web.herokuapp.com/api/address";
+		pvtkey = "fc64ec6244";
+
+		Debug.Log("Trying to get User Address at: " + URL + EventSystem.GetUser().GetAddressID() + "/" + pvtkey);
+
+		WWW www = new WWW (URL + "/" + EventSystem.GetUser().GetAddressID() + "/" + pvtkey);
+		StartCoroutine(ReceiveAddressFromDB(www));
+	}  
+
+    private IEnumerator ReceiveAddressFromDB(WWW www)
     {
         yield return www;
+        
+        string Response = www.text;
+        string Error = www.error;
 
-		if (www.error == null) 
+		if (Error == null) 
 		{
-			string json = www.text;
-			Debug.Log("json:" + json);
+			Debug.Log("User Address JSON: " + Response);
 
-			EventSystem.UpdateGlobalUserAddress(json);
+			EventSystem.UpdateGlobalUserAddress(Response);
 		}
 		else 
 		{
-			Debug.Log("Error on Address Get: " + www.error);
+			Debug.Log("Error on Address Get: " + Error);
+			
+			LoadScene(BackScene);
 		}
      }   
 }

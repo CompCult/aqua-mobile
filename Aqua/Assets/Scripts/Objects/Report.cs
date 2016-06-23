@@ -3,47 +3,40 @@ using System.Collections;
 
 public class Report {
 
-	private string Address;
-	private double Latitude, Longitude;
-	private string Status = "Pendente";
-	private string Query;
+	public string id,
+				  latitude,
+				  longitude,
+				  status,
+				  type;
 
-	public Report(string Address, double Latitude, double Longitude)
-	{
-		if (Address != null)
-		{
-			this.Latitude = Latitude;
-			this.Longitude = Longitude;
-			this.Address = Address;
-		}
-	}
+	private string query;
 
-	public Report(string Address, double Latitude, double Longitude, string Status) 
-		: this (Address, Latitude, Longitude)
+	public Report CreateReportByJSON(string json)
 	{
-		if (Status != null)
-			this.Status = Status;
+		return JsonUtility.FromJson<Report>(json);
 	}
 
 	public string GetQueryToAddress()
 	{
-		if (Query == null)
+		if (query == null)
 		{
-			Query = ("http://maps.googleapis.com/maps/api/staticmap?center=" 
-					+ Latitude + "," + Longitude
+			query = ("http://maps.googleapis.com/maps/api/staticmap?center=" 
+					+ latitude + "," + longitude
 					+ "&zoom=17&size=640x640&scale=1&maptype=roadmap&key=AIzaSyCZB4-V1JgCoxMZWI5hutfPf-_7dgnNdCI&format=png&markers=color:blue%7Clabel:" 
-					+ Status[0] + "%7C" + Latitude + "," + Longitude);
+					+ status[0] + "%7C" + latitude + "," + longitude);
 		}
 
-		return Query;
+		return query;
 	}
-	
-	public string GetAddress() { return Address; }
-	public void SetAddress(string Address) { this.Address = Address; }
-	public double GetLongitude() { return Longitude; }
-	public void SetLongitude(double Longitude) { this.Longitude = Longitude; }
-	public double GetLatitude() { return Latitude; }
-	public void SetLatitude(double Latitude) { this.Latitude = Latitude; }
-	public string GetStatus() { return Status; }
-	public void SetStatus(string Status) { this.Status = Status; }
+
+	public string GetID() { return id; }
+	public void SetID(string id) { this.id = id; }
+	public string GetLongitude() { return longitude; }
+	public void SetLongitude(string longitude) { this.longitude = longitude; }
+	public string GetLatitude() { return latitude; }
+	public void SetLatitude(string latitude) { this.latitude = latitude; }
+	public string GetStatus() { return status; }
+	public void SetStatus(string status) { this.status = status; }
+	public string GetReportType() { return type; }
+	public void SetReportType(string type) { this.type = type; }
 }

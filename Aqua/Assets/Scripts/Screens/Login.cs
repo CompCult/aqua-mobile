@@ -6,49 +6,52 @@ using System.Collections;
  
 public class Login : GenericScene {
 
-	// Page Elements
 	public InputField EmailField, PasswordField;
-
-	// Page connection variables to use
 	private string HomeScene = "Home";
-
 
 	public void Start()
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-		
 		BackScene = null;
-		URL = "http://aqua-web.herokuapp.com/api/auth/";
-		pvtkey = "f51e8e6754";
 	}
 
-	// Try to connect with the db using the email's text field and password's text field
-    private void TryConnection() 
-	{
+	public bool AreFieldsFilledCorrectly()
+	{	
 		if (EmailField.text.Length < 5)
-			EnableNotification (4, InvalidMailLength);
-		else if (PasswordField.text.Length < 5)
-			EnableNotification (4, InvalidPassLength);
-		else 
-		{
-			EnableNotification(ConnectingMessage);
-			
-			WWWForm form = new WWWForm ();
-			form.AddField ("login", EmailField.text);
-			form.AddField ("password", CalculateSHA1(PasswordField.text));
-			WWW www = new WWW (URL + pvtkey, form);
+			return EnableNotification (4, InvalidMailLength);
+		
+		if (PasswordField.text.Length < 5)
+			return EnableNotification (4, InvalidPassLength);
 
-			StartCoroutine(WaitForRequest (www));
-		}
+		return true;
+	}
+
+    public void PrepareGetUserIDForm() 
+	{
+		URL = "http://aqua-web.herokuapp.com/api/auth";
+		pvtkey = "f51e8e6754";
+
+		if (!AreFieldsFilledCorrectly())
+			return;
+
+		EnableNotification(ConnectingMessage);
+		
+		WWWForm form = new WWWForm ();
+		form.AddField ("login", EmailField.text);
+		form.AddField ("password", CalculateSHA1(PasswordField.text));
+		WWW www = new WWW (URL + "/" + pvtkey, form);
+
+		StartCoroutine(ReceiveUserIDFromDB(www));
 	}
  
- 	// Wait until receive some data from server
-    private IEnumerator WaitForRequest(WWW www)
+    private IEnumerator ReceiveUserIDFromDB(WWW www)
     {
         yield return www;
+        
         string Response = www.text;
+        string Error = www.error;
 
-		if (www.error == null) 
+		if (Error == null) 
 		{
 			if (Response.Equals("0"))
 				EnableNotification(3, InvalidLogin);
@@ -57,14 +60,16 @@ public class Login : GenericScene {
 				Debug.Log("User connected with ID " + Response);
 
 				EventSystem.UpdateGlobalUser(int.Parse(Response));
-				LoadScene(HomeScene);
+				EnableNotification(2, ConnectingMessage, HomeScene);
 			}
 		} 
 		else 
 		{
-			string Error = www.error.Split(' ')[0];
+			string ErrorCode = Error.Split(' ')[0];
 
-			if (Error.Equals("404"))
+			Debug.Log("Error on ID Get: " + Error);
+
+			if (ErrorCode.Equals("404"))
 				EnableNotification(3, InvalidLogin);
 			else 
 				EnableNotification(4, ServerFailed);

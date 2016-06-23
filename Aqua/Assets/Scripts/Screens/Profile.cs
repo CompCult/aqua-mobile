@@ -17,66 +17,60 @@ public class Profile : GenericScene {
 				  GroupsButton,
 				  UpdateButton;
 
-	// Use this at scene initialization
 	public void Start () 
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 		BackScene = "Home";
 
-		FillFields();
+		FillFieldsWithUserInfo();
 	}
-	
-	// Fill all the fields with the given information during login
-	public void FillFields()
+
+	private void FillFieldsWithUserInfo()
 	{
-		User GlobalUser = EventSystem.GetUser();
+		User User = EventSystem.GetUser();
 
-		NameField.text = GlobalUser.GetName();
-		EmailField.text = GlobalUser.GetEmail();
-		CPFField.text = GlobalUser.GetCPF();
-		BirthField.text = GlobalUser.GetBirth();
-		CameraPasswordField.text = GlobalUser.GetCameraPassword();
+		NameField.text = User.GetName();
+		EmailField.text = User.GetEmail();
+		CPFField.text = User.GetCPF();
+		BirthField.text = User.GetBirth();
+		CameraPasswordField.text = User.GetCameraPassword();
 	}
 
-	// Checks if the fields Email and Password are filled correctly
-	private bool AreFieldsFilled()
+	private bool AreFieldsFilledCorrectly()
 	{
 		if (EmailField.text.Length < 5) 
 			return EnableNotification(5, InvalidMailLength);
 
-		else if (PasswordField.text.Length == 0)
+		if (PasswordField.text.Length == 0)
 			return EnableNotification(5, RefillPasswordError);
 
-		else if (PasswordField.text.Length < 5) 
+		if (PasswordField.text.Length < 5) 
 			return EnableNotification(5, InvalidPassLength);
 		
 		return true;
 	}
 
-	// Send the new user information to DB
-	public void UpdateGlobalUserOnDB()
+	public void PrepareSendForms()
 	{
-		if (!AreFieldsFilled())
+		if (!AreFieldsFilledCorrectly())
 			return;
 
 		Address Address = EventSystem.GetUser().GetAddress();
 
 		if (Address != null)
-			UpdateAddressOnDB();
+			PrepareAddressForm();
 		else
-			UpdateUserOnDB();
+			PrepareUserForm();
 	}
 
 	// Send updated data to db
-	public void UpdateAddressOnDB()
+	private void PrepareAddressForm()
 	{
-		User GlobalUser = EventSystem.GetUser();
-		Address Address = GlobalUser.GetAddress();
-
-		URL = "http://aqua-web.herokuapp.com/api/address/";
-		pvtkey = "6b2b7f9bc0";
+		URL = "http://aqua-web.herokuapp.com/api/address";
+		pvtkey = "fc64ec6244";
 		
-		bool IsCreatingAddress;
+		User User = EventSystem.GetUser();
+		Address Address = User.GetAddress();
 
 		WWWForm form = new WWWForm ();
 		form.AddField ("zipcode", Address.GetZIP());
@@ -88,74 +82,83 @@ public class Profile : GenericScene {
 		form.AddField ("complement", Address.GetComplement());
 		WWW www;
 
-		if (GlobalUser.GetAddressID() == 0) // There is no Address in the current user. Creates a new Address on DB
+		bool IsCreatingAddress;
+
+		if (User.GetAddressID() == 0) // There is no Address in the current user. Creates a new Address on DB.
 		{
+			Debug.Log ("Creating User Address: " + URL + "/" + pvtkey);
+
 			www = new WWW (URL + "/" + pvtkey, form);
 			IsCreatingAddress = true;
 		}
-		else
+		else // Update a created Address on DB.
 		{
-			www = new WWW (URL + GlobalUser.GetAddressID() + "/" + pvtkey, form);
+			Debug.Log ("Updating User Address: " + URL + "/" + User.GetAddressID() + "/" + pvtkey);
+			
+			www = new WWW (URL + "/" + User.GetAddressID() + "/" + pvtkey, form);
 			IsCreatingAddress = false;
 		}
 
-		StartCoroutine (SendAddressForm(www, IsCreatingAddress));
+		StartCoroutine (SendAddressToDB(www, IsCreatingAddress));
 	}
 
-	// Wait until receive some data from server
-    private IEnumerator SendAddressForm(WWW www, bool IsCreatingAddress)
+    private IEnumerator SendAddressToDB(WWW www, bool IsCreatingAddress)
     {
         yield return www;
-        string response = www.text;
+        
+        string Response = www.text;
+        string Error = www.error;
 
 		if (www.error == null) 
 		{
-			Debug.Log("Updating Address information...");
-			Debug.Log("Response: " + response);
+			Debug.Log("Address ID received: " + Response);
 
-			if (IsCreatingAddress) 
+			if (IsCreatingAddress) // If its creating an Address, the user must receive the new address id in address variable.
 			{
 				User aux = EventSystem.GetUser();
-				aux.SetAddressID(int.Parse(response));
+				aux.SetAddressID(int.Parse(Response));
 
-				Debug.Log("Trying to update user Address ID to " + response);
+				Debug.Log("Trying to update user Address ID to " + Response);
+				
 				EventSystem.UpdateGlobalUser(aux);
 			}
 
-			UpdateUserOnDB();
+			PrepareUserForm();
 		} 
 		else 
 		{
-			Debug.Log("Error: " + www.error);
+			Debug.Log("Error on Send Address: " + Error);
 		}
      }
 
 	// Send updated data to db
-	public void UpdateUserOnDB()
+	private void PrepareUserForm()
 	{
-		User GlobalUser = EventSystem.GetUser();
-
-		URL = "http://aqua-web.herokuapp.com/api/user/";
+		URL = "http://aqua-web.herokuapp.com/api/user";
 		pvtkey = "6b2b7f9bc0";
 
-		GlobalUser.SetName(NameField.text);
-		GlobalUser.SetEmail(EmailField.text);
-		GlobalUser.SetPassword(CalculateSHA1(PasswordField.text));
-		GlobalUser.SetBirth(BirthField.text);
-		GlobalUser.SetCPF(CPFField.text);
+		User User = EventSystem.GetUser();
 
-		EventSystem.UpdateGlobalUser(GlobalUser);
+		User.SetName(NameField.text);
+		User.SetEmail(EmailField.text);
+		User.SetPassword(CalculateSHA1(PasswordField.text));
+		User.SetBirth(BirthField.text);
+		User.SetCPF(CPFField.text);
 
-		WWWForm form = new WWWForm ();
-		form.AddField ("name", GlobalUser.GetName());
-		form.AddField ("email", GlobalUser.GetEmail());
-		form.AddField ("password", GlobalUser.GetPassword());
-		form.AddField ("birth", GlobalUser.GetBirth());
-		form.AddField ("cpf", GlobalUser.GetCPF());
-		form.AddField ("address", GlobalUser.GetAddressID());
-		WWW www = new WWW (URL + EventSystem.GetUser().GetID() + "/" + pvtkey, form);
+		EventSystem.UpdateGlobalUser(User);
 
-		Debug.Log("New User Address ID: " + GlobalUser.GetAddressID());
+		WWWForm form = new WWWForm();
+		form.AddField ("name", User.GetName());
+		form.AddField ("email", User.GetEmail());
+		form.AddField ("password", User.GetPassword());
+		form.AddField ("birth", User.GetBirth());
+		form.AddField ("cpf", User.GetCPF());
+		if (User.GetAddressID() != null && User.GetAddressID() != 0)
+			form.AddField ("address", User.GetAddressID());
+		WWW www = new WWW (URL + "/" + EventSystem.GetUser().GetID() + "/" + pvtkey, form);
+
+		Debug.Log("Updating User Info to: " + URL + "/" + EventSystem.GetUser().GetID() + "/" + pvtkey);
+		Debug.Log("New User Address ID: " + User.GetAddressID());
 
 		StartCoroutine (SendUserForm(www));
 	}
@@ -164,16 +167,20 @@ public class Profile : GenericScene {
     private IEnumerator SendUserForm(WWW www)
     {
         yield return www;
-        string response = www.text;
+        
+        string Response = www.text;
+        string Error = www.error;
 
-		if (www.error == null) 
+		if (Error == null) 
 		{
-			Debug.Log("Updating user information...");
-			Debug.Log("Response: " + response);
+			Debug.Log("Response: " + Response);
+
+			if (Response.Equals("1"))
+				EnableNotification(3, UpdateInfoSuccess, BackScene);
 		} 
 		else 
 		{
-			Debug.Log("Error: " + www.error);
+			Debug.Log("Error on Send User: " + Error);
 		}
      }    
 }
