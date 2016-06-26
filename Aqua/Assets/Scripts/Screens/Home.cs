@@ -63,7 +63,7 @@ public class Home : GenericScene {
 		URL = "http://aqua-web.herokuapp.com/api/address";
 		pvtkey = "fc64ec6244";
 
-		Debug.Log("Trying to get User Address at: " + URL + EventSystem.GetUser().GetAddressID() + "/" + pvtkey);
+		Debug.Log("Trying to get User Address at: " + URL + "/" + EventSystem.GetUser().GetAddressID() + "/" + pvtkey);
 
 		WWW www = new WWW (URL + "/" + EventSystem.GetUser().GetAddressID() + "/" + pvtkey);
 		StartCoroutine(ReceiveAddressFromDB(www));

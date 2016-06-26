@@ -7,15 +7,12 @@ using System.Collections.Generic;
 
 public class Map : GenericScene {
 
-	// Page elements
 	public Dropdown ReportDropdown;
 	public Text ReportStatus;
 	public GameObject MapField;
 	
-	// Internal elements
 	private List<Report> ReportList;
 
-	// Use this for initialization
 	public void Start()
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -42,7 +39,7 @@ public class Map : GenericScene {
 
 		if (Error == null) 
 		{
-			Response = Response.Replace("[","").Replace("]","").Replace("},{","}@{");
+			Response = Response.Replace("[","").Replace("]","").Replace("},{","}@{"); // Filter the JSON to receive a Split
 
 			string[] Reports = Response.Split('@');
 			ReportList = new List<Report>();
@@ -56,7 +53,7 @@ public class Map : GenericScene {
 					ReportList.Add(aux.CreateReportByJSON(Report));
 			}
 
-			Debug.Log(ReportList.Count + " Reports recovered.");
+			Debug.Log(ReportList.Count + " reports recovered.");
 
 			FillOptionsOnDropDown();
 		} 
@@ -73,7 +70,7 @@ public class Map : GenericScene {
 		ReportDropdown.options.Add(new Dropdown.OptionData() {text = SelectFieldOnScreen});
 		
 		foreach (Report rp in ReportList)
-			ReportDropdown.options.Add(new Dropdown.OptionData() {text = "ID " + rp.GetID() + " (" + rp.GetType() + ")"});
+			ReportDropdown.options.Add(new Dropdown.OptionData() {text = "Notificação - ID " + rp.GetID()});
 
 	  	ReportDropdown.RefreshShownValue();
 	}
@@ -86,7 +83,7 @@ public class Map : GenericScene {
 
 		foreach (Report rp in ReportList)
 		{
-			if (AddressSelected.text.Equals("ID " + rp.GetID() + " (" + rp.GetType() + ")"))
+			if (AddressSelected.text.Equals("Notificação - ID " + rp.GetID()))
 			{
 				SelectedReport = rp;
 				break;
@@ -96,8 +93,20 @@ public class Map : GenericScene {
 		if (SelectedReport != null)
 		{
 			StartCoroutine(UpdateMapOnScreen(SelectedReport));
+			
 			ReportStatus.enabled = true;
-			ReportStatus.text = SelectedReport.GetStatus();
+			
+			switch (SelectedReport.GetStatus())
+			{
+				case "pending":
+					ReportStatus.text = "Pendente"; break;
+				case "invalid":
+					ReportStatus.text = "Inválida"; break;
+				case "validated":
+					ReportStatus.text = "Validada"; break;
+				default:
+					ReportStatus.text = ""; break;
+			}
 		}
 	}
 

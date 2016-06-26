@@ -7,14 +7,11 @@ using System.IO;
 
 public class CameraScreen : GenericScene
 {
-		// Page elements
 		public GameObject CameraField;
 		public Dropdown Dropdown;
 
-		// Internal elements
         private WebCamTexture MobileCamera;
 
-        // Use this for initialization
         public void Start ()
         {
         	EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -27,26 +24,32 @@ public class CameraScreen : GenericScene
                 MobileCamera.Play();
         }
 
+        public void Update()
+		{
+			if (Input.GetKeyUp(KeyCode.Escape)) 
+			{
+	    		MobileCamera.Stop();
+	    		LoadScene();
+	    	}
+		}
+
+
         public void TrySendPhoto()
         {
             if (HaveCamera())
-            {
-        		if (Coroutine != null)
-                	StopCoroutine(Coroutine);
-                
-                Coroutine = RecordPhoto();
-                StartCoroutine(Coroutine);
-            }
+                StartCoroutine(RecordPhoto());
         }
 
         private IEnumerator RecordPhoto()
         {
+        		EnableNotification(4, SendingMessage);
+
+        		User User = EventSystem.GetUser();
+        		URL = "http://aqua-web.herokuapp.com/api/notification/";
+				pvtkey = "d86c362f4b";
+
                 yield return new WaitForEndOfFrame(); 
 
-                URL = "http://aqua-web.herokuapp.com/api/notification/";
-				pvtkey = "d86c362f4b";
-				
-				User User = EventSystem.GetUser();
 				// Creates a texture to hold the photo
                 Texture2D photo = new Texture2D(MobileCamera.width, MobileCamera.height);
                 photo.SetPixels(MobileCamera.GetPixels());
@@ -75,7 +78,6 @@ public class CameraScreen : GenericScene
                 // Retrieve the user location
                 yield return StartCoroutine(User.ReceiveCurrentLocationFromGPS());
 
-                EnableNotification(4, SendingMessage);
                 Debug.Log("Latitude: " + User.GetLocation()[0]);
                 Debug.Log("Longitude: " + User.GetLocation()[1]);
 
@@ -116,9 +118,5 @@ public class CameraScreen : GenericScene
 
         public WebCamTexture GetMobileCamera() { return MobileCamera; }
         public GameObject GetCameraField() { return CameraField; }
-        public bool HaveCamera() 
-        { 
-            WebCamDevice[] devices = WebCamTexture.devices;
-            return (devices.Length > 0);
-        }
+        public bool HaveCamera() { return (WebCamTexture.devices.Length > 0) ? true : false; }
 }

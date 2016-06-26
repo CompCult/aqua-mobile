@@ -1,10 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Actions\Register.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Screens\Login.cs">
     <Files>
-      <File FileName="Assets\Scripts\Actions\GenericScene.cs" Line="21" Column="3" />
-      <File FileName="Assets\Scripts\Actions\Login.cs" Line="16" Column="2" />
-      <File FileName="Assets\Scripts\Actions\Register.cs" Line="13" Column="2" />
+      <File FileName="Assets\Scripts\Screens\Login.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

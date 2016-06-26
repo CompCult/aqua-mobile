@@ -22,7 +22,8 @@ public class User {
 			remember_token = "",
 			items = "",
 			accomplished_missions = "",
-			type = "";
+			type = "",
+			phone = "";
 
 	private Address Address;
 	private double[] Location;
@@ -116,6 +117,8 @@ public class User {
 	public string GetName() { return name; }
 	public void SetEmail(string email) { this.email = email; }
 	public string GetEmail() { return email; }
+	public void SetPhone(string phone) { this.phone = phone; }
+	public string GetPhone() { return phone; }
 	public void SetAddress(Address Address) { this.Address = Address; }
 	public Address GetAddress() { return Address; }
 	public void SetLocation(double[] Location) { this.Location = Location; }

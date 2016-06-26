@@ -11,7 +11,8 @@ public class Profile : GenericScene {
 	                  PasswordField,
 	                  CPFField,
 	                  BirthField,
-	                  CameraPasswordField;
+	                  CameraPasswordField,
+	                  PhoneField;
 
 	public Button ChangePictureButton,
 				  GroupsButton,
@@ -34,6 +35,7 @@ public class Profile : GenericScene {
 		CPFField.text = User.GetCPF();
 		BirthField.text = User.GetBirth();
 		CameraPasswordField.text = User.GetCameraPassword();
+		PhoneField.text = User.GetPhone();
 	}
 
 	private bool AreFieldsFilledCorrectly()
@@ -144,6 +146,7 @@ public class Profile : GenericScene {
 		User.SetPassword(CalculateSHA1(PasswordField.text));
 		User.SetBirth(BirthField.text);
 		User.SetCPF(CPFField.text);
+		User.SetPhone(PhoneField.text);
 
 		EventSystem.UpdateGlobalUser(User);
 
@@ -153,6 +156,7 @@ public class Profile : GenericScene {
 		form.AddField ("password", User.GetPassword());
 		form.AddField ("birth", User.GetBirth());
 		form.AddField ("cpf", User.GetCPF());
+		form.AddField ("phone", User.GetPhone());
 		if (User.GetAddressID() != null && User.GetAddressID() != 0)
 			form.AddField ("address", User.GetAddressID());
 		WWW www = new WWW (URL + "/" + EventSystem.GetUser().GetID() + "/" + pvtkey, form);
