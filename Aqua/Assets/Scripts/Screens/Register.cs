@@ -19,18 +19,21 @@ public class Register : GenericScene {
 		pvtkey = "6b2b7f9bc0";
 	}
 
-	private bool AreFieldsFilled()
+	private bool AreFieldsFilledCorrectly()
 	{
+		if (!IsValidEmail(EmailField.text))
+			return EnableNotification (4, InvalidMailString);
+		
 		if (NameField.text.Length < 2) 
 			return EnableNotification (4, InvalidMailLength);
 
-		else if (EmailField.text.Length < 5) 
+		if (EmailField.text.Length < 5) 
 			return EnableNotification (4, InvalidMailLength);
 
-		else if (!PasswordField.text.Equals(RepeatPasswordField.text)) 
+		if (!PasswordField.text.Equals(RepeatPasswordField.text)) 
 			return EnableNotification (4, PasswordDontMatch);
 
-		else if (PasswordField.text.Length < 5 || RepeatPasswordField.text.Length < 5) 
+		if (PasswordField.text.Length < 5 || RepeatPasswordField.text.Length < 5) 
 			return EnableNotification (4, InvalidPassLength);
 			
 		return true;
@@ -38,8 +41,10 @@ public class Register : GenericScene {
 
 	public void TryRegister() 
 	{
-		if (!AreFieldsFilled())
+		if (!AreFieldsFilledCorrectly())
 			return;
+
+		EnableNotification(20, RegisteringMessage);
 
 		WWWForm form = new WWWForm ();
 		form.AddField ("name", NameField.text);

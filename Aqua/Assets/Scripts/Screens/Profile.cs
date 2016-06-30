@@ -40,8 +40,17 @@ public class Profile : GenericScene {
 
 	private bool AreFieldsFilledCorrectly()
 	{
+		if (!IsValidEmail(EmailField.text))
+			return EnableNotification (4, InvalidMailString);
+
 		if (EmailField.text.Length < 5) 
 			return EnableNotification(5, InvalidMailLength);
+
+		if (!IsValidDate(BirthField.text, "dd/mm/yyyy"))
+			return EnableNotification(4, InvalidDate);
+
+		if (!IsValidCpf(CPFField.text))
+			return EnableNotification(4, InvalidCPF);
 
 		if (PasswordField.text.Length == 0)
 			return EnableNotification(5, RefillPasswordError);

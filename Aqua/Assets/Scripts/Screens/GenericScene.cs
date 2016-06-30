@@ -2,18 +2,20 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using System.Text.RegularExpressions;
+using System.Globalization;
 using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 
 public class GenericScene : MonoBehaviour {
 
-	// page elements
 	public Text NotificationArea;
 
 	protected EventSystem EventSystem;
 	protected IEnumerator Coroutine;
 
+	// Temporary. Aqua will use a internationalization system
 	protected string URL,
 				     pvtkey,
 					 BackScene,
@@ -24,13 +26,17 @@ public class GenericScene : MonoBehaviour {
 					 ServerFailed = "Ocorreu um erro no servidor. Tente novamente mais tarde.",
 					 InvalidPassLength = "A senha deve ter pelo menos 5 caracteres.",
 					 InvalidMailLength = "O e-mail deve conter pelo menos 5 caracteres.",
+					 InvalidMailString = "Formato de e-mail inválido.",
 					 InvalidNameLength = "Insira um nome válido.",
+					 InvalidDate = "Data de nascimento inválida.",
+					 InvalidCPF = "CPF inválido.",
 					 UpdateInfoSuccess = "Informações atualizadas.",
 					 UpdateInfoFail = "Falha ao atualizar informações.",
 					 RefillPasswordError = "Preencha sua senha novamente para atualizar as informações.",
 					 NoErrorGet = "Nenhum erro cabível",
 					 ConnectingMessage = "Conectando...",
 					 SendingMessage = "Enviando...",
+					 RegisteringMessage = "Registrando-se...",
 					 SentMessage = "Enviado!",
 					 NotSentMessage = "Falha ao enviar",
 					 YourLocation = "Sua localização",
@@ -114,5 +120,28 @@ public class GenericScene : MonoBehaviour {
 
 		if (Scene != null)
 			LoadScene(Scene);
+	}
+
+   	public static bool IsValidEmail(string email)
+	{
+		string strRegex = @"^([a-zA-Z0-9_\-\.a-zA-Z0-9]+)@((\[[0-9]{1,3}" +
+    	 @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" + 
+     	@".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+	 	Regex reg = new Regex(strRegex);
+		return reg.IsMatch(email);
+	}	
+
+	public static bool IsValidDate(string date, string format)
+	{
+		DateTime Test;
+		return DateTime.TryParseExact(date, format, null, DateTimeStyles.None, out Test);
+	}
+
+	public static bool IsValidCpf(string cpf)
+	{
+		string strRegex = @"^\d{3}\.\d{3}\.\d{3}\-\d{2}$";
+
+	 	Regex reg = new Regex(strRegex);
+		return reg.IsMatch(cpf);
 	}
 }

@@ -24,7 +24,7 @@ public class CameraScreen : GenericScene
                 MobileCamera.Play();
         }
 
-        public void Update()
+        new public void Update()
 		{
 			if (Input.GetKeyUp(KeyCode.Escape)) 
 			{
@@ -42,7 +42,7 @@ public class CameraScreen : GenericScene
 
         private IEnumerator RecordPhoto()
         {
-        		EnableNotification(4, SendingMessage);
+        		EnableNotification(99, SendingMessage);
 
         		User User = EventSystem.GetUser();
         		URL = "http://aqua-web.herokuapp.com/api/notification/";

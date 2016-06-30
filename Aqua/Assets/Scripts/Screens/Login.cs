@@ -17,6 +17,9 @@ public class Login : GenericScene {
 
 	public bool AreFieldsFilledCorrectly()
 	{	
+		if (!IsValidEmail(EmailField.text))
+			return EnableNotification (4, InvalidMailString);
+
 		if (EmailField.text.Length < 5)
 			return EnableNotification (4, InvalidMailLength);
 		
