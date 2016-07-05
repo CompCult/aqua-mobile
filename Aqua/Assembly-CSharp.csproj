@@ -45,27 +45,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scenes\Brain Teaser\Scripts\ST_PuzzleDisplay.cs" />
-     <Compile Include="Assets\Scenes\Brain Teaser\Scripts\ST_PuzzleTile.cs" />
      <Compile Include="Assets\Scripts\Actions\FormatInput.cs" />
-     <Compile Include="Assets\Scripts\ChangeScene.cs" />
      <Compile Include="Assets\Scripts\Objects\API.cs" />
      <Compile Include="Assets\Scripts\Objects\Address.cs" />
      <Compile Include="Assets\Scripts\Objects\EventSystem.cs" />
      <Compile Include="Assets\Scripts\Objects\Report.cs" />
      <Compile Include="Assets\Scripts\Objects\User.cs" />
-     <Compile Include="Assets\Scripts\Screens\AquaHome.cs" />
-     <Compile Include="Assets\Scripts\Screens\BillMenu.cs" />
-     <Compile Include="Assets\Scripts\Screens\CameraScreen.cs" />
-     <Compile Include="Assets\Scripts\Screens\ForgotPassword.cs" />
-     <Compile Include="Assets\Scripts\Screens\Games\BrainTeaser.cs" />
-     <Compile Include="Assets\Scripts\Screens\GenericScene.cs" />
-     <Compile Include="Assets\Scripts\Screens\Home.cs" />
-     <Compile Include="Assets\Scripts\Screens\Login.cs" />
-     <Compile Include="Assets\Scripts\Screens\Map.cs" />
-     <Compile Include="Assets\Scripts\Screens\Profile.cs" />
-     <Compile Include="Assets\Scripts\Screens\ProfileAddress.cs" />
-     <Compile Include="Assets\Scripts\Screens\Register.cs" />
+     <Compile Include="Assets\Scripts\Screens\Games\Brain Teaser\BrainTeaser.cs" />
+     <Compile Include="Assets\Scripts\Screens\Games\Brain Teaser\ST_PuzzleDisplay.cs" />
+     <Compile Include="Assets\Scripts\Screens\Games\Brain Teaser\ST_PuzzleTile.cs" />
+     <Compile Include="Assets\Scripts\Screens\Games\Quiz\Quiz.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\AquaHome.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\BillMenu.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\CameraScreen.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\ForgotPassword.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\GenericScene.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\Home.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\Login.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\Map.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\Profile.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\ProfileAddress.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\Register.cs" />
      <None Include="Assets\Lang\en.txt" />
      <None Include="Assets\Lang\pt.txt" />
  <Reference Include="UnityEngine.UI">

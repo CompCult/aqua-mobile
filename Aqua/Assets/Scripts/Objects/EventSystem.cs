@@ -6,6 +6,8 @@ public class EventSystem : MonoBehaviour {
 
 	private User GlobalUser;
 
+	public AudioSource MusicBG, SoundClick, SoundReturn;
+
 	public void Awake() 
 	{
         DontDestroyOnLoad(transform.gameObject);
@@ -40,6 +42,17 @@ public class EventSystem : MonoBehaviour {
     public void UpdateGlobalUserAddress(Address Address) 
     { 
         GlobalUser.SetAddress(Address); 
+    }
+
+    public void PlaySound(string Sound)
+    {
+    	switch (Sound)
+    	{
+    		case "Click":
+    			SoundClick.Play(); break;
+    		case "Return":
+    			SoundReturn.Play(); break;
+    	}
     }
 
     public User GetUser() { return GlobalUser; }
