@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections;
@@ -85,21 +85,30 @@ public class CameraScreen : GenericScene
                 // Retrieve the user location
                 yield return StartCoroutine(User.ReceiveCurrentLocationFromGPS());
 
-                Debug.Log("Latitude: " + User.GetLocation()[0]);
-                Debug.Log("Longitude: " + User.GetLocation()[1]);
+                if (User.GetLocation() != null)
+                {
+	                Debug.Log("Latitude: " + User.GetLocation()[0]);
+	                Debug.Log("Longitude: " + User.GetLocation()[1]);
 
-                WWWForm form = new WWWForm ();
-				form.AddField ("user_id", User.GetID());
-				form.AddField ("latitude", "" + User.GetLocation()[0]);
-				form.AddField ("longitude", "" + User.GetLocation()[1]);
-				form.AddField ("status", "pending");
-				form.AddField ("type", type);
-				form.AddBinaryData("photo", bytes, "Photo.png", "image/png");
-				WWW www = new WWW (URL + pvtkey, form);
+	                WWWForm form = new WWWForm ();
+					form.AddField ("user_id", User.GetID());
+					form.AddField ("latitude", "" + User.GetLocation()[0]);
+					form.AddField ("longitude", "" + User.GetLocation()[1]);
+					form.AddField ("status", "pending");
+					form.AddField ("type", type);
+					form.AddBinaryData("photo", bytes, "Photo.png", "image/png");
+					WWW www = new WWW (URL + pvtkey, form);
 
-				Debug.Log("Sending notification to: " + URL + pvtkey);
+					Debug.Log("Sending notification to: " + URL + pvtkey);
 
-				StartCoroutine(SendRecordedPhoto(www));
+					StartCoroutine(SendRecordedPhoto(www));
+				}
+				else 
+				{
+					EnableNotification(4, LocalizationFailed);
+					ShowCameraImage();
+				}
+			
         }
 
         private IEnumerator SendRecordedPhoto(WWW www)

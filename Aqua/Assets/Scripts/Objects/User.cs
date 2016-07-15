@@ -42,6 +42,8 @@ public class User {
 
     public IEnumerator ReceiveCurrentLocationFromGPS()
     {
+    	Location = null;
+
         // First, check if user has location service enabled
         if (!Input.location.isEnabledByUser)
             yield break;

@@ -178,7 +178,7 @@ public class ST_PuzzleDisplay : MonoBehaviour
 		return thisTile;
 	}
 
-	public IEnumerator JugglePuzzle()
+	private IEnumerator JugglePuzzle()
 	{
 		yield return new WaitForSeconds(1.0f);
 
@@ -310,7 +310,6 @@ public class ST_PuzzleDisplay : MonoBehaviour
 				TileDisplayArray[i,j].GetComponent<Renderer>().material = thisTileMaterial;
 			}
 		}
-
 
 		/*
 		// Enable an impossible puzzle for fun!

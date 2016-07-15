@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\HyperLuminal\SlidingTilePuzzle\Scripts\ST_PuzzleDisplay.cs" />
+     <Compile Include="Assets\HyperLuminal\SlidingTilePuzzle\Scripts\ST_PuzzleTile.cs" />
      <Compile Include="Assets\Scripts\Actions\FormatInput.cs" />
      <Compile Include="Assets\Scripts\Objects\API.cs" />
      <Compile Include="Assets\Scripts\Objects\Address.cs" />
@@ -52,8 +54,6 @@
      <Compile Include="Assets\Scripts\Objects\Report.cs" />
      <Compile Include="Assets\Scripts\Objects\User.cs" />
      <Compile Include="Assets\Scripts\Screens\Games\Brain Teaser\BrainTeaser.cs" />
-     <Compile Include="Assets\Scripts\Screens\Games\Brain Teaser\ST_PuzzleDisplay.cs" />
-     <Compile Include="Assets\Scripts\Screens\Games\Brain Teaser\ST_PuzzleTile.cs" />
      <Compile Include="Assets\Scripts\Screens\Games\Quiz\Quiz.cs" />
      <Compile Include="Assets\Scripts\Screens\Main\AquaHome.cs" />
      <Compile Include="Assets\Scripts\Screens\Main\BillMenu.cs" />

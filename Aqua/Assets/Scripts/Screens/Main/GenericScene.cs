@@ -42,7 +42,8 @@ public class GenericScene : MonoBehaviour {
 					 YourLocation = "Sua localização",
 					 SelectFieldOnScreen = "Selecione uma notificação",
 					 EmailAlreadyRegistered = "E-mail já registrado",
-					 ConnectionFailed = "Falha na conexão";
+					 ConnectionFailed = "Falha na conexão",
+					 LocalizationFailed = "Falha ao obter sua localização";
 
 	public void Update()
 	{
