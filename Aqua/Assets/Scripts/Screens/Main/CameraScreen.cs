@@ -33,6 +33,11 @@ public class CameraScreen : GenericScene
 
 		private void ShowCameraImage()
 		{
+			CameraField.GetComponent<Renderer>().material.mainTexture = null;
+			
+			if (MobileCamera != null)
+				MobileCamera.Stop();
+			
 			MobileCamera = new WebCamTexture();
             CameraField.GetComponent<Renderer>().material.mainTexture = MobileCamera;
 
@@ -109,7 +114,6 @@ public class CameraScreen : GenericScene
 					EnableNotification(4, LocalizationFailed);
 					ShowCameraImage();
 				}
-			
         }
 
         private IEnumerator SendRecordedPhoto(WWW www)
