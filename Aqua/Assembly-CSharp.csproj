@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Actions\FormatInput.cs" />
      <Compile Include="Assets\Scripts\Objects\API.cs" />
      <Compile Include="Assets\Scripts\Objects\Address.cs" />
+     <Compile Include="Assets\Scripts\Objects\Button.cs" />
      <Compile Include="Assets\Scripts\Objects\EventSystem.cs" />
      <Compile Include="Assets\Scripts\Objects\Report.cs" />
      <Compile Include="Assets\Scripts\Objects\User.cs" />
@@ -62,6 +63,7 @@
      <Compile Include="Assets\Scripts\Screens\Main\GenericScene.cs" />
      <Compile Include="Assets\Scripts\Screens\Main\Home.cs" />
      <Compile Include="Assets\Scripts\Screens\Main\Login.cs" />
+     <Compile Include="Assets\Scripts\Screens\Main\Logout.cs" />
      <Compile Include="Assets\Scripts\Screens\Main\Map.cs" />
      <Compile Include="Assets\Scripts\Screens\Main\Profile.cs" />
      <Compile Include="Assets\Scripts\Screens\Main\ProfileAddress.cs" />

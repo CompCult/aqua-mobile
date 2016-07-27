@@ -20,13 +20,15 @@ public class CameraScreen : GenericScene
             ShowCameraImage();
         }
 
-        new public void Update()
+        public override void Update()
 		{
 			if (Input.GetKeyUp(KeyCode.Escape)) 
 			{
-	    		MobileCamera.Stop();
-	    		LoadScene();
-	    	}
+            	CameraField.GetComponent<Renderer>().material.mainTexture = null;
+            	MobileCamera.Stop();
+
+				LoadScene();
+			}
 		}
 
 		private void ShowCameraImage()
@@ -38,7 +40,6 @@ public class CameraScreen : GenericScene
                 MobileCamera.Play();
 		}
 
-
         public void TrySendPhoto()
         {
             if (HaveCamera())
@@ -47,10 +48,10 @@ public class CameraScreen : GenericScene
 
         private IEnumerator RecordPhoto()
         {
-        		EnableNotification(99, SendingMessage);
+        		EnableNotification(30, SendingMessage);
 
         		User User = EventSystem.GetUser();
-        		URL = "http://aqua-web.herokuapp.com/api/notification/";
+        		URL = "http://aquaguardians.com.br/api/notification/";
 				pvtkey = "d86c362f4b";
 
                 yield return new WaitForEndOfFrame(); 

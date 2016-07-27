@@ -26,7 +26,7 @@ public class Map : GenericScene {
 
 	private void PrepareReportListForm()
 	{
-		URL = "http://aqua-web.herokuapp.com/api/notification/user";
+		URL = "http://aquaguardians.com.br/api/notification/user";
 		pvtkey = "d86c362f4b";
 
 		WWW www = new WWW (URL + "/" + EventSystem.GetUser().GetID() + "/" + pvtkey);

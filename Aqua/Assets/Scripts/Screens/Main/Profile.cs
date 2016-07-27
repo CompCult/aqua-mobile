@@ -74,10 +74,9 @@ public class Profile : GenericScene {
 			PrepareUserForm();
 	}
 
-	// Send updated data to db
 	private void PrepareAddressForm()
 	{
-		URL = "http://aqua-web.herokuapp.com/api/address";
+		URL = "http://aquaguardians.com.br/api/address";
 		pvtkey = "fc64ec6244";
 		
 		User User = EventSystem.GetUser();
@@ -142,10 +141,9 @@ public class Profile : GenericScene {
 		}
      }
 
-	// Send updated data to db
 	private void PrepareUserForm()
 	{
-		URL = "http://aqua-web.herokuapp.com/api/user";
+		URL = "http://aquaguardians.com.br/api/user";
 		pvtkey = "6b2b7f9bc0";
 
 		User User = EventSystem.GetUser();
@@ -176,7 +174,6 @@ public class Profile : GenericScene {
 		StartCoroutine (SendUserForm(www));
 	}
 
-	// Wait until receive some data from server
     private IEnumerator SendUserForm(WWW www)
     {
         yield return www;

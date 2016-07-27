@@ -14,8 +14,8 @@ public class Register : GenericScene {
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 		
-		BackScene = "Login";
-		URL = "http://aqua-web.herokuapp.com/api/user/";
+		BackScene = "Logout";
+		URL = "http://aquaguardians.com.br/api/user/";
 		pvtkey = "6b2b7f9bc0";
 	}
 

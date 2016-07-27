@@ -23,7 +23,8 @@ public class Report {
 			query = ("http://maps.googleapis.com/maps/api/staticmap?center=" 
 					+ latitude + "," + longitude
 					+ "&zoom=17&size=640x640&scale=1&maptype=roadmap&key=AIzaSyCZB4-V1JgCoxMZWI5hutfPf-_7dgnNdCI&format=png&markers=color:blue%7Clabel:" 
-					+ status[0] + "%7C" + latitude + "," + longitude);
+					+ status[0] + "%7C" 
+					+ latitude + "," + longitude);
 		}
 
 		return query;

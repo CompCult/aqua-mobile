@@ -14,17 +14,23 @@ public class Home : GenericScene {
 	public void Start()
 	{
 		EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-		BackScene = "Login";
+		BackScene = "Logout";
 
-		// Put the Fade on Screen to preven user clicks
+		// Put the Fade on Screen to prevent user clicks
 		Fade.SetActive(true);
 
 		PrepareGetUserForm();
 	}
 
+	override public void Update()
+	{
+		if (Input.GetKeyUp(KeyCode.Escape)) 
+    		LoadScene();
+	}
+
     public void PrepareGetUserForm() 
 	{
-		URL = "http://aqua-web.herokuapp.com/api/user";
+		URL = "http://aquaguardians.com.br/api/user";
 		pvtkey = "6b2b7f9bc0";
 
 		Debug.Log("Trying to Get User at " + URL + "/" + EventSystem.GetUser().GetID() + "/" + pvtkey);
@@ -64,7 +70,7 @@ public class Home : GenericScene {
 
 	public void PrepareGetAddressForm() 
 	{
-		URL = "http://aqua-web.herokuapp.com/api/address";
+		URL = "http://aquaguardians.com.br/api/address";
 		pvtkey = "fc64ec6244";
 
 		Debug.Log("Trying to get User Address at: " + URL + "/" + EventSystem.GetUser().GetAddressID() + "/" + pvtkey);

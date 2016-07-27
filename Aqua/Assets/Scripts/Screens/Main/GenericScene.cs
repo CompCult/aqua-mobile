@@ -45,32 +45,25 @@ public class GenericScene : MonoBehaviour {
 					 ConnectionFailed = "Falha na conexão",
 					 LocalizationFailed = "Falha ao obter sua localização";
 
-	public void Update()
+	public virtual void Update()
 	{
 		if (Input.GetKeyUp(KeyCode.Escape)) 
-    		LoadScene();
+			LoadScene();
 	}
 
 	public void LoadScene(string Scene) 
 	{
 		if (Scene != null) 
-		{
-			if (Scene.Equals("Login"))
-				Destroy(GameObject.Find("EventSystem"));
-
 			SceneManager.LoadScene(Scene);
-		}
 		else
-		{
 			Application.Quit();
-		}
 	}
 
 	public void LoadScene()
 	{
 		LoadScene(BackScene);
 	}
-	
+
 	// Convert input string to SHA1
 	public string CalculateSHA1 (string input)
 	{
@@ -130,20 +123,22 @@ public class GenericScene : MonoBehaviour {
     	 @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" + 
      	@".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 	 	Regex reg = new Regex(strRegex);
+		
 		return reg.IsMatch(email);
 	}	
 
 	public static bool IsValidDate(string date, string format)
 	{
 		DateTime Test;
+		
 		return DateTime.TryParseExact(date, format, null, DateTimeStyles.None, out Test);
 	}
 
 	public static bool IsValidCpf(string cpf)
 	{
 		string strRegex = @"^\d{3}\.\d{3}\.\d{3}\-\d{2}$";
-
 	 	Regex reg = new Regex(strRegex);
+		
 		return reg.IsMatch(cpf);
 	}
 }

@@ -31,7 +31,7 @@ public class Login : GenericScene {
 
     public void PrepareGetUserIDForm() 
 	{
-		URL = "http://aqua-web.herokuapp.com/api/auth";
+		URL = "http://aquaguardians.com.br/api/auth";
 		pvtkey = "f51e8e6754";
 
 		if (!AreFieldsFilledCorrectly())
@@ -72,9 +72,9 @@ public class Login : GenericScene {
 
 			Debug.Log("Error on ID Get: " + Error);
 
-			if (ErrorCode.Equals("404"))
+			if (ErrorCode.Contains("404"))
 				EnableNotification(3, InvalidLogin);
-			else if (ErrorCode.Equals("Could"))
+			else if (ErrorCode.Contains("Could"))
 				EnableNotification(4, ConnectionFailed);
 			else
 				EnableNotification(4, ServerFailed);
