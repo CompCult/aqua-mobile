@@ -11,7 +11,7 @@ public class Report {
 
 	private string query;
 
-	public Report CreateReportByJSON(string json)
+	public Report CreateReport(string json)
 	{
 		return JsonUtility.FromJson<Report>(json);
 	}
@@ -29,15 +29,4 @@ public class Report {
 
 		return query;
 	}
-
-	public string GetID() { return id; }
-	public void SetID(string id) { this.id = id; }
-	public string GetLongitude() { return longitude; }
-	public void SetLongitude(string longitude) { this.longitude = longitude; }
-	public string GetLatitude() { return latitude; }
-	public void SetLatitude(string latitude) { this.latitude = latitude; }
-	public string GetStatus() { return status; }
-	public void SetStatus(string status) { this.status = status; }
-	public string GetReportType() { return type; }
-	public void SetReportType(string type) { this.type = type; }
 }
