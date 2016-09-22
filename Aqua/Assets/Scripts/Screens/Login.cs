@@ -49,8 +49,10 @@ public class Login : Screen
 		{
 			if (Error.Contains("404 "))
 				UnityAndroidExtras.instance.makeToast("Não encontrado. Verifique o e-mail e senha.", 1);
-			if (Error.Contains("500 "))
+			else if (Error.Contains("500 "))
 				UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
+			else 
+				UnityAndroidExtras.instance.makeToast("Falha ao conectar. Contate um administrador do sistema.", 1);
 		}
 	}
 

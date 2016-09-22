@@ -100,7 +100,7 @@ public static class Authenticator
 		photoForm.AddField ("type", type);
 		photoForm.AddBinaryData("photo", bytes, "Photo.png", "image/png");
 
-		WebFunctions.apiPlace = "http://aquaguardians.com.br/api/notification/";
+		WebFunctions.apiPlace = "/notification/";
 		WebFunctions.pvtKey = "d86c362f4b";
 
 		return WebFunctions.Post(photoForm);

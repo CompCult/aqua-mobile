@@ -6,6 +6,7 @@ public class User {
 	public int id,
 	address,
 	level,
+	coins,
 	xp;
 
 	public string name,

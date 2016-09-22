@@ -63,20 +63,24 @@ public class CameraScreen : Screen
 	}
 
 	private void ProcessPhoto (WWW photoResponse)
-	    {
-	        string Response = photoResponse.text;
-	        string Error = photoResponse.error;
+	{
+	    string Response = photoResponse.text;
+	    string Error = photoResponse.error;
 
-			if (Error == null) 
-			{
-				Debug.Log("Response from sending photo: " + Response);
+		if (Error == null) 
+		{
+			Debug.Log("Response from sending photo: " + Response);
 
-				UnityAndroidExtras.instance.makeToast("Foto enviada", 1);
-			} 
-			else 
-			{
-				Debug.Log("Error on sending photo: " + Error);
-			}
-	     } 
+			UnityAndroidExtras.instance.makeToast("Foto enviada", 1);
+		} 
+		else 
+		{
+			Debug.Log("Error on sending photo: " + Error);
+			//UnityAndroidExtras.instance.makeToast("Houve um problema no envio da notificação", 1);
+			UnityAndroidExtras.instance.makeToast("Erro: " + Error, 1);
+		}
+
+		CameraDevice.ShowCameraImage();
+	 } 
 
 }
