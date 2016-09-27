@@ -9,14 +9,48 @@ using System.Text;
 
 public class Login : Screen 
 {
-	[Header("Screen elements")]
 	public InputField emailField, passField;
+	public Text versionInfo;
+	public Button registerButton, loginButton;
 
 	public void Start () 
 	{
 		UnityAndroidExtras.instance.Init();
-
 		backScene = null;
+
+		CheckVersion();
+	}
+
+	public void CheckVersion()
+	{
+		WWW versionRequest = Authenticator.CheckVersion();
+
+		string errorText = versionRequest.error,
+		versionText = versionRequest.text;
+
+		if (errorText == null)
+		{
+			if (versionText == versionInfo.text)
+			{
+				Debug.Log("Updated version! v" + versionText);
+				ToggleButtons(true);
+			}
+			else 
+			{
+				UnityAndroidExtras.instance.makeToast("Versão desatualizada!", 1);
+				UnityAndroidExtras.instance.makeToast("Atualize em AquaGuardians.com.br/download", 1);
+			}
+		}
+		else 
+		{
+			UnityAndroidExtras.instance.makeToast("Ocorreu um erro ao verificar sua versão", 1);
+		}
+	}
+
+	public void ToggleButtons (bool newState)
+	{
+		registerButton.interactable = newState;
+		loginButton.interactable = newState;
 	}
 	
 	public void SignIn () 

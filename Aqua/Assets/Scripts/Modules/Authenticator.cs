@@ -106,6 +106,14 @@ public static class Authenticator
 		return WebFunctions.Post(photoForm);
 	}
 
+	public static WWW CheckVersion ()
+	{
+		WebFunctions.apiPlace = "/sysinfo/mobile-version";
+		WebFunctions.pvtKey = "";
+
+		return WebFunctions.Get();
+	}
+
 	// Convert input string to SHA1
 	public static string CalculateSHA1 (string input)
 	{
