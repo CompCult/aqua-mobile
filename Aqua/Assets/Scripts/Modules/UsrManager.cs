@@ -16,4 +16,9 @@ public static class UsrManager
 	{
 		return JsonUtility.FromJson<User>(JSON);
 	}
+
+	public static void SetAddressID(int address)
+	{
+		_user.address = address;
+	}
 }

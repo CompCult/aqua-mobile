@@ -17,6 +17,8 @@ public class ProfileAddress : Screen {
 	stateField,
 	complementField;
 
+	private int noAddress = 0;
+
 	public void Start () 
 	{
 		UnityAndroidExtras.instance.Init();
@@ -28,7 +30,6 @@ public class ProfileAddress : Screen {
 	public void ReceiveAddress () 
 	{
 		User user = UsrManager.user;
-		int noAddress = -1;
 
 		// If the user have address, receive it.
 		if (user.address != noAddress)
@@ -79,12 +80,22 @@ public class ProfileAddress : Screen {
 		city = cityField.text,
 		state = stateField.text,
 		complement = complementField.text;
+		User user = UsrManager.user;
 
 		if (!CheckFields(zipcode, state))
 			return;
 
-		WWW updateRequest = Authenticator.UpdateAddress(zipcode, street, number, district, city, state, complement);
-		ProcessUpdate(updateRequest);
+		// Checks if the user have an address
+		if (user.address != noAddress)
+		{
+			WWW updateRequest = Authenticator.UpdateAddress(zipcode, street, number, district, city, state, complement);
+			ProcessUpdate(updateRequest);
+		}
+		else 
+		{
+			WWW createAddressRequest = Authenticator.CreateAddress(zipcode, street, number, district, city, state, complement);
+			ProcessCreate(createAddressRequest);
+		}
 	}
 
 	public void ProcessUpdate(WWW updateRequest)
@@ -94,7 +105,7 @@ public class ProfileAddress : Screen {
 
 		if (Error == null) 
 		{
-			Debug.Log("Response: " + Response);
+			Debug.Log("Response for update address: " + Response);
 
 			LoadScene(backScene);
 		}
@@ -103,6 +114,26 @@ public class ProfileAddress : Screen {
 			Debug.Log("Error on update address: " + Error);
 
 			UnityAndroidExtras.instance.makeToast("Falha ao obter seu endereço. Tente novamente mais tarde.", 1);
+		}
+	}
+
+	public void ProcessCreate(WWW createAddressRequest)
+	{
+		string Error = createAddressRequest.error,
+		Response = createAddressRequest.text;
+
+		if (Error == null) 
+		{
+			Debug.Log("Response for create address: " + Response);
+			UsrManager.SetAddressID(int.Parse(Response));
+
+			LoadScene(backScene);
+		}
+		else 
+		{
+			Debug.Log("Error on create address: " + Error);
+
+			UnityAndroidExtras.instance.makeToast("Falha ao criar seu endereço. Tente novamente mais tarde.", 1);
 		}
 	}
 

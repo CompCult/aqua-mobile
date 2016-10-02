@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SoundManager : MonoBehaviour {
+public class SoundManager : Singleton<SoundManager> {
 
 	public AudioSource globalMusic;
 

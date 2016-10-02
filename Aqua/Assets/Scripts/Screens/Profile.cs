@@ -44,14 +44,15 @@ public class Profile : Screen {
 		repPass = repPassField.text,
 		birth = birthField.text,
 		cpf = cpfField.text,
+		address = UsrManager.user.address.ToString(),
 		phone = phoneField.text;
 
 		if (!CheckFields(name, email, birth, cpf, phone, pass, repPass))
 			return;
 
-		UnityAndroidExtras.instance.makeToast("Atualizando", 1);
+		UnityAndroidExtras.instance.makeToast("Atualizando com address -" + address + "-", 1);
 
-		WWW updateRequest = Authenticator.UpdateUser(name, email, birth, cpf, phone, pass);
+		WWW updateRequest = Authenticator.UpdateUser(name, email, birth, cpf, address, phone, pass);
 		ProcessUpdate(updateRequest);
 	}
 

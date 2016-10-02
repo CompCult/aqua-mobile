@@ -57,14 +57,15 @@ public static class Authenticator
 		return WebFunctions.Get();
 	}
 
-	public static WWW UpdateUser (string name, string email, string birth, string cpf, string phone, string pass)
+	public static WWW UpdateUser (string name, string email, string birth, string cpf, string address, string phone, string pass)
 	{
 		WWWForm updateForm = new WWWForm();
 		updateForm.AddField ("name", name);
 		updateForm.AddField ("email", email);
-		updateForm.AddField ("password", pass);
+		updateForm.AddField ("password", CalculateSHA1(pass));
 		updateForm.AddField ("birth", birth);
 		updateForm.AddField ("cpf", cpf);
+		updateForm.AddField ("address", address);
 		updateForm.AddField ("phone", phone);
 
 		WebFunctions.apiPlace = "/user/" + UsrManager.userID + "/";
@@ -85,6 +86,23 @@ public static class Authenticator
 		updateForm.AddField ("complement", complement);
 
 		WebFunctions.apiPlace = "/address/" + AddressManager.address.id + "/";
+		WebFunctions.pvtKey = "fc64ec6244";
+
+		return WebFunctions.Post(updateForm);
+	}
+
+	public static WWW CreateAddress (string zipcode, string street, string number, string district, string city, string state, string complement)
+	{
+		WWWForm updateForm = new WWWForm ();
+		updateForm.AddField ("zipcode", zipcode);
+		updateForm.AddField ("street", street);
+		updateForm.AddField ("number", number);
+		updateForm.AddField ("district", district);
+		updateForm.AddField ("city", city);
+		updateForm.AddField ("state", state);
+		updateForm.AddField ("complement", complement);
+
+		WebFunctions.apiPlace = "/address/";
 		WebFunctions.pvtKey = "fc64ec6244";
 
 		return WebFunctions.Post(updateForm);

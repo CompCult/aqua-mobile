@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Modules\Lang.cs" />
      <Compile Include="Assets\Scripts\Modules\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Modules\SavWav.cs" />
+     <Compile Include="Assets\Scripts\Modules\Singleton.cs" />
      <Compile Include="Assets\Scripts\Modules\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Modules\UnityAndroidExtras.cs" />
      <Compile Include="Assets\Scripts\Modules\UsrManager.cs" />
