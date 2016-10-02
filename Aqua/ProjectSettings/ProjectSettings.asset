@@ -174,8 +174,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/GCint/OneDrive/Documentos/GitHub/aqua-mobile/Aqua/user.keystore
+  AndroidKeyaliasName: aqua guardians
   AndroidTVCompatibility: 0
   AndroidIsGame: 0
   androidEnableBanner: 1
