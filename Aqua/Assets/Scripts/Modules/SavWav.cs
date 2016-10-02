@@ -30,9 +30,8 @@ public class SavWav: MonoBehaviour
 
 	public bool Save(string filename, AudioClip clip) 
 	{
-
 		if(clip == null)
-			UnityAndroidExtras.instance.makeToast("O clip está null", 1);
+			UnityAndroidExtras.instance.makeToast("Nenhum áudio gravado", 1);
 
 		if (!filename.ToLower().EndsWith(".wav")) {
 			filename += ".wav";
@@ -67,6 +66,7 @@ public class SavWav: MonoBehaviour
 		return TrimSilence(samples, min, channels, hz, false, false);
 	}
 
+	#pragma warning disable 0618
 	public static AudioClip TrimSilence(List<float> samples, float min, int channels, int hz, bool _3D, bool stream) {
 		int i;
 
@@ -130,6 +130,7 @@ public class SavWav: MonoBehaviour
 		fileStream.Write(bytesData, 0, bytesData.Length);
 	}
 
+	#pragma warning disable 0219
 	static void WriteHeader(FileStream fileStream, AudioClip clip) {
 
 		var hz = clip.frequency;
@@ -149,11 +150,6 @@ public class SavWav: MonoBehaviour
 
 		Byte[] fmt = System.Text.Encoding.UTF8.GetBytes("fmt ");
 		fileStream.Write(fmt, 0, 4);
-
-
-
-
-
 
 		Byte[] subChunk1 = BitConverter.GetBytes(16);
 		fileStream.Write(subChunk1, 0, 4);

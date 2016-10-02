@@ -43,7 +43,9 @@ public class Home : Screen {
 
 	public void UpdateFields()
 	{
+		int playerLevel = (UsrManager.user.xp / 1000) + 1;
+		
 		NameField.text = UsrManager.user.name;
-		LevelField.text = "Level " + UsrManager.user.level;
+		LevelField.text = "Level " + playerLevel;
 	}
 }

@@ -14,6 +14,7 @@ public static class WebFunctions
 	public static string pvtKey { get { return _pvtKey; } set { _pvtKey = value; } }
 	public static string apiPlace { get { return _apiPlace; } set { _apiPlace = value; } }
 		
+	#pragma warning disable 0219
 	public static WWW Get()
 	{
 		string apiLink = url + apiPlace + pvtKey;
@@ -28,6 +29,7 @@ public static class WebFunctions
 		return www; 
 	}
 
+	#pragma warning disable 0219
 	public static WWW Post(WWWForm form)
 	{
 		string apiLink = url + apiPlace + pvtKey;

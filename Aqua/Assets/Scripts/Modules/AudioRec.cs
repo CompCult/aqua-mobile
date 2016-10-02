@@ -9,6 +9,7 @@ public static class AudioRec
 	private static bool micConnected = false;
 	private static int minFreq, maxFreq;
 
+	#pragma warning disable 0618
 	public static void RecordAudio()
 	{
 		SavWav.instance.Init();
@@ -60,7 +61,7 @@ public static class AudioRec
 				audioSource.clip = newClip;  
 
 				SavWav.instance.Save ("voice", audioSource.clip);
-				UnityAndroidExtras.instance.makeToast("Voz gravada com sucesso", 1);
+				UnityAndroidExtras.instance.makeToast("Gravação concluída", 1);
 			}            
 		}
 	}
@@ -73,7 +74,6 @@ public static class AudioRec
 		else if (isRecorded()) // If recorded 
 		{
 			audioSource.Play ();
-			UnityAndroidExtras.instance.makeToast("Reproduzindo", 1);
 		} 
 	}
 

@@ -38,8 +38,7 @@ public class Register : Screen {
 
 	public void ProcessRegister (WWW registerRequest)
 	{
-		string Error = registerRequest.error,
-		Response = registerRequest.text;
+		string Error = registerRequest.error;
 
 		if (Error == null) 
 		{

@@ -124,6 +124,44 @@ public static class Authenticator
 		return WebFunctions.Post(photoForm);
 	}
 
+	public static WWW RequestActivity(string activityID)
+	{
+		WebFunctions.apiPlace = "/mission/" + activityID + "/";
+		WebFunctions.pvtKey = "ec689306c5";
+
+		return WebFunctions.Get();
+	}
+
+	public static WWW SendActivity(int userID, Activity activity, ActivityResponse activityResponse)
+	{
+		WWWForm responseForm = new WWWForm ();
+
+ 		responseForm.AddField("user_id", UsrManager.user.id);
+ 		responseForm.AddField ("mission_id", activityResponse.activity_id);
+
+ 		if (activity.gps_enabled) 
+ 		{
+ 			responseForm.AddField ("coordinates", activityResponse.coord_start); //coord_start
+ 			//responseForm.AddField ("coord_mid", activityResponse.coord_mid);
+ 			//responseForm.AddField ("coord_end", activityResponse.coord_end);
+ 		}
+
+		if (activity.photo_file)
+ 		{
+ 			responseForm.AddBinaryData("photo", activityResponse.photo, "Photo.png", "image/png");
+ 		}
+
+ 		if (activity.audio_file)
+ 		{
+ 			responseForm.AddBinaryData("audio", activityResponse.audio, "voice.wav", "audio/wav");
+ 		}
+
+		WebFunctions.apiPlace = "/answer/";
+		WebFunctions.pvtKey = "ec689306c5";
+
+		return WebFunctions.Post(responseForm);
+	}
+
 	public static WWW CheckVersion ()
 	{
 		WebFunctions.apiPlace = "/sysinfo/mobile-version";

@@ -7,10 +7,12 @@ public class Activity {
 
 	public string name,
 				  description,
+				  text,
 				  type,
 				  location;
 
 	public bool gps_enabled,
-			    photo_enabled,
-			    audio_enabled;
+				video_file,
+			    photo_file,
+			    audio_file;
 }

@@ -23,22 +23,21 @@ public class CameraScreen : Screen
 		GPS.ReceivePlayerLocation();
 	}
 
-	new public void Update()
-	{
-		GPS.ReceivePlayerLocation();
-
-		if (Input.GetKeyUp(KeyCode.Escape)) 
-			LoadBackScene();
-	}
-
 	public void SendPhoto()
 	{
+		GPS.ReceivePlayerLocation();
 		CameraDevice.RecordPhoto();
 
 		int id = UsrManager.user.id;
 		string latitude = GPS.location[0].ToString(),
 		longitude = GPS.location[1].ToString(),
 		type;
+
+		if (latitude == "0" || longitude == "0")
+		{
+			UnityAndroidExtras.instance.makeToast("Verifique o serviço de localização do celular", 1);
+			return;
+		}
 
 		switch (Dropdown.value)
         {
@@ -76,8 +75,7 @@ public class CameraScreen : Screen
 		else 
 		{
 			Debug.Log("Error on sending photo: " + Error);
-			//UnityAndroidExtras.instance.makeToast("Houve um problema no envio da notificação", 1);
-			UnityAndroidExtras.instance.makeToast("Erro: " + Error, 1);
+			UnityAndroidExtras.instance.makeToast("Houve um problema no envio da notificação", 1);
 		}
 
 		CameraDevice.ShowCameraImage();

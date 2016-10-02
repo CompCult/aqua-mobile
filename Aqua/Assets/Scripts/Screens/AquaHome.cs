@@ -18,9 +18,11 @@ public class AquaHome : Screen
 	
 	public void UpdateFields()
 	{
+		int playerLevel = (UsrManager.user.xp / 1000) + 1;
+
 		silverCoins.text = UsrManager.user.coins.ToString();
 		goldCoins.text = UsrManager.user.coins.ToString();
-		levelText.text = "Level " + UsrManager.user.level;
+		levelText.text = "Level " + playerLevel;
 		expText.text = UsrManager.user.xp + " EXP";
 	}
 }

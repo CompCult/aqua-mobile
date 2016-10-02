@@ -10,11 +10,6 @@ public class SoundManager : Singleton<SoundManager> {
 		PlayMusic(globalMusic);
 	}
 
-	public void Awake()
-	{
-		DontDestroyOnLoad(gameObject);
-	}
-
 	public void PlaySound (AudioSource sound)
 	{
 		sound.Play();
