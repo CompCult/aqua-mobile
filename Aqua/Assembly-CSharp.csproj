@@ -66,6 +66,9 @@
      <Compile Include="Assets\Scripts\Objects\QuizResponse.cs" />
      <Compile Include="Assets\Scripts\Objects\Report.cs" />
      <Compile Include="Assets\Scripts\Objects\User.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\Brain Teaser\BrainTeaser.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\Brain Teaser\ST_PuzzleDisplay.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\Brain Teaser\ST_PuzzleTile.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Missions\ActivityHome.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Missions\GPSS.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Missions\Media.cs" />
