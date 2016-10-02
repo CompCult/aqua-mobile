@@ -4,7 +4,14 @@ using System.Collections;
 public class QuizResponse
 {
 	public int quiz_id,
-	group_id;
+	user_id;
 
-	public string quiz_correct;
+	public string quiz_answer;
+
+	public override string ToString()
+	{
+		return "Quiz: " + quiz_id + " | " +
+			"User: " + user_id + " | " +
+			"Resposta: " + quiz_answer;
+	}
 }

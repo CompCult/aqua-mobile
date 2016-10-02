@@ -19,8 +19,8 @@ public class CameraScreen : Screen
 
 		backScene = "Home";
 
+		GPS.StartGPS();
 		CameraDevice.ShowCameraImage();
-		GPS.ReceivePlayerLocation();
 	}
 
 	public void SendPhoto()

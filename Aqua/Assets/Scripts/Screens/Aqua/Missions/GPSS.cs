@@ -17,6 +17,7 @@ public class GPSS : Screen
 		else 
 			backScene = "Activity Home";
 
+		GPS.StartGPS();
 		UpdateActivityTexts();
 	}
 
@@ -54,9 +55,14 @@ public class GPSS : Screen
 
 	public void ProgressActivity()
 	{
-		if (QuestManager.AreCoordsFilled ()) 
+		if (QuestManager.AreCoordsFilled ())
+		{ 
+			GPS.StopGPS();
 			LoadScene("Send");
+		} 
 		else
-			UnityAndroidExtras.instance.makeToast("Marque os três locais da missão", 1);
+		{
+			UnityAndroidExtras.instance.makeToast("Marque o local da missão", 1);
+		}
 	}
 }

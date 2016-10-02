@@ -11,6 +11,7 @@ public class Quiz {
 				  option_2,
 				  option_3,
 				  option_4,
+				  option_5,
 				  correct,
 				  created_at,
 				  updated_at;

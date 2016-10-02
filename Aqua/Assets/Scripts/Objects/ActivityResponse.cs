@@ -16,7 +16,7 @@ public class ActivityResponse
 	public override string ToString()
 	{
 		return "Atividade: " + activity_id + " | " +
-			"Grupo: " + user_id + " | " +
+			"User: " + user_id + " | " +
 			"C Start: " + ((coord_start == null) ? "não" : coord_start) + " | " +
 			"C Mid: " + ((coord_mid == null) ? "não" : coord_mid) + " | " +
 			"C End: " + ((coord_end == null) ? "não" : coord_end) + " | " +

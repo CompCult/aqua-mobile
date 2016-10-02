@@ -24,55 +24,20 @@ public static class QuestManager
 		_activityResponse = new ActivityResponse ();
 	}
 
-// 	public static void UpdateQuiz(string JSON)
-// 	{
-// 		_activity = null;
-// 		_quiz = JsonUtility.FromJson<Quiz>(JSON);
-// 		_quizResponse = new QuizResponse ();
-// 	}
+ 	public static void UpdateQuiz(string JSON)
+ 	{
+ 		Debug.Log("Quiz updated and old activity removed");
 
-// 	public static WWW SendQuiz()
-// 	{
-// 		WebFunctions.apiPlace = "/activity/post/";
-// 		string url = WebFunctions.url + WebFunctions.apiPlace + WebFunctions.pvtKey;
-
-// 		WWWForm responseForm = new WWWForm ();
-
-// 		Debug.Log("grupo: " + quizResponse.group_id + " / id: " + quizResponse.quiz_id + " / status: " + quizResponse.quiz_correct);
-
-// 		responseForm.AddField("group_id", quizResponse.group_id);
-// 		responseForm.AddField ("quiz_id", quizResponse.quiz_id);
-// 		responseForm.AddField ("quiz_correct", quizResponse.quiz_correct);
-
-// 		Debug.Log ("Enviando para " + url);
-// 		//WWW response =  WebFunctions.Post(url, responseForm);
-
-// 		if (response.error != null)
-// 			Debug.Log("Resposta: " + response.text);
-
-// 		return response;
-// 	}
+ 		_activity = null;
+ 		_quiz = JsonUtility.FromJson<Quiz>(JSON);
+ 		_quizResponse = new QuizResponse ();
+ 	}
 
  	public static bool AreCoordsFilled()
  	{
  		if (Application.platform != RuntimePlatform.Android) 
  			return true;
 
- 		return (activityResponse.coord_start != null &&
- 		activityResponse.coord_mid != null &&
- 		activityResponse.coord_end != null);
+ 		return (activityResponse.coord_start != null); //&&activityResponse.coord_mid != null && activityResponse.coord_end != null);
  	}
-
-// 	public static bool RegisterQuizResponse(string response)
-// 	{
-// 		if (response.Equals (quiz.correct)) 
-// 		{
-// 			quizResponse.quiz_correct = "Acertou";
-// 			return true;
-// 		}
-
-// 		quizResponse.quiz_correct = "Errou";
-// 		return false;
-// 	}
-
 }

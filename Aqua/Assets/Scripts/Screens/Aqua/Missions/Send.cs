@@ -20,11 +20,10 @@ public class Send : Screen
 
 	public void SendActivity ()
 	{
-		int userID = UsrManager.user.id;
-		Activity activity = QuestManager.activity;
-		ActivityResponse activityResponse = QuestManager.activityResponse;
+		QuestManager.activityResponse.user_id = UsrManager.user.id;
+		QuestManager.activityResponse.activity_id = QuestManager.activity.id;
 
-		WWW responseForm = Authenticator.SendActivity(userID, activity, activityResponse);
+		WWW responseForm = Authenticator.SendActivity(QuestManager.activityResponse, QuestManager.activity);
 		ProcessSend(responseForm);
 	}
 
@@ -43,7 +42,7 @@ public class Send : Screen
 		else 
 		{
 			if (Error.Contains("404 "))
-				UnityAndroidExtras.instance.makeToast("Não encontrado. Verifique o e-mail e senha.", 1);
+				UnityAndroidExtras.instance.makeToast("Atividade não encontrada ou já expirada", 1);
 			else if (Error.Contains("500 "))
 				UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
 			else 
