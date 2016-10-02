@@ -17,6 +17,12 @@ public class SearchQuiz : Screen {
 	{
 		string quizID = this.quizID.text;
 
+		if (quizID == null || quizID.Length == 0)
+		{
+			UnityAndroidExtras.instance.makeToast("Insira o ID do quiz", 1);
+			return;
+		}
+
 		WWW quizRequest = Authenticator.RequestQuiz(quizID);
 		ProcessActivity (quizRequest);
 	}

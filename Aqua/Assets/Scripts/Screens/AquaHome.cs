@@ -8,6 +8,8 @@ public class AquaHome : Screen
 	goldCoins, levelText, 
 	titleText, expText;
 
+	public Image xpBar;
+
 	public void Start () 
 	{
 		UnityAndroidExtras.instance.Init();
@@ -18,11 +20,20 @@ public class AquaHome : Screen
 	
 	public void UpdateFields()
 	{
-		int playerLevel = (UsrManager.user.xp / 1000) + 1;
+		int userXP = UsrManager.user.xp,
+		playerLevel = (userXP / 1000) + 1;
 
-		silverCoins.text = UsrManager.user.coins.ToString();
-		goldCoins.text = UsrManager.user.coins.ToString();
+		float xpRemainingToLevelUP = userXP - ((playerLevel - 1) * 1000),
+		coins = UsrManager.user.coins, silver, gold;
+
+		gold = Mathf.Round(coins/100);
+		silver = Mathf.Round(coins - gold * 100);
+
+		silverCoins.text = "" + silver;
+		goldCoins.text = "" + gold;
 		levelText.text = "Level " + playerLevel;
-		expText.text = UsrManager.user.xp + " EXP";
+		expText.text = "EXP " + xpRemainingToLevelUP + "/1000";
+
+		xpBar.fillAmount = (xpRemainingToLevelUP / 1000);
 	}
 }

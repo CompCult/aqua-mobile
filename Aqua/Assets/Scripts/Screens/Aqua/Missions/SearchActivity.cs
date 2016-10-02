@@ -17,6 +17,12 @@ public class SearchActivity : Screen {
 	{
 		string activityID = this.activityID.text;
 
+		if (activityID == null || activityID.Length == 0)
+		{
+			UnityAndroidExtras.instance.makeToast("Insira o ID da missão", 1);
+			return;
+		}
+
 		WWW activityRequest = Authenticator.RequestActivity(activityID);
 		ProcessActivity (activityRequest);
 	}
