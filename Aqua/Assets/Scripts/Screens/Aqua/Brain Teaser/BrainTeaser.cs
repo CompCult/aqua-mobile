@@ -8,7 +8,7 @@ public class BrainTeaser : Screen {
 	public GameObject MiniGame;
 
 	private int Points, Lives, Time, StartTime;
-	private string imageURL = "http://www.nowcultured.com/images/2013/08/beautiful-water-pokemon-fanart-gallery/aquarium-marine-tube-fanart.png";
+	private string imageURL = "http://s3.zerochan.net/Pok%C3%A9mon.240.1782400.jpg";
 
 	public void Start () 
 	{

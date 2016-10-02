@@ -56,6 +56,7 @@ public class CameraScreen : Screen
         }
 
         byte[] bytes = CameraDevice.Photo.EncodeToPNG();
+        UnityAndroidExtras.instance.makeToast("Enviando...", 1);
 
 		WWW photoResponse = Authenticator.SendPhoto (id, latitude, longitude, type, bytes);
 		ProcessPhoto(photoResponse);
