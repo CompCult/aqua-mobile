@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ActivityQuiz/Activity Home.unity
+- path: Assets/Scenes/ActivityQuiz/Selection.unity
   isLoaded: 1
   isActive: 1
