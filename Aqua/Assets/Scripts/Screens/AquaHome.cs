@@ -26,8 +26,8 @@ public class AquaHome : Screen
 		float xpRemainingToLevelUP = userXP - ((playerLevel - 1) * 1000),
 		coins = UsrManager.user.coins, silver, gold;
 
-		gold = Mathf.Round(coins/100);
-		silver = Mathf.Round(coins - gold * 100);
+		gold = Mathf.Abs(Mathf.Round(coins/100));
+		silver = Mathf.Abs(Mathf.Round(coins - gold * 100));
 
 		silverCoins.text = "" + silver;
 		goldCoins.text = "" + gold;
