@@ -94,15 +94,15 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.compcult.aquaguardians
-  bundleVersion: 1.8
+  bundleIdentifier: com.CompCult.AquaGuardians
+  bundleVersion: 1.8.2
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   xboxOneDisableKinectGpuReservation: 0
   singlePassStereoRendering: 0
   protectGraphicsMemory: 0
-  AndroidBundleVersionCode: 18
-  AndroidMinSdkVersion: 14
+  AndroidBundleVersionCode: 182
+  AndroidMinSdkVersion: 11
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2

@@ -44,4 +44,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ActivityQuiz/Voice.unity
   - enabled: 1
+    path: Assets/Scenes/ActivityQuiz/Write.unity
+  - enabled: 1
     path: Assets/Scenes/Games/Brain Teaser/BrainTeaser.unity
+  - enabled: 0
+    path: Assets/Scenes/Write.unity

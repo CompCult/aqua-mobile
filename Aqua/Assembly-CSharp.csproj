@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\Screens\Aqua\Missions\Selection.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Missions\Send.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Missions\Voice.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\Missions\Write.cs" />
      <Compile Include="Assets\Scripts\Screens\AquaHome.cs" />
      <Compile Include="Assets\Scripts\Screens\CameraScreen.cs" />
      <Compile Include="Assets\Scripts\Screens\Home.cs" />

@@ -23,6 +23,15 @@ public class CameraScreen : Screen
 		CameraDevice.ShowCameraImage();
 	}
 
+	public new void Update()
+	{
+		if (Input.GetKeyUp(KeyCode.Escape)) 
+		{
+			LoadBackScene();
+			GPS.StopGPS();
+		}
+	}
+
 	public void SendPhoto()
 	{
 		GPS.ReceivePlayerLocation();
@@ -35,7 +44,8 @@ public class CameraScreen : Screen
 
 		if (latitude == "0" || longitude == "0")
 		{
-			UnityAndroidExtras.instance.makeToast("Verifique o serviço de localização do celular", 1);
+			UnityAndroidExtras.instance.makeToast("Ative o serviço de localização do celular", 1);
+			CameraDevice.ShowCameraImage();
 			return;
 		}
 

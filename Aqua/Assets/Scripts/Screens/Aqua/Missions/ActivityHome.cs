@@ -24,11 +24,14 @@ public class ActivityHome : Screen
 	{
 		Activity activity = QuestManager.activity;
 
+		// Sequence: Photo > Voice > Gps > Text > Send
 		if (activity.photo_file)
 			LoadScene("Media");
 		else if (activity.audio_file)
 			LoadScene("Voice");
 		else if (activity.gps_enabled)
 			LoadScene("GPS");
+		else if (activity.text_enabled)
+			LoadScene("Write");
 	}
 }

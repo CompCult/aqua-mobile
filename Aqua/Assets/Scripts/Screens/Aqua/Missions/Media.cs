@@ -38,6 +38,8 @@ public class Media : Screen
 			LoadScene("Voice");
 		else if (activity.gps_enabled)
 			LoadScene("GPS");
+		else if (activity.text_enabled)
+			LoadScene("Write");
 		else 
 			LoadScene("Send");
 	}

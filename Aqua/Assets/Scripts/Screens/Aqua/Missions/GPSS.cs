@@ -58,7 +58,11 @@ public class GPSS : Screen
 		if (QuestManager.AreCoordsFilled ())
 		{ 
 			GPS.StopGPS();
-			LoadScene("Send");
+
+			if (QuestManager.activity.text_enabled)
+				LoadScene("Write");
+			else
+				LoadScene("Send");
 		} 
 		else
 		{

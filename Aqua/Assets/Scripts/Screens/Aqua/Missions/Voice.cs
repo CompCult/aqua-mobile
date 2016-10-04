@@ -58,6 +58,8 @@ public class Voice : Screen
 
 		if (activity.gps_enabled)
 			LoadScene("GPS");
+		else if (activity.text_enabled)
+			LoadScene("Write");
 		else 
 			LoadScene("Send");
 	}

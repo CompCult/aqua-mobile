@@ -164,9 +164,13 @@ public static class Authenticator
  		responseForm.AddField ("mission_id", activityResponse.activity_id);
 
  		if (activity.gps_enabled) 
- 			responseForm.AddField ("coordinates", activityResponse.coord_start); //coord_start
+ 			responseForm.AddField ("coordinates", activityResponse.coord_start); 
+ 			//responseForm.AddField ("coord_start", activityResponse.coord_mid);
  			//responseForm.AddField ("coord_mid", activityResponse.coord_mid);
  			//responseForm.AddField ("coord_end", activityResponse.coord_end);
+
+ 		if (activity.text_enabled)
+ 			responseForm.AddField ("text", activityResponse.text);
 
 		if (activity.photo_file)
  			responseForm.AddBinaryData("photo", activityResponse.photo, "Photo.png", "image/png");

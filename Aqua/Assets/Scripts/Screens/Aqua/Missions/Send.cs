@@ -8,7 +8,9 @@ public class Send : Screen
 	{
 		UnityAndroidExtras.instance.Init();
 
-		if (QuestManager.activity.gps_enabled)
+		if (QuestManager.activity.text_enabled)
+			backScene = "Write";
+		else if (QuestManager.activity.gps_enabled)
 			backScene = "GPS";
 		else if (QuestManager.activity.audio_file)
 			backScene = "Voice";

@@ -37,8 +37,8 @@ public class Login : Screen
 			}
 			else 
 			{
-				UnityAndroidExtras.instance.makeToast("Versão desatualizada!", 1);
-				UnityAndroidExtras.instance.makeToast("Atualize em AquaGuardians.com.br/download", 1);
+				UnityAndroidExtras.instance.makeToast("Versão desatualizada", 1);
+				UnityAndroidExtras.instance.makeToast("Atualize em nossa página na loja de aplicativos", 1);
 			}
 		}
 		else 
@@ -81,12 +81,17 @@ public class Login : Screen
 		}
 		else 
 		{
-			if (Error.Contains("404 "))
-				UnityAndroidExtras.instance.makeToast("Não encontrado. Verifique o e-mail e senha.", 1);
-			else if (Error.Contains("500 "))
-				UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
+			if (Error.Contains("404"))
+				UnityAndroidExtras.instance.makeToast("Não encontrado! Verifique o e-mail e senha", 1);
+			else if (Error.Contains("500"))
+			{
+				if (Application.platform == RuntimePlatform.Android) 
+					UnityAndroidExtras.instance.makeToast("Nome de usuário ou senha incorretos", 1);
+				else
+					UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor! Tente novamente mais tarde", 1);
+			}
 			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao conectar. Contate um administrador do sistema.", 1);
+				UnityAndroidExtras.instance.makeToast("Falha ao conectar! Tente novamente mais tarde", 1);
 		}
 	}
 
