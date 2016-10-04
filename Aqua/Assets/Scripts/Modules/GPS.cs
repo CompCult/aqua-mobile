@@ -21,6 +21,11 @@ public static class GPS
 		Input.location.Stop();
 	}
 
+	public static bool IsActive()
+	{
+		return (Input.location.isEnabledByUser);
+	}
+
 	public static bool ReceivePlayerLocation()
 	{
 		if (Application.platform != RuntimePlatform.Android) 

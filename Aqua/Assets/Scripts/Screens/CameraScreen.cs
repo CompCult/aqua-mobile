@@ -42,7 +42,7 @@ public class CameraScreen : GenericScreen
 		longitude = GPS.location[1].ToString(),
 		type;
 
-		if (latitude == "0" || longitude == "0")
+		if (latitude == "0" || longitude == "0" || !GPS.IsActive())
 		{
 			UnityAndroidExtras.instance.makeToast("Ative o serviço de localização do celular", 1);
 			CameraDevice.ShowCameraImage();

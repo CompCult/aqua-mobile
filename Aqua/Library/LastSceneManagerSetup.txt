@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Games/Match/Scenes/WorldSelect.unity
+- path: Assets/Scenes/ActivityQuiz/Write.unity
   isLoaded: 1
   isActive: 1

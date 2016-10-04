@@ -33,9 +33,9 @@ public class GPSS : GenericScreen
 		if (!requestSuccess || GPS.location == null)
 			return;
 
-		if (GPS.location[0] == 0 || GPS.location[1] == 0)
+		if (GPS.location[0] == 0 || GPS.location[1] == 0 || !GPS.IsActive())
 		{
-			UnityAndroidExtras.instance.makeToast("Verifique o serviço de localização do celular", 1);
+			UnityAndroidExtras.instance.makeToast("Ative o serviço de localização do celular", 1);
 			return;
 		}
 
