@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Selection : Screen {
+public class Selection : GenericScreen {
 
 	public void Start () 
 	{

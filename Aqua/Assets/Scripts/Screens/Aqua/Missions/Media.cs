@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Media : Screen 
+public class Media : GenericScreen 
 {
 	public Text title;
 	public GameObject cameraField;

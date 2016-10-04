@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class QuizHome : Screen 
+public class QuizHome : GenericScreen 
 {
 	public Text title, question,
 	alt1, alt2, alt3, alt4, alt5;

@@ -7,7 +7,7 @@ using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 
-public class Register : Screen {
+public class Register : GenericScreen {
 
 	// Use this for initialization
 	[Header("Screen elements")]

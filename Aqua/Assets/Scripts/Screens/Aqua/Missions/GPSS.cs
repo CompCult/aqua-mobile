@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class GPSS : Screen 
+public class GPSS : GenericScreen 
 {
 	public Text title;
 

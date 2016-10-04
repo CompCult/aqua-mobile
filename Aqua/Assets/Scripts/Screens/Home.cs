@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Home : Screen {
+public class Home : GenericScreen {
 
 	public Text NameField,
 	LevelField;

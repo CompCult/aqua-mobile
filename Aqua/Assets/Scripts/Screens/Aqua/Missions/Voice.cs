@@ -5,7 +5,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Voice : Screen 
+public class Voice : GenericScreen 
 {
 	public Text title;
 	public AudioSource audioSource;

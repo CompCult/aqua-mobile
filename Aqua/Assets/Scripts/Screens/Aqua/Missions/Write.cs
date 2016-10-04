@@ -5,7 +5,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Write : Screen 
+public class Write : GenericScreen 
 {
 	public InputField userText;
 

@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Map : Screen {
+public class Map : GenericScreen {
 
 	public Dropdown ReportDropdown;
 	public Text ReportStatus;

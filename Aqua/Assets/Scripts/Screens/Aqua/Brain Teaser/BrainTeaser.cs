@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class BrainTeaser : Screen {
+public class BrainTeaser : GenericScreen {
 
 	public Text PointsText, LivesText, TimeText, GameOverText;
 	public GameObject MiniGame;

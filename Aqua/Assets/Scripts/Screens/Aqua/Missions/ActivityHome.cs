@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ActivityHome : Screen 
+public class ActivityHome : GenericScreen 
 {
 	public Text title, text;
 

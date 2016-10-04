@@ -7,7 +7,7 @@ using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 
-public class Login : Screen 
+public class Login : GenericScreen 
 {
 	public InputField emailField, passField;
 	public Text versionInfo;

@@ -7,7 +7,7 @@ using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 
-public class Profile : Screen {
+public class Profile : GenericScreen {
 
 	public InputField nameField,
 	emailField,

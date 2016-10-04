@@ -7,7 +7,7 @@ using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 
-public class ProfileAddress : Screen {
+public class ProfileAddress : GenericScreen {
 
 	public InputField zipField,
 	streetField,

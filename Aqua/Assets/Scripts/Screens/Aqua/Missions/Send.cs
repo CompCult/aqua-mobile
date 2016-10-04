@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Send : Screen 
+public class Send : GenericScreen 
 {
 	public void Start () 
 	{

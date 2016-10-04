@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Splash : Screen {
+public class Splash : GenericScreen {
 
 	public void Start () 
 	{

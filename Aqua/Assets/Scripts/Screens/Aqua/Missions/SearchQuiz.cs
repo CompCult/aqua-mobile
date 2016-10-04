@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class SearchQuiz : Screen {
+public class SearchQuiz : GenericScreen {
 
 	public InputField quizID;
 

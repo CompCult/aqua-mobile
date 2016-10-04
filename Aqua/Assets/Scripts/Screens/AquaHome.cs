@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class AquaHome : Screen 
+public class AquaHome : GenericScreen 
 {
 	public Text silverCoins, 
 	goldCoins, levelText, 
