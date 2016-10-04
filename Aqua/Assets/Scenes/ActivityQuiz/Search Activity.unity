@@ -526,7 +526,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Atividades
+  m_Text: "Miss\xF5es"
 --- !u!222 &889219900
 CanvasRenderer:
   m_ObjectHideFlags: 0
