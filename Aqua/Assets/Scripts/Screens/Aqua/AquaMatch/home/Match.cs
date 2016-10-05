@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Match : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Match : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            SceneManager.LoadScene(GlobalConsts.SCENE_AQUA_MAP);
         }
     }
 }

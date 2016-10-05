@@ -8,7 +8,7 @@ public class BrainTeaser : GenericScreen {
 	public GameObject MiniGame;
 
 	private int Points, Lives, Time, StartTime;
-	private string imageURL = "http://s3.zerochan.net/Pok%C3%A9mon.240.1782400.jpg";
+	private string imageURL = "https://compcult-projects.s3.amazonaws.com/aqua/minigames/brain-teaser/globalimg.jpg";
 
 	public void Start () 
 	{
