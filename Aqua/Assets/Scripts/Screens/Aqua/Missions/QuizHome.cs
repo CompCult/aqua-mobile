@@ -39,11 +39,11 @@ public class QuizHome : GenericScreen
 		else alt5.transform.parent.gameObject.SetActive(false);
 	}
 
-	public void SendQuiz(Text alternative)
+	public void SendQuiz(int alternative)
 	{
 		QuestManager.quizResponse.quiz_id = QuestManager.quiz.id;
 		QuestManager.quizResponse.user_id = UsrManager.user.id;
-		QuestManager.quizResponse.quiz_answer = alternative.text;
+		QuestManager.quizResponse.quiz_answer = alternative;
 
 		WWW quizForm = Authenticator.SendQuiz(QuestManager.quizResponse);
 		ProcessQuiz(quizForm);
@@ -61,6 +61,8 @@ public class QuizHome : GenericScreen
 		}
 		else 
 		{
+			Debug.Log("Error: " + Error);
+
 			if (Error.Contains("500 "))
 				UnityAndroidExtras.instance.makeToast("Falha no servidor! Tente novamente mais tarde", 1);
 			else if (Error.Contains ("404 "))

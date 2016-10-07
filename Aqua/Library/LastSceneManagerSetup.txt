@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/AquaHome.unity
+- path: Assets/Scenes/Games/Infinity Run/Scenes/C#.unity
   isLoaded: 1
   isActive: 1

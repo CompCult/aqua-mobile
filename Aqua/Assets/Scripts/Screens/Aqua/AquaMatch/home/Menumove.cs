@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Menumove : MonoBehaviour
@@ -63,7 +64,7 @@ public class Menumove : MonoBehaviour
             case "Arcade":
                 Sound.sound.click();
                 StartCoroutine(waittodo(4, 9, 8));
-                Application.LoadLevel(GlobalConsts.SCENE_WORD_SELECT);
+                SceneManager.LoadScene(GlobalConsts.SCENE_WORD_SELECT);
                 break;
             case "music":
                 Sound.sound.click();

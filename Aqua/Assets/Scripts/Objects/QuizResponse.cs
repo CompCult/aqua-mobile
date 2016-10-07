@@ -4,9 +4,8 @@ using System.Collections;
 public class QuizResponse
 {
 	public int quiz_id,
-	user_id;
-
-	public string quiz_answer;
+	user_id,
+	quiz_answer;
 
 	public override string ToString()
 	{

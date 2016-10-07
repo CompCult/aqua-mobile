@@ -81,6 +81,7 @@ public class DataLoader : MonoBehaviour
     }
 
     // Update is called once per frame
+    #pragma warning disable 0219
     void DataDefaultLoader()
     {
         string AssetFileName = "WorldData";

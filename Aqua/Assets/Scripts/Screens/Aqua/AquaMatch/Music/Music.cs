@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Music : MonoBehaviour
@@ -18,6 +19,14 @@ public class Music : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void Update()
+    {
+    	Scene scene = SceneManager.GetActiveScene();
+
+ 		if (scene.name == "AquaHome")
+ 			MusicOFF();
     }
 
     public void MusicON()

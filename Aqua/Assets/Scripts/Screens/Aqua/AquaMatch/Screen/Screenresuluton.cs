@@ -14,6 +14,8 @@ public class Screenresuluton : MonoBehaviour
             s = s * 1.08f;
         else if (Mathf.Abs(s) > 0.1f)
             s = s * 0.95f;
+        else 
+        	s = s * 1.0f;
         cube.transform.localScale -= new Vector3(s, 0, 0);
 #endif
 

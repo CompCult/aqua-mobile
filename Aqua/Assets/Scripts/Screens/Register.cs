@@ -30,7 +30,7 @@ public class Register : GenericScreen {
 		if (!AreFieldsCorrect(name, email, pass, repPass))
 			return;
 
-		UnityAndroidExtras.instance.makeToast("Registrando...", 1);
+		UnityAndroidExtras.instance.makeToast("Criando seu Aqueo...", 1);
 
 		WWW registerRequest = Authenticator.RequestRegister(name, email, pass);
 		ProcessRegister (registerRequest);
@@ -42,7 +42,7 @@ public class Register : GenericScreen {
 
 		if (Error == null) 
 		{
-			UnityAndroidExtras.instance.makeToast("Registrado com sucesso", 1);
+			UnityAndroidExtras.instance.makeToast("Agora você pertence ao mundo de Aqua!", 1);
 			LoadScene("Login");
 		}
 		else 

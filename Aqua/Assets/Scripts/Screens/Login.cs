@@ -11,6 +11,7 @@ public class Login : GenericScreen
 {
 	public InputField emailField, passField;
 	public Text versionInfo;
+	public Toggle rememberMe;
 	public Button registerButton, loginButton;
 
 	public void Start () 
@@ -18,7 +19,25 @@ public class Login : GenericScreen
 		UnityAndroidExtras.instance.Init();
 		backScene = null;
 
+		// Removes the authentication
+		PlayerPrefs.DeleteKey("userID");
+
+		CheckSavedEmail();
 		CheckVersion();
+	}
+
+	public void CheckSavedEmail()
+	{
+		// If user saved an email, enables Remember button
+		if (PlayerPrefs.HasKey("Email"))
+		{
+			emailField.text = PlayerPrefs.GetString("Email");
+			rememberMe.isOn = true;
+		}
+		else 
+		{
+			rememberMe.isOn = false;
+		}
 	}
 
 	public void CheckVersion()
@@ -61,7 +80,7 @@ public class Login : GenericScreen
 		if (!AreFieldsCorrect(email, password))
 			return;
 
-		UnityAndroidExtras.instance.makeToast("Conectando", 1);
+		UnityAndroidExtras.instance.makeToast("Entrando em Aqua", 1);
 
 		WWW loginRequest = Authenticator.RequestUserID(email, password);
 		ProcessLogin (loginRequest);
@@ -75,6 +94,13 @@ public class Login : GenericScreen
 		if (Error == null) 
 		{
 			Debug.Log("ID received: " + Response);
+
+			PlayerPrefs.SetInt("userID", int.Parse(Response));
+
+			if (rememberMe.isOn)
+				PlayerPrefs.SetString("Email", emailField.text);
+			else
+				PlayerPrefs.DeleteKey("Email");
 
 			UsrManager.userID = int.Parse(Response);
 			LoadScene("Home");

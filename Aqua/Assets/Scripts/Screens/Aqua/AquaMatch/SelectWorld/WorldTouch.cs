@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class WorldTouch : MonoBehaviour
@@ -72,7 +73,7 @@ public class WorldTouch : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.LoadLevel(GlobalConsts.SCENE_HOME);
+            SceneManager.LoadScene(GlobalConsts.SCENE_HOME);
         }
 
     }
@@ -85,17 +86,17 @@ public class WorldTouch : MonoBehaviour
             case "World1":
                 WorldData.world = 0;
                 SelectMapTouch.world = 1;
-                Application.LoadLevel(GlobalConsts.SCENE_MAP_SELECT);
+                SceneManager.LoadScene(GlobalConsts.SCENE_MAP_SELECT);
                 break;
             case "World2":
                 WorldData.world = 1;
                 SelectMapTouch.world = 2;
-                Application.LoadLevel(GlobalConsts.SCENE_MAP_SELECT);
+                SceneManager.LoadScene(GlobalConsts.SCENE_MAP_SELECT);
                 break;
             case "World3":
                 WorldData.world = 2;
                 SelectMapTouch.world = 3;
-                Application.LoadLevel(GlobalConsts.SCENE_MAP_SELECT);
+                SceneManager.LoadScene(GlobalConsts.SCENE_MAP_SELECT);
                 break;
             case "back":
                 StartCoroutine(waitback(obj));
@@ -108,7 +109,7 @@ public class WorldTouch : MonoBehaviour
     {
         obj.GetComponent<Animator>().enabled = true;
         yield return new WaitForSeconds(0.15f);
-        Application.LoadLevel(GlobalConsts.SCENE_HOME);
+        SceneManager.LoadScene(GlobalConsts.SCENE_HOME);
     }
 
     IEnumerator refreshPreMousePosition()

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class WinUI : MonoBehaviour
@@ -93,14 +94,14 @@ public class WinUI : MonoBehaviour
                 if (MapLoader.Mode == 1)
                 {
                     WorldData.world = (MapLoader.MapPlayer.Level - 1) / 99;
-                    Application.LoadLevel(GlobalConsts.SCENE_MAP_SELECT);
+                    SceneManager.LoadScene(GlobalConsts.SCENE_MAP_SELECT);
                 }
                 else
-                    Application.LoadLevel(GlobalConsts.SCENE_HOME);
+                    SceneManager.LoadScene(GlobalConsts.SCENE_HOME);
                 break;
             case "restart":
                 StartCoroutine(waittodo(1, 3, 2));
-                Application.LoadLevel(GlobalConsts.SCENE_PLAY);
+                SceneManager.LoadScene(GlobalConsts.SCENE_PLAY);
                 break;
             case "next":
                 StartCoroutine(waittodo(2, 5, 4));
@@ -130,9 +131,9 @@ public class WinUI : MonoBehaviour
                 DataLoader.DataPlayer[MapLoader.MapPlayer.Level].UnLocked = true;
             }
             MapLoader.MapPlayer = m;
-            Application.LoadLevel(GlobalConsts.SCENE_PLAY);
+            SceneManager.LoadScene(GlobalConsts.SCENE_PLAY);
         }
-        else Application.LoadLevel(GlobalConsts.SCENE_HOME);
+        else SceneManager.LoadScene(GlobalConsts.SCENE_HOME);
 
     }
 

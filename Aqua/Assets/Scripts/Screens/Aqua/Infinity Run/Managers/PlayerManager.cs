@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 enum PlayerState { Enabled, Disabled };
@@ -89,7 +90,7 @@ public class PlayerManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-           	Application.LoadLevel("AquaHome");
+           	SceneManager.LoadScene("AquaHome");
         }
     }
     //Called when the player enters a triggerer zone
@@ -159,6 +160,7 @@ public class PlayerManager : MonoBehaviour
 
 		subRenderer.sprite = subTextures[currentSkinID * 2 + 1];
         bubbles.Play();
+        DisableSmoke();
 
         StartCoroutine(FunctionLibrary.MoveElementBy(this.transform, new Vector2(0.4f, 0.2f), 0.5f));
 	}
@@ -221,7 +223,8 @@ public class PlayerManager : MonoBehaviour
     //Disables the crash smoke particle
     public void DisableSmoke()
     {
-        smoke.enableEmission = false;
+        var em = smoke.emission;
+        em.enabled = false;
     }
 
     //Activates the extra speed submarine effects
@@ -390,8 +393,17 @@ public class PlayerManager : MonoBehaviour
 
             //If distance to sand smaller than 0.2
             if (distance < 0.25f)
+            {
                 //Enable smoke emission
-                smoke.enableEmission = true;
+                var em = smoke.emission;
+                em.enabled = true;
+            }
+            else
+            {
+            	//Enable smoke emission
+                var em = smoke.emission;
+                em.enabled = false;
+            }
         }
         //If the distance to the sand is smaller than 0.1
         else

@@ -17,6 +17,15 @@ public class Home : GenericScreen {
 		backScene = "Login";
 	}
 
+	public new void Update()
+	{
+		if (Input.GetKeyUp(KeyCode.Escape)) 
+		{
+			UnityAndroidExtras.instance.makeToast("Você saiu do mundo de Aqua!", 1);
+			LoadBackScene();
+		}
+	}
+
 	public void RequestUser()
 	{
 		Debug.Log("Requesting user with ID " + UsrManager.userID);
@@ -46,6 +55,6 @@ public class Home : GenericScreen {
 		int playerLevel = (UsrManager.user.xp / 1000) + 1;
 		
 		NameField.text = UsrManager.user.name;
-		LevelField.text = "Level " + playerLevel;
+		LevelField.text = "Nível " + playerLevel;
 	}
 }

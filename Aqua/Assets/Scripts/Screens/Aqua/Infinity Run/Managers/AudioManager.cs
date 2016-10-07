@@ -39,6 +39,11 @@ public class AudioManager : MonoBehaviour
         }
 	}
 
+    void OnDestroy() 
+    {
+        StopAudios();
+    }
+
     public void ChangeAudioState()
     {
         if (audioEnabled)
@@ -62,6 +67,17 @@ public class AudioManager : MonoBehaviour
         }
 
         SaveManager.SaveData();
+    }
+
+    public void StopAudios()
+    {
+        Debug.Log("Audio stopped");
+
+        if (musicPlayer)
+            musicPlayer.Stop();
+
+        if (effectPlayer)
+            effectPlayer.Stop();
     }
 
     public void PlayMenuClick()

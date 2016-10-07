@@ -31,7 +31,7 @@ public class AquaHome : GenericScreen
 
 		silverCoins.text = "" + silver;
 		goldCoins.text = "" + gold;
-		levelText.text = "Level " + playerLevel;
+		levelText.text = "Nível " + playerLevel;
 		expText.text = "EXP " + xpRemainingToLevelUP + "/1000";
 
 		xpBar.fillAmount = (xpRemainingToLevelUP / 1000);

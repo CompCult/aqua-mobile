@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LoseUI : MonoBehaviour
@@ -38,15 +39,15 @@ public class LoseUI : MonoBehaviour
                 if (MapLoader.Mode == 1)
                 {
                     WorldData.world = (MapLoader.MapPlayer.Level - 1) / 99;
-                    Application.LoadLevel(GlobalConsts.SCENE_MAP_SELECT);
+                    SceneManager.LoadScene(GlobalConsts.SCENE_MAP_SELECT);
                 }
                 else
-                    Application.LoadLevel(GlobalConsts.SCENE_HOME);
+                    SceneManager.LoadScene(GlobalConsts.SCENE_HOME);
                 break;
             case "restart":
                 StartCoroutine(waittodo(1, 3, 2));
                 if (MapLoader.Mode == 1)
-                    Application.LoadLevel(GlobalConsts.SCENE_PLAY);
+                    SceneManager.LoadScene(GlobalConsts.SCENE_PLAY);
                 else
                     classicmode();
                 break;
@@ -83,6 +84,6 @@ public class LoseUI : MonoBehaviour
         MapLoader.MapPlayer = p;
         MapLoader.Mode = 0;
         MapLoader.score = 0;
-        Application.LoadLevel(GlobalConsts.SCENE_PLAY);
+        SceneManager.LoadScene(GlobalConsts.SCENE_PLAY);
     }
 }

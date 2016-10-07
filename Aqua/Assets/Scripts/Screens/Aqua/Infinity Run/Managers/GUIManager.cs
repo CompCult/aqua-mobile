@@ -53,6 +53,7 @@ public class GUIManager : MonoBehaviour
     //Called at the beginning of the game
     void Start()
     {
+    	//PlayerPrefs.DeleteAll();
         //Updates the audio buttons sprites
         UpdateAudioButtons();
 

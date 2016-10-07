@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Menu : MonoBehaviour
@@ -105,7 +106,7 @@ public class Menu : MonoBehaviour
 
         MapLoader.MapPlayer = p;
         MapLoader.Mode = 0;
-        Application.LoadLevel(GlobalConsts.SCENE_PLAY);
+        SceneManager.LoadScene(GlobalConsts.SCENE_PLAY);
     }
 
     public void timeinc(float _time)

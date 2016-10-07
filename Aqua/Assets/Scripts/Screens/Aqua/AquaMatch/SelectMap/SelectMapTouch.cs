@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class SelectMapTouch : MonoBehaviour
@@ -67,7 +68,7 @@ public class SelectMapTouch : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.LoadLevel(GlobalConsts.SCENE_WORD_SELECT);
+            SceneManager.LoadScene(GlobalConsts.SCENE_WORD_SELECT);
         }
     }
 
@@ -88,14 +89,14 @@ public class SelectMapTouch : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         MapLoader.MapPlayer = obj.GetComponent<level>().map;
         MapLoader.Mode = 1;
-        Application.LoadLevel(GlobalConsts.SCENE_PLAY);
+        SceneManager.LoadScene(GlobalConsts.SCENE_PLAY);
     }
 
     IEnumerator waitback(GameObject obj)
     {
         obj.GetComponent<Animator>().enabled = true;
         yield return new WaitForSeconds(0.2f);
-        Application.LoadLevel(GlobalConsts.SCENE_WORD_SELECT);
+        SceneManager.LoadScene(GlobalConsts.SCENE_WORD_SELECT);
     }
 
     IEnumerator refreshPreMousePosition()

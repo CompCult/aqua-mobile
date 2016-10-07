@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class loadingwait : MonoBehaviour
@@ -17,7 +18,7 @@ public class loadingwait : MonoBehaviour
         // animation transfer scene
         float fadeTime = GameObject.Find("Screen").GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
-        Application.LoadLevel(GlobalConsts.SCENE_HOME);
+        SceneManager.LoadScene(GlobalConsts.SCENE_HOME);
     }
 
 }

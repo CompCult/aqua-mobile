@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PauseUI : MonoBehaviour
@@ -99,10 +100,10 @@ public class PauseUI : MonoBehaviour
                 if (MapLoader.Mode == 1)
                 {
                     WorldData.world = (MapLoader.MapPlayer.Level - 1) / 99;
-                    Application.LoadLevel(GlobalConsts.SCENE_MAP_SELECT);
+                    SceneManager.LoadScene(GlobalConsts.SCENE_MAP_SELECT);
                 }
                 else
-                    Application.LoadLevel(GlobalConsts.SCENE_HOME);
+                    SceneManager.LoadScene(GlobalConsts.SCENE_HOME);
 
                 break;
             case "resume":
@@ -118,7 +119,7 @@ public class PauseUI : MonoBehaviour
                 Time.timeScale = 1;
                 Sound.sound.click();
                 StartCoroutine(waittodo(2, 5, 4));
-                Application.LoadLevel(GlobalConsts.SCENE_PLAY);
+                SceneManager.LoadScene(GlobalConsts.SCENE_PLAY);
                 break;
         }
     }

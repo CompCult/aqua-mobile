@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Win : MonoBehaviour
 {
-
+	// Bool indicates win
     public static bool win = false;
     void Awake()
     {
