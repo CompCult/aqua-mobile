@@ -16,4 +16,9 @@ public class Activity {
 				video_file,
 			    photo_file,
 			    audio_file;
+
+	public Activity CreateActivity (string json)
+	{
+		return JsonUtility.FromJson<Activity>(json);
+	}
 }

@@ -16,4 +16,9 @@ public class Quiz {
 				  created_at,
 				  updated_at;
 
+	public Quiz CreateQuiz (string json)
+	{
+		return JsonUtility.FromJson<Quiz>(json);
+	}
+
 }

@@ -13,14 +13,14 @@ public class Write : GenericScreen
 	{
 		UnityAndroidExtras.instance.Init();
 
-		// if (QuestManager.activity.gps_enabled)
-		// 	backScene = "GPS";
-		// else if (QuestManager.activity.audio_file)
-		// 	backScene = "Voice";
-		// else if (QuestManager.activity.photo_file)
-		// 	backScene = "Photo";
-		// else 
-		// 	backScene = "Activity Home";
+		if (QuestManager.activity.gps_enabled)
+			backScene = "GPS";
+		else if (QuestManager.activity.audio_file)
+			backScene = "Voice";
+		else if (QuestManager.activity.photo_file)
+			backScene = "Photo";
+		else 
+			backScene = "Activity Home";
 	}
 
 	public bool CheckTexts() 

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class Voice : GenericScreen 
 {
-	public Text title;
+	public Text title, microphoneDescription;
 	public AudioSource audioSource;
 	private bool isRecording;
 
@@ -34,6 +34,11 @@ public class Voice : GenericScreen
 	{
 		isRecording = !isRecording;
 		AudioRec.RecordAudio();
+
+		if (isRecording)
+			microphoneDescription.text = "Clique para parar a gravação";
+		else
+			microphoneDescription.text = "Clique para gravar";
 	}
 
 	public void ListenAudio()

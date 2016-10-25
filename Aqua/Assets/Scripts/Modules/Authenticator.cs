@@ -57,6 +57,22 @@ public static class Authenticator
 		return WebFunctions.Get();
 	}
 
+	public static WWW RequestPublicActivities()
+	{
+		WebFunctions.apiPlace = "/mission/public/";
+		WebFunctions.pvtKey = "ec689306c5";
+
+		return WebFunctions.Get();
+	}
+
+	public static WWW RequestPublicQuizzes()
+	{
+		WebFunctions.apiPlace = "/quiz/public/";
+		WebFunctions.pvtKey = "ec689306c5";
+
+		return WebFunctions.Get();
+	}
+
 	public static WWW UpdateUser (string name, string email, string birth, string cpf, string address, string phone, string pass)
 	{
 		WWWForm updateForm = new WWWForm();
@@ -65,7 +81,8 @@ public static class Authenticator
 		updateForm.AddField ("password", CalculateSHA1(pass));
 		updateForm.AddField ("birth", birth);
 		updateForm.AddField ("cpf", cpf);
-		updateForm.AddField ("address", address);
+		if (address != "0") // Indicates that the user have an address
+			updateForm.AddField ("address", address);
 		updateForm.AddField ("phone", phone);
 
 		WebFunctions.apiPlace = "/user/" + UsrManager.userID + "/";

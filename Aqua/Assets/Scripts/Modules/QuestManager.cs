@@ -24,12 +24,30 @@ public static class QuestManager
 		_activityResponse = new ActivityResponse ();
 	}
 
+	public static void UpdateActivity(Activity activity)
+	{
+		Debug.Log("Mission updated and old quiz removed");
+
+		_quiz = null;
+		_activity = activity;
+		_activityResponse = new ActivityResponse();
+	}
+
  	public static void UpdateQuiz(string JSON)
  	{
  		Debug.Log("Quiz updated and old activity removed");
 
  		_activity = null;
  		_quiz = JsonUtility.FromJson<Quiz>(JSON);
+ 		_quizResponse = new QuizResponse ();
+ 	}
+
+ 	public static void UpdateQuiz(Quiz quiz)
+ 	{
+ 		Debug.Log("Quiz updated and old activity removed");
+
+ 		_activity = null;
+ 		_quiz = quiz;
  		_quizResponse = new QuizResponse ();
  	}
 
