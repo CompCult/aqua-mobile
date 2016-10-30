@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ActivityQuiz/Send.unity
+- path: Assets/Scenes/Aqua/PlayerInfo.unity
   isLoaded: 1
   isActive: 1
