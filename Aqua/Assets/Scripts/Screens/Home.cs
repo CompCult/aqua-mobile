@@ -6,8 +6,7 @@ using System.Collections.Generic;
 
 public class Home : GenericScreen {
 
-	public Text NameField,
-	LevelField;
+	public Text NameField;
 
 	public void Start () 
 	{
@@ -31,6 +30,7 @@ public class Home : GenericScreen {
 		Debug.Log("Requesting user with ID " + UsrManager.userID);
 
 		WWW userRequest = Authenticator.RequestUser(UsrManager.userID);
+		
 		string Response = userRequest.text,
 		Error = userRequest.error;
 
@@ -52,9 +52,6 @@ public class Home : GenericScreen {
 
 	public void UpdateFields()
 	{
-		int playerLevel = (UsrManager.user.xp / 1000) + 1;
-		
 		NameField.text = UsrManager.user.name;
-		LevelField.text = "Nível " + playerLevel;
 	}
 }
