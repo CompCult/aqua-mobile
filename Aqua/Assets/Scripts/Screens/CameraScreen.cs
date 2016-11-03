@@ -28,6 +28,8 @@ public class CameraScreen : GenericScreen
 		if (Input.GetKeyUp(KeyCode.Escape)) 
 		{
 			LoadBackScene();
+
+			CameraDevice.StopCameraImage();
 			GPS.StopGPS();
 		}
 	}
