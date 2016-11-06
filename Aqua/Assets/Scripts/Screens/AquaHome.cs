@@ -4,9 +4,9 @@ using System.Collections;
 
 public class AquaHome : GenericScreen 
 {
-	public Text silverCoins, 
-	goldCoins, levelText, 
-	titleText, expText;
+	public Text playerName,
+	silverCoins, goldCoins, 
+	levelText, titleText, expText;
 
 	public Image xpBar;
 
@@ -29,6 +29,7 @@ public class AquaHome : GenericScreen
 		gold = Mathf.Abs(Mathf.Round(coins/100));
 		silver = Mathf.Abs(Mathf.Round(coins - gold * 100));
 
+		playerName.text = UsrManager.user.name;
 		silverCoins.text = "" + silver;
 		goldCoins.text = "" + gold;
 		levelText.text = "Nível " + playerLevel;

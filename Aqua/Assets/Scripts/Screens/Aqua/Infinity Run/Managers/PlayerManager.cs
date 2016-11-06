@@ -87,11 +87,6 @@ public class PlayerManager : MonoBehaviour
                 Sink();
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-           	SceneManager.LoadScene("AquaHome");
-        }
     }
     //Called when the player enters a triggerer zone
     void OnTriggerEnter2D(Collider2D other)

@@ -14,7 +14,7 @@ public class SearchQuiz : GenericScreen {
 	public void Start () 
 	{
 		UnityAndroidExtras.instance.Init();
-		backScene = "Selection";
+		backScene = "AquaWorld";
 
 		ReceivePublicQuizzes();
 	}

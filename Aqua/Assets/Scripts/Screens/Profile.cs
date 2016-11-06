@@ -44,13 +44,11 @@ public class Profile : GenericScreen {
 		repPass = repPassField.text,
 		birth = birthField.text,
 		cpf = cpfField.text,
-		address = UsrManager.user.address.ToString(),
-		phone = phoneField.text;
+		phone = phoneField.text,
+		address = UsrManager.user.address.ToString ();
 
 		if (!CheckFields(name, email, birth, cpf, phone, pass, repPass))
 			return;
-
-		UnityAndroidExtras.instance.makeToast("Atualizando com address -" + address + "-", 1);
 
 		WWW updateRequest = Authenticator.UpdateUser(name, email, birth, cpf, address, phone, pass);
 		ProcessUpdate(updateRequest);

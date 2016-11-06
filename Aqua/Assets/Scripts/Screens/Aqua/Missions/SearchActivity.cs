@@ -14,7 +14,7 @@ public class SearchActivity : GenericScreen
 	public void Start () 
 	{
 		UnityAndroidExtras.instance.Init();
-		backScene = "Selection";
+		backScene = "AquaWorld";
 
 		ReceivePublicActivities();
 	}
@@ -41,7 +41,7 @@ public class SearchActivity : GenericScreen
 					activitiesList.Add(aux.CreateActivity(activity));
 			}
 
-			FillOptionsOnDropDown();
+			FillList();
 		} 
 		else 
 		{
@@ -49,7 +49,7 @@ public class SearchActivity : GenericScreen
 		}
 	}
 
-	public void FillOptionsOnDropDown()
+	public void FillList()
 	{
 		publicActivitiesDropdown.options.Clear();
 		publicActivitiesDropdown.options.Add(new Dropdown.OptionData() {text = "Escolha uma missão pública"});

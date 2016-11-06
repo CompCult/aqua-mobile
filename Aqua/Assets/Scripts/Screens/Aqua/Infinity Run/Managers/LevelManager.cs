@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour
@@ -24,6 +25,14 @@ public class LevelManager : MonoBehaviour
         SaveManager.LoadMissionData();
 
         missionManager.LoadData();
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("AquaWorld");
+        }
     }
 
     //Called when a coin is collected by the player
@@ -63,6 +72,7 @@ public class LevelManager : MonoBehaviour
         levelGenerator.Reset();
         missionManager.SaveData();
     }
+    
     //Starts the level
 	public void StartLevel()
     {

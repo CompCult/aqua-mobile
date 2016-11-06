@@ -27,7 +27,11 @@ public class AquaWorld : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "AquaWorld")
         {
         	musicPlayer.Stop();
-            SceneManager.LoadScene("Home");
+            LoadScene("Home");
         }
+	}
+
+	public void LoadScene(string scene) {
+		SceneManager.LoadScene(scene);
 	}
 }
