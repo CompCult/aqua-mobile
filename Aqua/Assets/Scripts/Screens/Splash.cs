@@ -17,17 +17,7 @@ public class Splash : GenericScreen {
 		// Enables Android Navigation Bar
 		ApplicationChrome.navigationBarState = ApplicationChrome.States.Visible;
 
-        if (PlayerPrefs.HasKey("userID"))
-		{
-			int userID = PlayerPrefs.GetInt("userID");
-
-			UsrManager.userID = userID;
-			LoadScene("Home");
-		}
-		else
-		{
-			LoadScene("Login");
-		}
+		LoadScene("Login");
     }
 
 }

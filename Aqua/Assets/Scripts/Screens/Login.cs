@@ -19,9 +19,6 @@ public class Login : GenericScreen
 		UnityAndroidExtras.instance.Init();
 		backScene = null;
 
-		// Removes the authentication
-		PlayerPrefs.DeleteKey("userID");
-
 		CheckSavedEmail();
 		CheckVersion();
 	}
@@ -95,15 +92,13 @@ public class Login : GenericScreen
 		{
 			Debug.Log("ID received: " + Response);
 
-			PlayerPrefs.SetInt("userID", int.Parse(Response));
-
 			if (rememberMe.isOn)
 				PlayerPrefs.SetString("Email", emailField.text);
 			else
 				PlayerPrefs.DeleteKey("Email");
 
-			UsrManager.userID = int.Parse(Response);
-			LoadScene("Home");
+			int userID = int.Parse(Response);
+			RequestUser(userID);
 		}
 		else 
 		{
@@ -118,6 +113,31 @@ public class Login : GenericScreen
 			}
 			else 
 				UnityAndroidExtras.instance.makeToast("Falha ao conectar! Tente novamente mais tarde", 1);
+		}
+	}
+
+	public void RequestUser(int userID)
+	{
+		Debug.Log("Requesting user with ID " + userID);
+
+		WWW userRequest = Authenticator.RequestUser(userID);
+		
+		string Response = userRequest.text,
+		Error = userRequest.error;
+
+		if (Error == null)
+		{
+			Debug.Log("Response: " + Response);
+
+			UsrManager.UpdateUser(userRequest.text);
+			LoadScene("Home");
+		}
+		else 
+		{
+			Debug.Log("Error: " + Error);
+
+			UnityAndroidExtras.instance.makeToast("Falha ao receber usuário. Tente novamente.", 1);
+			LoadScene("Login");
 		}
 	}
 

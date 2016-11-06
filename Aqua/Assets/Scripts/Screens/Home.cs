@@ -11,9 +11,9 @@ public class Home : GenericScreen {
 	public void Start () 
 	{
 		UnityAndroidExtras.instance.Init();
-		RequestUser();
-
 		backScene = "Login";
+
+		UpdateFields();
 	}
 
 	public new void Update()
@@ -25,11 +25,11 @@ public class Home : GenericScreen {
 		}
 	}
 
-	public void RequestUser()
+	public void UpdateUser ()
 	{
-		Debug.Log("Requesting user with ID " + UsrManager.userID);
+		Debug.Log("Updating user with ID " + UsrManager.user.id);
 
-		WWW userRequest = Authenticator.RequestUser(UsrManager.userID);
+		WWW userRequest = Authenticator.RequestUser(UsrManager.user.id);
 		
 		string Response = userRequest.text,
 		Error = userRequest.error;
@@ -38,15 +38,16 @@ public class Home : GenericScreen {
 		{
 			Debug.Log("Response: " + Response);
 
+			UnityAndroidExtras.instance.makeToast("Informações do usuário atualizadas", 1);
 			UsrManager.UpdateUser(userRequest.text);
+
 			UpdateFields();
 		}
 		else 
 		{
 			Debug.Log("Error: " + Error);
 
-			UnityAndroidExtras.instance.makeToast("Falha ao receber usuário. Entre novamente.", 1);
-			LoadScene("Login");
+			UnityAndroidExtras.instance.makeToast("Falha ao atualizar usuário. Tente novamente.", 1);
 		}
 	}
 
