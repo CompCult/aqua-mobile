@@ -16,6 +16,16 @@ public class Media : GenericScreen
 		CameraDevice.ShowCameraImage();
 		UpdateActivityTexts();
 	}
+
+	public new void Update()
+	{
+		if (Input.GetKeyUp(KeyCode.Escape)) 
+		{
+			LoadBackScene();
+
+			CameraDevice.StopCameraImage();
+		}
+	}
 	
 	public void UpdateActivityTexts () 
 	{	
