@@ -5,7 +5,11 @@ public static class UsrManager
 {
 	private static User _user;
 	public static User user { get { return _user; } }
-	public static int userID = 1;
+
+	public static void UpdateUser(User user)
+	{
+		_user = user;
+	}
 
 	public static void UpdateUser(string JSON)
 	{

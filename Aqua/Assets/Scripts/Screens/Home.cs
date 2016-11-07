@@ -16,15 +16,6 @@ public class Home : GenericScreen {
 		UpdateFields();
 	}
 
-	public new void Update()
-	{
-		if (Input.GetKeyUp(KeyCode.Escape)) 
-		{
-			UnityAndroidExtras.instance.makeToast("Você saiu do mundo de Aqua!", 1);
-			LoadBackScene();
-		}
-	}
-
 	public void UpdateUser ()
 	{
 		Debug.Log("Updating user with ID " + UsrManager.user.id);

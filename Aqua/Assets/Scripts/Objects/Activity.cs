@@ -22,7 +22,7 @@ public class Activity {
 		return JsonUtility.FromJson<Activity>(json);
 	}
 
-	public string ToString()
+	public override string ToString()
 	{
 		return ("Nome:" + name + "/" +
 			"Desc:" + description + "/" +

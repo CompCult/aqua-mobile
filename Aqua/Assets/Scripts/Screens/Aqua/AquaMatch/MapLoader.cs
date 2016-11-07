@@ -3,8 +3,6 @@ using System.Collections;
 
 public class MapLoader : MonoBehaviour
 {
-
-
     public static byte Mode = 1;
 
     public static Player MapPlayer;

@@ -4,7 +4,6 @@ using System.Collections;
 
 public class Music : MonoBehaviour
 {
-
     public static Music music;
     public static bool isMusic;
 
@@ -25,8 +24,8 @@ public class Music : MonoBehaviour
     {
     	Scene scene = SceneManager.GetActiveScene();
 
- 		if (scene.name == "AquaHome")
- 			MusicOFF();
+ 		if (scene.name == "AquaWorld")
+ 			Destroy(gameObject);
     }
 
     public void MusicON()

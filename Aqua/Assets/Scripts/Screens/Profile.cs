@@ -36,6 +36,19 @@ public class Profile : GenericScreen {
 		phoneField.text = user.phone;
 	}
 
+	public void UpdateLocalUser()
+	{
+		User user = UsrManager.user;
+
+		user.name = nameField.text;
+		user.email = emailField.text;
+		user.birth = birthField.text;
+		user.cpf = cpfField.text;
+		user.phone = phoneField.text;
+
+		UsrManager.UpdateUser(user);
+	}
+
 	public void UpdateUserInfo()
 	{
 		string name = nameField.text,
@@ -64,6 +77,8 @@ public class Profile : GenericScreen {
 			Debug.Log("Update response: " + Response);
 			
 			UnityAndroidExtras.instance.makeToast("Perfil atualizado", 1);
+
+			UpdateLocalUser();
 			LoadScene(backScene);
 		}
 		else 

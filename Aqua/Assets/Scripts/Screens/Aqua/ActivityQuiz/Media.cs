@@ -36,6 +36,8 @@ public class Media : GenericScreen
 	{
 		CameraDevice.RecordPhoto();
 		ProgressActivity();
+
+		Debug.Log("Foto capturada");
 	}
 
 	public void ProgressActivity()

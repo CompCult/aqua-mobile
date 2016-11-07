@@ -73,6 +73,14 @@ public static class Authenticator
 		return WebFunctions.Get();
 	}
 
+	public static WWW RequestRanking()
+	{
+		WebFunctions.apiPlace = "/user/ranking/";
+		WebFunctions.pvtKey = "6b2b7f9bc0";
+
+		return WebFunctions.Get();
+	}
+
 	public static WWW UpdateUser (string name, string email, string birth, string cpf, string address, string phone, string pass)
 	{
 		WWWForm updateForm = new WWWForm();
@@ -85,7 +93,7 @@ public static class Authenticator
 			updateForm.AddField ("address", address);
 		updateForm.AddField ("phone", phone);
 
-		WebFunctions.apiPlace = "/user/" + UsrManager.userID + "/";
+		WebFunctions.apiPlace = "/user/" + UsrManager.user.id + "/";
 		WebFunctions.pvtKey = "6b2b7f9bc0";
 
 		return WebFunctions.Post(updateForm);

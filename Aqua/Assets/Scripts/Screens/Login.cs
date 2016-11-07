@@ -103,7 +103,7 @@ public class Login : GenericScreen
 		else 
 		{
 			if (Error.Contains("404"))
-				UnityAndroidExtras.instance.makeToast("Não encontrado! Verifique o e-mail e senha", 1);
+				UnityAndroidExtras.instance.makeToast("Verifique seu e-mail e senha", 1);
 			else if (Error.Contains("500"))
 			{
 				if (Application.platform == RuntimePlatform.Android) 

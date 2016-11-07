@@ -7,7 +7,8 @@ using System.IO;
 
 public class CameraScreen : GenericScreen 
 {
-	public GameObject CameraField;
+	public GameObject CameraField,
+	captureButton, sendButton, cancelButton;
 	public Dropdown Dropdown;
 
     private WebCamTexture MobileCamera;
@@ -34,10 +35,27 @@ public class CameraScreen : GenericScreen
 		}
 	}
 
+	public void ConfirmPhoto()
+	{
+		CameraDevice.RecordPhoto();
+
+		captureButton.SetActive(false);
+		sendButton.SetActive(true);
+		cancelButton.SetActive(true);
+	}
+
+	public void CancelPhoto()
+	{
+		CameraDevice.ShowCameraImage();
+
+		captureButton.SetActive(true);
+		sendButton.SetActive(false);
+		cancelButton.SetActive(false);
+	}
+
 	public void SendPhoto()
 	{
 		GPS.ReceivePlayerLocation();
-		CameraDevice.RecordPhoto();
 
 		int id = UsrManager.user.id;
 		string latitude = GPS.location[0].ToString(),
@@ -47,7 +65,6 @@ public class CameraScreen : GenericScreen
 		if (latitude == "0" || longitude == "0" || !GPS.IsActive())
 		{
 			UnityAndroidExtras.instance.makeToast("Ative o serviço de localização do celular", 1);
-			CameraDevice.ShowCameraImage();
 			return;
 		}
 
@@ -83,7 +100,8 @@ public class CameraScreen : GenericScreen
 		{
 			Debug.Log("Response from sending photo: " + Response);
 
-			UnityAndroidExtras.instance.makeToast("Foto enviada", 1);
+			UnityAndroidExtras.instance.makeToast("Notificação enviada", 1);
+			CancelPhoto();
 		} 
 		else 
 		{

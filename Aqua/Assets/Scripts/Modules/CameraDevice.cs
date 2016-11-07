@@ -41,8 +41,6 @@ public static class CameraDevice
 		Photo.Apply();
 
 		cameraPlane.GetComponent<Renderer>().material.mainTexture = Photo;
-		
-		UnityAndroidExtras.instance.makeToast("Foto capturada", 1);
 	}
 
 	public static bool HaveCamera() 

@@ -9,6 +9,8 @@ public class Voice : GenericScreen
 {
 	public Text title, microphoneDescription;
 	public AudioSource audioSource;
+	public GameObject microphoneIcon, stopIcon;
+	
 	private bool isRecording;
 
 	public void Start () 
@@ -36,9 +38,19 @@ public class Voice : GenericScreen
 		AudioRec.RecordAudio();
 
 		if (isRecording)
+		{
+			microphoneIcon.SetActive(false);
+			stopIcon.SetActive(true);
+
 			microphoneDescription.text = "Parar de gravar";
+		}
 		else
+		{
+			microphoneIcon.SetActive(true);
+			stopIcon.SetActive(false);
+
 			microphoneDescription.text = "Gravar sua voz";
+		}
 	}
 
 	public void ListenAudio()

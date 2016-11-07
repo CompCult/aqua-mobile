@@ -43,7 +43,7 @@ public class SearchQuiz : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Não encontrado ou expirado", 1);
+			UnityAndroidExtras.instance.makeToast("Quiz inexistente ou expirado", 1);
 		}
 	}
 }

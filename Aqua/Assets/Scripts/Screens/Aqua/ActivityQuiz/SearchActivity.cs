@@ -43,7 +43,7 @@ public class SearchActivity : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Não encontrado ou expirado", 1);
+			UnityAndroidExtras.instance.makeToast("Missão inexistente ou expirada", 1);
 		}
 	}
 }
