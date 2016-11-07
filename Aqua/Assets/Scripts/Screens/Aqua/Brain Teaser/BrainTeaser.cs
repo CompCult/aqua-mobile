@@ -12,7 +12,7 @@ public class BrainTeaser : GenericScreen {
 
 	public void Start () 
 	{
-		backScene = "AquaHome";
+		backScene = "AquaWorld";
 
 		Lives = 3;
 		Points = 0;

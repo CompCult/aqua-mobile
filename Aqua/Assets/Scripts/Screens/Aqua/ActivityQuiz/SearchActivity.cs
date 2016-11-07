@@ -43,10 +43,7 @@ public class SearchActivity : GenericScreen
 		}
 		else 
 		{
-			if (Error.Contains("404 "))
-				UnityAndroidExtras.instance.makeToast("Não encontrado", 1);
-			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao buscar missões. Contate o administrador do sistema.", 1);
+			UnityAndroidExtras.instance.makeToast("Não encontrado ou expirado", 1);
 		}
 	}
 }

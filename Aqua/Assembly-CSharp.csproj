@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Behaviours\Bubbles.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\HideItself.cs" />
      <Compile Include="Assets\Scripts\Behaviours\RandomMove.cs" />
      <Compile Include="Assets\Scripts\Modules\AddressManager.cs" />
      <Compile Include="Assets\Scripts\Modules\ApplicationChrome.cs" />
@@ -70,9 +71,11 @@
      <Compile Include="Assets\Scripts\Objects\Report.cs" />
      <Compile Include="Assets\Scripts\Objects\User.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\ActivityHome.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\ActivityPublic.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\GPSS.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\Media.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\QuizHome.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\QuizPublic.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\SearchActivity.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\SearchQuiz.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\ActivityQuiz\Selection.cs" />

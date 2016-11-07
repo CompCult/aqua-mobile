@@ -39,7 +39,7 @@ public class Send : GenericScreen
 			Debug.Log("Response from send activity: " + Response);
 
 			UnityAndroidExtras.instance.makeToast("Enviado com sucesso", 1);
-			LoadScene("Selection");
+			LoadScene("AquaWorld");
 		}
 		else 
 		{

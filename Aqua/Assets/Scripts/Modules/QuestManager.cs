@@ -20,7 +20,7 @@ public static class QuestManager
 		Debug.Log("Mission updated and old quiz removed");
 
 		_quiz = null;
-		_activity = JsonUtility.FromJson<Activity>(JSON);
+		_activity = CreateActivity(JSON);
 		_activityResponse = new ActivityResponse ();
 	}
 
@@ -38,7 +38,7 @@ public static class QuestManager
  		Debug.Log("Quiz updated and old activity removed");
 
  		_activity = null;
- 		_quiz = JsonUtility.FromJson<Quiz>(JSON);
+ 		_quiz = CreateQuiz(JSON);
  		_quizResponse = new QuizResponse ();
  	}
 
@@ -58,4 +58,14 @@ public static class QuestManager
 
  		return (activityResponse.coord_start != null); //&&activityResponse.coord_mid != null && activityResponse.coord_end != null);
  	}
+
+ 	public static Activity CreateActivity (string json)
+	{
+		return JsonUtility.FromJson<Activity>(json);
+	}
+
+	public static Quiz CreateQuiz (string json)
+	{
+		return JsonUtility.FromJson<Quiz>(json);
+	}
 }

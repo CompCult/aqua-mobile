@@ -21,4 +21,13 @@ public class Activity {
 	{
 		return JsonUtility.FromJson<Activity>(json);
 	}
+
+	public string ToString()
+	{
+		return ("Nome:" + name + "/" +
+			"Desc:" + description + "/" +
+			"Texto:" + text + "/" +
+			"Tipo:" + type + "/" +
+			"Local:" + location);
+	}
 }
