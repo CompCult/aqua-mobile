@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Validate : GenericScreen 
 {
-	public Text hqAuthor, hqValue;
+	public Text hqValue;
 	public Image hqImage;
 
 	private HQ currentHQ;
@@ -69,7 +69,6 @@ public class Validate : GenericScreen
 	private void FillScreenElements()
 	{
 		currentHQ = new HQ();
-		hqAuthor.text = currentHQ.author;
 		hqValue.text = currentHQ.value + " pts.";
 	
 		StartCoroutine(LoadHQ());

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 
 public static class WebFunctions
 {
-	// http://agile-admin-dev.herokuapp.com/api
-	// http://agile-admin.heroku.herokuapp.com/api
-	// http://arenademetis.com.br/api
-	private static string _url = "http://aquaguardians.com.br/api",
+	// http://aqua-guardians-dev.herokuapp.com/api
+	// http://aquaguardians.com.br/api
+	private static string _url = "http://aqua-guardians-dev.herokuapp.com/api",
 	_pvtKey = "",
 	_apiPlace = "/";
 
