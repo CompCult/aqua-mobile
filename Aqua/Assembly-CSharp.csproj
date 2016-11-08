@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Behaviours\Bubbles.cs" />
      <Compile Include="Assets\Scripts\Behaviours\HideItself.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\PinchZoom.cs" />
      <Compile Include="Assets\Scripts\Behaviours\RandomMove.cs" />
      <Compile Include="Assets\Scripts\Modules\AddressManager.cs" />
      <Compile Include="Assets\Scripts\Modules\ApplicationChrome.cs" />
@@ -55,6 +56,7 @@
      <Compile Include="Assets\Scripts\Modules\CameraDevice.cs" />
      <Compile Include="Assets\Scripts\Modules\FormatInput.cs" />
      <Compile Include="Assets\Scripts\Modules\GPS.cs" />
+     <Compile Include="Assets\Scripts\Modules\HQManager.cs" />
      <Compile Include="Assets\Scripts\Modules\Lang.cs" />
      <Compile Include="Assets\Scripts\Modules\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Modules\SavWav.cs" />
@@ -66,6 +68,8 @@
      <Compile Include="Assets\Scripts\Objects\Activity.cs" />
      <Compile Include="Assets\Scripts\Objects\ActivityResponse.cs" />
      <Compile Include="Assets\Scripts\Objects\Address.cs" />
+     <Compile Include="Assets\Scripts\Objects\HQ.cs" />
+     <Compile Include="Assets\Scripts\Objects\HQResponse.cs" />
      <Compile Include="Assets\Scripts\Objects\Quiz.cs" />
      <Compile Include="Assets\Scripts\Objects\QuizResponse.cs" />
      <Compile Include="Assets\Scripts\Objects\Report.cs" />
@@ -123,6 +127,9 @@
      <Compile Include="Assets\Scripts\Screens\Aqua\Brain Teaser\BrainTeaser.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Brain Teaser\ST_PuzzleDisplay.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Brain Teaser\ST_PuzzleTile.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\HQ\Capture.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\HQ\SearchHQ.cs" />
+     <Compile Include="Assets\Scripts\Screens\Aqua\HQ\Validate.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Infinity Run\Follow.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Infinity Run\FunctionLibrary.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Infinity Run\LevelGenerator\MovingLayer.cs" />

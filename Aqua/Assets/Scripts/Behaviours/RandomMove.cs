@@ -13,7 +13,6 @@ public class RandomMove : MonoBehaviour
  	void Start () 
   	{
   		tempPosition = transform.position;
-  		finalPosition = 6.2f;
  	}
 
  	void FixedUpdate () 

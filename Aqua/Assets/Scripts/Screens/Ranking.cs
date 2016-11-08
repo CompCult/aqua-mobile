@@ -5,8 +5,12 @@ using System.Collections.Generic;
 
 public class Ranking : GenericScreen 
 {
-	public GameObject userCard;
-	public Text userName, userLevel, userXP;
+	public GameObject userCard, userEmblem, xpEmblem;
+	public Text userPlace, userName, userLevel, userXP;
+
+	// Cards used to replace sprits using the
+	public Sprite fpPlate, spPlate, tpPlate, normalPlate,
+	fpEmblem, spEmblem, tpEmblem, normalEmblem;
 
 	public List<User> userList;
 
@@ -46,6 +50,8 @@ public class Ranking : GenericScreen
         {
 			User user = UsrManager.CreateUserFromJSON(userJSON);
         	userList.Add(user);
+
+        	Debug.Log(">>" + userJSON + "<<");
         }
     }
 
@@ -56,17 +62,45 @@ public class Ranking : GenericScreen
      	if (userList.Count < 1)
      		return;
 
-     	foreach (User user in userList)
-        {
-        	userName.text = user.name;
-        	userLevel.text = user.level.ToString();
+     	for (int i=1; i <= userList.Count; i++)
+     	{
+     		if (i == 1)
+     		{
+     			userCard.GetComponent<Image>().sprite = fpPlate;
+     			userEmblem.GetComponent<Image>().sprite = fpEmblem;
+     			xpEmblem.GetComponent<Image>().sprite = fpEmblem;
+     		}
+     		else if (i == 2)
+     		{
+     			userCard.GetComponent<Image>().sprite = spPlate;
+     			userEmblem.GetComponent<Image>().sprite = spEmblem;
+     			xpEmblem.GetComponent<Image>().sprite = spEmblem;
+     		}
+     		else if (i == 3)
+     		{
+     			userCard.GetComponent<Image>().sprite = tpPlate;
+     			userEmblem.GetComponent<Image>().sprite = tpEmblem;
+     			xpEmblem.GetComponent<Image>().sprite = tpEmblem;
+     		}
+     		else
+     		{
+     			userCard.GetComponent<Image>().sprite = normalPlate;
+     			userEmblem.GetComponent<Image>().sprite = normalEmblem;
+     			xpEmblem.GetComponent<Image>().sprite = normalEmblem;
+     		}
+
+     		User user = userList[i-1];
+
+     		userPlace.text = "" + i;
+     		userName.text = user.name;
+        	userLevel.text = "Nível " + (user.level + 1);
         	userXP.text = user.xp.ToString();
 
-            Position = new Vector3(Position.x, Position.y, Position.z);
+        	Position = new Vector3(Position.x, Position.y, Position.z);
 
             GameObject Card = (GameObject) Instantiate(userCard, Position, Quaternion.identity);
             Card.transform.SetParent(GameObject.Find("Area").transform, false);
-        }
+     	}
 
         Destroy(userCard);
      }

@@ -75,7 +75,7 @@ public static class Authenticator
 
 	public static WWW RequestRanking()
 	{
-		WebFunctions.apiPlace = "/user/ranking/";
+		WebFunctions.apiPlace = "/user/rank/";
 		WebFunctions.pvtKey = "6b2b7f9bc0";
 
 		return WebFunctions.Get();
@@ -147,6 +147,38 @@ public static class Authenticator
 		WebFunctions.pvtKey = "d86c362f4b";
 
 		return WebFunctions.Post(photoForm);
+	}
+
+	public static WWW RequestHQ ()
+	{
+		WebFunctions.apiPlace = "/api/hq/";
+		WebFunctions.pvtKey = "6b2b7f9bc0";
+
+		return WebFunctions.Get();
+	}
+
+	public static WWW SendHQ (HQResponse hqResponse)
+	{
+		WWWForm hqForm = new WWWForm ();
+		hqForm.AddField ("user_id", hqResponse.user_id);
+		hqForm.AddBinaryData("photo", hqResponse.photo, "Photo.png", "image/png");
+
+		WebFunctions.apiPlace = "/hq/";
+		WebFunctions.pvtKey = "6b2b7f9bc0";
+
+		return WebFunctions.Post(hqForm);
+	}
+
+	public static WWW SendHQRate (int hqID, int hqRate)
+	{
+		WWWForm rateForm = new WWWForm ();
+		rateForm.AddField ("id", hqID);
+		rateForm.AddField ("value", hqRate);
+
+		WebFunctions.apiPlace = "/rate/";
+		WebFunctions.pvtKey = "6b2b7f9bc0";
+
+		return WebFunctions.Post(rateForm);
 	}
 
 	public static WWW RequestQuiz(string quizID)
