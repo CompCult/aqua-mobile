@@ -5,6 +5,7 @@ using System.Collections;
 public class Capture : GenericScreen 
 {
 	public GameObject cameraField;
+
 	private HQResponse hqResponse;
 
 	public void Start () 

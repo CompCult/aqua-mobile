@@ -151,7 +151,7 @@ public static class Authenticator
 
 	public static WWW RequestHQ ()
 	{
-		WebFunctions.apiPlace = "/api/hq/";
+		WebFunctions.apiPlace = "/hq/random/";
 		WebFunctions.pvtKey = "6b2b7f9bc0";
 
 		return WebFunctions.Get();
@@ -169,13 +169,14 @@ public static class Authenticator
 		return WebFunctions.Post(hqForm);
 	}
 
-	public static WWW SendHQRate (int hqID, int hqRate)
+	public static WWW SendHQRate (HQ currentHQ, int hqRate)
 	{
 		WWWForm rateForm = new WWWForm ();
-		rateForm.AddField ("id", hqID);
+		rateForm.AddField ("user_id", currentHQ.user_id);
+		rateForm.AddField ("hq_id", currentHQ.photo.hq_id);
 		rateForm.AddField ("value", hqRate);
 
-		WebFunctions.apiPlace = "/rate/";
+		WebFunctions.apiPlace = "/rating/";
 		WebFunctions.pvtKey = "6b2b7f9bc0";
 
 		return WebFunctions.Post(rateForm);

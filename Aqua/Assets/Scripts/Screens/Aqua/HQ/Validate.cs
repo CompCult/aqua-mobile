@@ -14,8 +14,7 @@ public class Validate : GenericScreen
 		UnityAndroidExtras.instance.Init();
 		backScene = "Search HQ";
 
-		//ReceiveRandomHQ();
-		FillScreenElements();
+		ReceiveRandomHQ();
 	}
 
 	private void ReceiveRandomHQ()
@@ -27,7 +26,6 @@ public class Validate : GenericScreen
 
 		if (Error == null)
 		{
-			currentHQ = new HQ();
 			currentHQ = JsonUtility.FromJson<HQ>(Response);
 
 			FillScreenElements();
@@ -35,9 +33,9 @@ public class Validate : GenericScreen
 		else
 		{
 			if (Error.Contains("500 "))
-				UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
+				UnityAndroidExtras.instance.makeToast("Nenhuma HQ recebida. Tente novamente.", 1);
 			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao enviar. Contate um administrador do sistema.", 1);
+				UnityAndroidExtras.instance.makeToast("Falha ao receber HQ. Tente novamente mais tarde.", 1);
 
 			LoadScene("Search HQ");
 		}
@@ -45,7 +43,7 @@ public class Validate : GenericScreen
 
 	public void SendRate(int value)
 	{
-		WWW rateForm = Authenticator.SendHQRate(currentHQ.id, value);
+		WWW rateForm = Authenticator.SendHQRate(currentHQ, value);
 
 		string Response = rateForm.text,
 		Error = rateForm.error;
@@ -55,20 +53,16 @@ public class Validate : GenericScreen
 			Debug.Log("Received:" + Response);
 
 			UnityAndroidExtras.instance.makeToast("Avaliação enviada!", 1);
-			LoadScene("Search HQ");
+			ReloadScene();
 		}
 		else
 		{
-			if (Error.Contains("500 "))
-				UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
-			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao enviar. Contate um administrador do sistema.", 1);
+			UnityAndroidExtras.instance.makeToast("Falha ao avaliar. Tente novamente mais tarde.", 1);
 		}
 	}
 
 	private void FillScreenElements()
 	{
-		currentHQ = new HQ();
 		hqValue.text = currentHQ.value + " pts.";
 	
 		StartCoroutine(LoadHQ());
@@ -77,7 +71,7 @@ public class Validate : GenericScreen
     private IEnumerator LoadHQ() 
     {
     	// Loads HQ Image
-        WWW www = new WWW(currentHQ.url);
+        WWW www = new WWW(currentHQ.photo_url);
         yield return www;
         hqImage.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
     }

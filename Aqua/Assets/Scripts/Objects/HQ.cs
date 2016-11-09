@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HQ 
+[System.Serializable]
+public class HQ
 {
-	public int id, value = 10; // Author and Rate
-	public string author = "eu", url = "https://s4.postimg.org/pxyuouxf1/unnamed.jpg";
+	public int user_id, value; // Author and Rate
+	public string photo_url;
 
-	public HQ()
+	public Photo photo;
+
+	public override string ToString()
 	{
-		author = "eu";
-		url = "https://s4.postimg.org/pxyuouxf1/unnamed.jpg";
-		value = 10;
-		id = 1;
+		return " / user_id: " + user_id +
+		" / value: " + value +  
+		" / url: " + photo_url + " HQ: " + photo.ToString(); 
 	}
 }

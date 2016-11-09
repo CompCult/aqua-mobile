@@ -22,6 +22,8 @@ public class Send : GenericScreen
 
 	public void SendActivity ()
 	{
+		UnityAndroidExtras.instance.makeToast("Enviando...", 1);
+
 		QuestManager.activityResponse.user_id = UsrManager.user.id;
 		QuestManager.activityResponse.activity_id = QuestManager.activity.id;
 
