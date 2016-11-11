@@ -5,7 +5,7 @@ public static class WebFunctions
 {
 	// http://aqua-guardians-dev.herokuapp.com/api
 	// http://aquaguardians.com.br/api
-	private static string _url = "http://aqua-guardians-dev.herokuapp.com/api",
+	private static string _url = "http://aquaguardians.com.br/api",
 	_pvtKey = "",
 	_apiPlace = "/";
 

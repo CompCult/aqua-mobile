@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Behaviours\Bubbles.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\HideItself.cs" />
      <Compile Include="Assets\Scripts\Behaviours\PinchZoom.cs" />
      <Compile Include="Assets\Scripts\Behaviours\RandomMove.cs" />
      <Compile Include="Assets\Scripts\Modules\AddressManager.cs" />
@@ -59,9 +58,6 @@
      <Compile Include="Assets\Scripts\Modules\Lang.cs" />
      <Compile Include="Assets\Scripts\Modules\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Modules\SavWav.cs" />
-     <Compile Include="Assets\Scripts\Modules\SimpleJSON.cs" />
-     <Compile Include="Assets\Scripts\Modules\Singleton.cs" />
-     <Compile Include="Assets\Scripts\Modules\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Modules\UnityAndroidExtras.cs" />
      <Compile Include="Assets\Scripts\Modules\UsrManager.cs" />
      <Compile Include="Assets\Scripts\Modules\WebFunctions.cs" />

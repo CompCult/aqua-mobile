@@ -8,11 +8,13 @@ public class Validate : GenericScreen
 	public Image hqImage;
 
 	private HQ currentHQ;
+	private int zoomScale;
 
 	public void Start ()
 	{
 		UnityAndroidExtras.instance.Init();
 		backScene = "Search HQ";
+		zoomScale = 0;
 
 		ReceiveRandomHQ();
 	}
@@ -58,6 +60,21 @@ public class Validate : GenericScreen
 		else
 		{
 			UnityAndroidExtras.instance.makeToast("Falha ao avaliar. Tente novamente mais tarde.", 1);
+		}
+	}
+
+	public void ZoomIn()
+	{
+		hqImage.transform.localScale += new Vector3(0.5F, 0.5F, 0);
+		zoomScale++;
+	}
+
+	public void ZoomOut()
+	{
+		if (zoomScale > 0)
+		{
+			hqImage.transform.localScale -= new Vector3(0.5F, 0.5F, 0);
+			zoomScale--;
 		}
 	}
 

@@ -6,9 +6,8 @@ public class Bubbles : MonoBehaviour
 {
 	public ParticleSystem bubblesLeft;
 	public ParticleSystem bubblesRigth;
-
-	// Use this for initialization
-	void Start () 
+	
+	public void Start () 
 	{
 		bubblesLeft.GetComponent<ParticleSystem>().playbackSpeed = 0.15f;
 		bubblesRigth.GetComponent<ParticleSystem>().playbackSpeed = 0.15f;

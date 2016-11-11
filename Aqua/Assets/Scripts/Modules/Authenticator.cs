@@ -251,7 +251,7 @@ public static class Authenticator
 	}
 
 	// Convert input string to SHA1
-	public static string CalculateSHA1 (string input)
+	private static string CalculateSHA1 (string input)
 	{
 		using (SHA1Managed sha1 = new SHA1Managed())
 		{

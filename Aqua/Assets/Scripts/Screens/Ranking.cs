@@ -93,7 +93,7 @@ public class Ranking : GenericScreen
 
      		userPlace.text = "" + i;
      		userName.text = user.name;
-        	userLevel.text = "Nível " + (user.level + 1);
+        	userLevel.text = "Nível " + (1 + user.xp/1000);
         	userXP.text = user.xp.ToString();
 
         	Position = new Vector3(Position.x, Position.y, Position.z);

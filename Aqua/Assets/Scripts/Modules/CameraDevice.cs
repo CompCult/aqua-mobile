@@ -43,7 +43,7 @@ public static class CameraDevice
 		cameraPlane.GetComponent<Renderer>().material.mainTexture = Photo;
 	}
 
-	public static bool HaveCamera() 
+	private static bool HaveCamera() 
 	{ 
 		return (WebCamTexture.devices.Length > 0) ? true : false;
 	}

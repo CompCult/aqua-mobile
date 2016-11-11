@@ -15,6 +15,11 @@ public static class QuestManager
 	public static Quiz quiz { get { return _quiz; } set { _quiz = value; } }
 	public static QuizResponse quizResponse { get { return _quizResponse; } set { _quizResponse = value; } }
 
+	public static Activity CreateActivity (string json)
+	{
+		return JsonUtility.FromJson<Activity>(json);
+	}
+
 	public static void UpdateActivity(string JSON)
 	{
 		Debug.Log("Mission updated and old quiz removed");
@@ -31,6 +36,11 @@ public static class QuestManager
 		_quiz = null;
 		_activity = activity;
 		_activityResponse = new ActivityResponse();
+	}
+
+	public static Quiz CreateQuiz (string json)
+	{
+		return JsonUtility.FromJson<Quiz>(json);
 	}
 
  	public static void UpdateQuiz(string JSON)
@@ -51,21 +61,11 @@ public static class QuestManager
  		_quizResponse = new QuizResponse ();
  	}
 
- 	public static bool AreCoordsFilled()
+	public static bool AreCoordsFilled()
  	{
  		if (Application.platform != RuntimePlatform.Android) 
  			return true;
 
  		return (activityResponse.coord_start != null); //&&activityResponse.coord_mid != null && activityResponse.coord_end != null);
  	}
-
- 	public static Activity CreateActivity (string json)
-	{
-		return JsonUtility.FromJson<Activity>(json);
-	}
-
-	public static Quiz CreateQuiz (string json)
-	{
-		return JsonUtility.FromJson<Quiz>(json);
-	}
 }

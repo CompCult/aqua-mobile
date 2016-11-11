@@ -9,13 +9,11 @@ public class FormatInput : MonoBehaviour
 	public Text FieldText;
 	public string Type;
 
-	// Use this for initialization
 	public void Start () 
 	{
 		Field.onValueChanged.AddListener(delegate {FormatValue();});
 	}
 	
-	// Update is called once per frame
 	private void FormatValue () 
 	{
 		var match = Regex.Matches(Field.text, @"[0-9]|[.]|[-]|[\/]").Count;
@@ -36,7 +34,6 @@ public class FormatInput : MonoBehaviour
 			case "cpf":
 				FormatCpf();
 				break;
-
 		}
 	}
 

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RandomMove : MonoBehaviour 
 {
+  
 	public float horizontalSpeed,
 	verticalSpeed,
 	finalPosition,
@@ -10,12 +11,12 @@ public class RandomMove : MonoBehaviour
 
  	private Vector3 tempPosition;
 
- 	void Start () 
-  	{
+ 	public void Start () 
+  {
   		tempPosition = transform.position;
  	}
 
- 	void FixedUpdate () 
+ 	public void FixedUpdate () 
   	{
   		tempPosition.x += horizontalSpeed;
 		tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalSpeed)* amplitude + 2.35f;

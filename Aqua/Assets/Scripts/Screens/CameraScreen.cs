@@ -98,7 +98,7 @@ public class CameraScreen : GenericScreen
 
 		if (Error == null) 
 		{
-			Debug.Log("Response from sending photo: " + Response);
+			Debug.Log("Response from sending notification: " + Response);
 
 			UnityAndroidExtras.instance.makeToast("Notificação enviada", 1);
 			CancelPhoto();
