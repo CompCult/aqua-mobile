@@ -3,16 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ManageGroup : GenericScreen {
-
-	// Use this for initialization
+public class ManageGroup : GenericScreen 
+{
 	void Start () 
 	{
 		backScene = "Groups";
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 
 	public void CreateGroup(Text groupName) 

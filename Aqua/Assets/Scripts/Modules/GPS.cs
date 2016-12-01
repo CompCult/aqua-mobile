@@ -34,7 +34,7 @@ public static class GPS
 			return false;
 		}
 
-		if (!Input.location.isEnabledByUser) 
+		if (!IsActive()) 
 		{
 			UnityAndroidExtras.instance.makeToast("Verifique o serviço de localização do celular", 1);
 			return false;

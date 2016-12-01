@@ -18,7 +18,7 @@ public class Write : GenericScreen
 		else if (QuestManager.activity.audio_file)
 			backScene = "Voice";
 		else if (QuestManager.activity.photo_file)
-			backScene = "Photo";
+			backScene = "Media";
 		else 
 			backScene = "Activity Home";
 	}

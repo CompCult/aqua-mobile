@@ -10,11 +10,6 @@ public class Groups : GenericScreen
 	{
 		backScene = "Home";
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	}
 
 	public void SelectGroup(Text groupName)
 	{

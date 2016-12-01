@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 public static class WebFunctions
 {
-	// http://aqua-guardians-dev.herokuapp.com/api
-	// http://aquaguardians.com.br/api
-	private static string _url = "http://aquaguardians.com.br/api",
+	private static string urlDev = "http://aqua-guardians-dev.herokuapp.com/api",
+	urlDefault = "http://aquaguardians.com.br/api";
+
+	private static string _url = urlDefault,
 	_pvtKey = "",
 	_apiPlace = "/";
 
@@ -41,5 +42,19 @@ public static class WebFunctions
 			w = new WaitForSeconds(0.1f);
 
 		return www; 
+	}
+
+	public static void ToggleURL()
+	{
+		if (_url == urlDefault)
+		{
+			UnityAndroidExtras.instance.makeToast("Modo desenvolvedor ativado", 1);
+			_url = urlDev;
+		}
+		else 
+		{
+			UnityAndroidExtras.instance.makeToast("Modo desenvolvedor desativado", 1);
+			_url = urlDefault;
+		}
 	}
 }

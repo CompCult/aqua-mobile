@@ -14,11 +14,13 @@ public class Login : GenericScreen
 	public Toggle rememberMe;
 	public Button registerButton, loginButton;
 
+	private int devModeCounter = 0;
+
 	public void Start () 
 	{
 		UnityAndroidExtras.instance.Init();
 		backScene = null;
-
+		
 		CheckSavedEmail();
 		CheckVersion();
 	}
@@ -167,4 +169,15 @@ public class Login : GenericScreen
 	 	Regex reg = new Regex(emailRegularExpression);
 		return reg.IsMatch(email);
 	}	
+
+	public void IncrementDevModeCounter()
+	{
+		devModeCounter++;
+
+		if (devModeCounter == 10)
+		{
+			devModeCounter = 0;
+			WebFunctions.ToggleURL();
+		}
+	}
 }

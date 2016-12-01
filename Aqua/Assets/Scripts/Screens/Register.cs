@@ -30,7 +30,7 @@ public class Register : GenericScreen {
 		if (!AreFieldsCorrect(name, email, pass, repPass))
 			return;
 
-		UnityAndroidExtras.instance.makeToast("Criando seu Aqueo...", 1);
+		UnityAndroidExtras.instance.makeToast("Criando seu Áqueo...", 1);
 
 		WWW registerRequest = Authenticator.RequestRegister(name, email, pass);
 		ProcessRegister (registerRequest);
@@ -47,8 +47,7 @@ public class Register : GenericScreen {
 		}
 		else 
 		{
-			if (Error.Contains("500 "))
-				UnityAndroidExtras.instance.makeToast("E-mail já registrado", 1);
+			UnityAndroidExtras.instance.makeToast("E-mail já registrado", 1);
 		}
 	}
 
