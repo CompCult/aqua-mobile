@@ -10,7 +10,7 @@ public class Splash : GenericScreen {
 
 	private IEnumerator SplashTime () 
 	{
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
 
         // Disables Android Status Bar
 		ApplicationChrome.statusBarState = ApplicationChrome.States.Hidden;

@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class User {
-
+[System.Serializable]
+public class User 
+{
 	public int id,
 	address,
 	level,

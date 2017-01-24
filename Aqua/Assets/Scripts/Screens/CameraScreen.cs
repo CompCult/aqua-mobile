@@ -20,7 +20,6 @@ public class CameraScreen : GenericScreen
 
 		backScene = "Home";
 
-		GPS.StartGPS();
 		CameraDevice.ShowCameraImage();
 	}
 
@@ -38,6 +37,7 @@ public class CameraScreen : GenericScreen
 	public void ConfirmPhoto()
 	{
 		CameraDevice.RecordPhoto();
+		GPS.StartGPS();
 
 		captureButton.SetActive(false);
 		sendButton.SetActive(true);
@@ -47,6 +47,7 @@ public class CameraScreen : GenericScreen
 	public void CancelPhoto()
 	{
 		CameraDevice.ShowCameraImage();
+		GPS.StopGPS();
 
 		captureButton.SetActive(true);
 		sendButton.SetActive(false);
@@ -86,6 +87,8 @@ public class CameraScreen : GenericScreen
 
         byte[] bytes = CameraDevice.Photo.EncodeToPNG();
         UnityAndroidExtras.instance.makeToast("Enviando...", 1);
+
+        GPS.StopGPS();
 
 		WWW photoResponse = Authenticator.SendPhoto (id, latitude, longitude, type, bytes);
 		ProcessPhoto(photoResponse);

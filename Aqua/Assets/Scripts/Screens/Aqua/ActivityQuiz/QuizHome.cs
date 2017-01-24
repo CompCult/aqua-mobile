@@ -57,7 +57,7 @@ public class QuizHome : GenericScreen
 		{
 			UnityAndroidExtras.instance.makeToast("Enviado com sucesso", 1);
 
-			LoadScene("AquaWorld");
+			LoadBackScene();
 		}
 		else 
 		{

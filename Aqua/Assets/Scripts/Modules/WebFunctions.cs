@@ -6,7 +6,7 @@ public static class WebFunctions
 	private static string urlDev = "http://aqua-guardians-dev.herokuapp.com/api",
 	urlDefault = "http://aquaguardians.com.br/api";
 
-	private static string _url = urlDefault,
+	private static string _url = urlDev,
 	_pvtKey = "",
 	_apiPlace = "/";
 
