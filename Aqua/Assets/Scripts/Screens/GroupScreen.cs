@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GroupScreen : GenericScreen 
 {
-	public GameObject memberCard;
+	public GameObject memberCard, deleteMemberButton, deleteGroupButton, exitGroupButton;
 	public Text groupName, memberName, memberEmail, newMemberEmail;
+	public Sprite trashIcon, logoutIcon;
+
+	private bool isOwner;
 
 	public void Start () 
 	{
@@ -27,6 +30,19 @@ public class GroupScreen : GenericScreen
 		if (Error == null)
 		{
 			GroupManager.UpdateGroup(Response);
+
+			// If the user is the group owner
+			if (GroupManager.group.owner_id == UsrManager.user.id)
+			{
+				isOwner = true;
+				deleteGroupButton.SetActive(true);
+			}
+			else
+			{
+				isOwner = false;
+				exitGroupButton.SetActive(true);
+			}
+
 			CreateMembersCard();
 		}
 		else 
@@ -44,6 +60,12 @@ public class GroupScreen : GenericScreen
         {
         	memberName.text = member.name;
         	memberEmail.text = member.email;
+
+        	if (member.id == GroupManager.group.owner_id)
+        		deleteMemberButton.SetActive(false);
+        	else 
+        		if (isOwner)
+        			deleteMemberButton.SetActive(true);
 
             Position = new Vector3(Position.x, Position.y, Position.z);
 
@@ -101,16 +123,70 @@ public class GroupScreen : GenericScreen
 		}
 	}
 
+	public void LogoutGroup()
+	{
+		Text myEmail = gameObject.AddComponent<Text>();
+     	myEmail.text = UsrManager.user.email;
+
+		RemoveMember(myEmail);
+	}
+
+	public void RemoveMember(Text removeEmail)
+	{
+		WWW removeRequest;
+
+		foreach (User member in GroupManager.group.members)
+        {
+        	if (removeEmail.text == member.email)
+        	{
+        		int groupID = GroupManager.group.id;
+        		string memberEmail = member.email;
+
+        		Debug.Log("Removing e-mail: " + memberEmail);
+
+        		removeRequest = Authenticator.RemoveGroupMember(memberEmail, groupID);
+        		ProcessRemove(removeRequest);
+        		break;
+        	}
+        }
+	}
+
+	private void ProcessRemove(WWW addRequest)
+	{
+		string Error = addRequest.error,
+		Response = addRequest.text;
+
+		if (Error == null) 
+		{
+			if (isOwner)
+			{
+				UnityAndroidExtras.instance.makeToast("Jogador(a) removido(a)", 1);
+
+				Scene scene = SceneManager.GetActiveScene();
+	            SceneManager.LoadScene(scene.name);
+	        }
+	        else 
+	        {
+	        	UnityAndroidExtras.instance.makeToast("Você saiu do grupo", 1);
+	        	LoadBackScene();
+	        }
+		}
+		else 
+		{
+			UnityAndroidExtras.instance.makeToast("Falha ao remover. Tente novamente.", 1);
+			Debug.Log("Member remove error: " + Error);
+		}
+	}
+
 	public void DeleteGroup()
 	{
 		int groupID = GroupManager.group.id;
 
 		WWW removeRequest = Authenticator.DeleteGroup(groupID);
-		ProcessRemove (removeRequest);
+		ProcessDelete (removeRequest);
 	}
 
-
-	private void ProcessRemove(WWW removeRequest)
+	private void ProcessDelete(WWW removeRequest)
 	{
 		string Error = removeRequest.error,
 		Response = removeRequest.text;
@@ -123,7 +199,6 @@ public class GroupScreen : GenericScreen
 		else 
 		{
 			UnityAndroidExtras.instance.makeToast("Falha ao excluir. Tente novamente.", 1);
-			
 			Debug.Log("Group delete error: " + Error);
 		}
 	}

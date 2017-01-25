@@ -281,6 +281,18 @@ public static class Authenticator
 		return WebFunctions.Post(addForm);
 	}
 
+	public static WWW RemoveGroupMember(string memberEmail, int groupID)
+	{
+		WWWForm removeForm = new WWWForm ();
+		removeForm.AddField ("user_email", memberEmail);
+		removeForm.AddField ("group_id", groupID);
+
+		WebFunctions.apiPlace = "/group/remove-user/";
+		WebFunctions.pvtKey = "6b2b7f9bc0";
+
+		return WebFunctions.Post(removeForm);
+	}
+
 	public static WWW RequestGroups()
 	{
 		WebFunctions.apiPlace = "/user/" + UsrManager.user.id + "/groups/";
