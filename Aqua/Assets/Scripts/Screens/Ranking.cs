@@ -16,7 +16,7 @@ public class Ranking : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "Home";
 
 		ReceiveRanking();
@@ -24,7 +24,7 @@ public class Ranking : GenericScreen
 
 	private void ReceiveRanking()
 	{
-		WWW rankingRequest = Authenticator.RequestRanking();
+		WWW rankingRequest = RankingAPI.RequestRanking();
 
 		string Response = rankingRequest.text,
 		Error = rankingRequest.error;
@@ -36,7 +36,7 @@ public class Ranking : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao receber o Ranking", 1);
+			AlertsAPI.instance.makeToast("Falha ao receber o Ranking", 1);
 			LoadBackScene();
 		}
 	}

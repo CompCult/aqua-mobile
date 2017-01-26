@@ -8,7 +8,7 @@ public class ActivityHome : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "Search Activity";
 
 		UpdateActivityTexts();

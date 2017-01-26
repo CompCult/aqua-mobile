@@ -6,7 +6,7 @@ public class AquaWorld : GenericScreen
 {
 	void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "Home";
 	}
 }

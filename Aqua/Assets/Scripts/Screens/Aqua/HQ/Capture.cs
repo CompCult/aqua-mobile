@@ -10,7 +10,7 @@ public class Capture : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		CameraDevice.cameraPlane = cameraField;
 		backScene = "Search HQ";
 
@@ -35,7 +35,7 @@ public class Capture : GenericScreen
 		hqResponse.user_id = UsrManager.user.id;
 		hqResponse.photo = CameraDevice.Photo.EncodeToPNG();
 
-		WWW hqForm = Authenticator.SendHQ(hqResponse);
+		WWW hqForm = HQAPI.SendHQ(hqResponse);
 		ProcessHQ(hqForm);
 	}
 
@@ -48,7 +48,7 @@ public class Capture : GenericScreen
 		{
 			Debug.Log("Response from send HQ: " + Response);
 
-			UnityAndroidExtras.instance.makeToast("Enviada com sucesso", 1);
+			AlertsAPI.instance.makeToast("Enviada com sucesso", 1);
 			LoadScene("Search HQ");
 		}
 		else
@@ -56,9 +56,9 @@ public class Capture : GenericScreen
 			CameraDevice.ShowCameraImage();
 			
 			if (Error.Contains("500 "))
-				UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
+				AlertsAPI.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
 			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao enviar. Contate um administrador do sistema.", 1);
+				AlertsAPI.instance.makeToast("Falha ao enviar. Contate um administrador do sistema.", 1);
 		}
 	}
 }

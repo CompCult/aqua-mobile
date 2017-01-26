@@ -39,28 +39,34 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\API\AddressAPI.cs" />
+     <Compile Include="Assets\Scripts\API\AlertsAPI.cs" />
+     <Compile Include="Assets\Scripts\API\GroupAPI.cs" />
+     <Compile Include="Assets\Scripts\API\HQAPI.cs" />
+     <Compile Include="Assets\Scripts\API\LoginAPI.cs" />
+     <Compile Include="Assets\Scripts\API\MiscAPI.cs" />
+     <Compile Include="Assets\Scripts\API\NotificationAPI.cs" />
+     <Compile Include="Assets\Scripts\API\QuestAPI.cs" />
+     <Compile Include="Assets\Scripts\API\RankingAPI.cs" />
+     <Compile Include="Assets\Scripts\API\UserAPI.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Bubbles.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\PinchZoom.cs" />
      <Compile Include="Assets\Scripts\Behaviours\RandomMove.cs" />
      <Compile Include="Assets\Scripts\Modules\AddressManager.cs" />
-     <Compile Include="Assets\Scripts\Modules\ApplicationChrome.cs" />
+     <Compile Include="Assets\Scripts\Modules\AndroidScreen.cs" />
      <Compile Include="Assets\Scripts\Modules\AudioRec.cs" />
-     <Compile Include="Assets\Scripts\Modules\Authenticator.cs" />
      <Compile Include="Assets\Scripts\Modules\CameraDevice.cs" />
      <Compile Include="Assets\Scripts\Modules\FormatInput.cs" />
      <Compile Include="Assets\Scripts\Modules\GPS.cs" />
      <Compile Include="Assets\Scripts\Modules\GroupManager.cs" />
-     <Compile Include="Assets\Scripts\Modules\Lang.cs" />
      <Compile Include="Assets\Scripts\Modules\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Modules\SavWav.cs" />
-     <Compile Include="Assets\Scripts\Modules\UnityAndroidExtras.cs" />
      <Compile Include="Assets\Scripts\Modules\UsrManager.cs" />
      <Compile Include="Assets\Scripts\Modules\WebFunctions.cs" />
      <Compile Include="Assets\Scripts\Objects\Activity.cs" />
@@ -165,7 +171,6 @@
      <Compile Include="Assets\Scripts\Screens\Groups.cs" />
      <Compile Include="Assets\Scripts\Screens\Home.cs" />
      <Compile Include="Assets\Scripts\Screens\Login.cs" />
-     <Compile Include="Assets\Scripts\Screens\ManageGroup.cs" />
      <Compile Include="Assets\Scripts\Screens\Map.cs" />
      <Compile Include="Assets\Scripts\Screens\Profile.cs" />
      <Compile Include="Assets\Scripts\Screens\ProfileAddress.cs" />
@@ -476,32 +481,26 @@
      <None Include="Assets\Resources\Maps\2-9.txt" />
      <None Include="Assets\Resources\Maps\1-76.txt" />
      <None Include="Assets\Resources\Maps\3-50.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.PlaymodeTestsRunner">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>C:/Users/Rafaela Araújo/aqua-mobile/Aqua/Assets/Scripts/Modules/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>C:/Users/GCint/OneDrive/Documentos/GitHub/aqua-mobile/Aqua/Assets/Scripts/Modules/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

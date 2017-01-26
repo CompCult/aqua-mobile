@@ -14,7 +14,7 @@ public class Map : GenericScreen {
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "Home";
 
 		ReceiveNotifications();
@@ -23,7 +23,7 @@ public class Map : GenericScreen {
 	public void ReceiveNotifications()
 	{
 		User user = UsrManager.user;
-		WWW requestNotifications = Authenticator.RequestNotifications(user.id);
+		WWW requestNotifications = NotificationAPI.RequestNotifications(user.id);
 
 		string Response = requestNotifications.text,
         Error = requestNotifications.error;

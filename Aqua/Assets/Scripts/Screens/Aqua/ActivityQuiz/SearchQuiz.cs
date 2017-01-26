@@ -11,7 +11,7 @@ public class SearchQuiz : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "AquaWorld";
 	}
 
@@ -21,11 +21,11 @@ public class SearchQuiz : GenericScreen
 
 		if (quizID == null || quizID.Length == 0)
 		{
-			UnityAndroidExtras.instance.makeToast("Insira o ID do quiz", 1);
+			AlertsAPI.instance.makeToast("Insira o ID do quiz", 1);
 			return;
 		}
 
-		WWW quizRequest = Authenticator.RequestQuiz(quizID);
+		WWW quizRequest = QuestAPI.RequestQuiz(quizID);
 		ProcessQuiz (quizRequest);
 	}
 
@@ -43,7 +43,7 @@ public class SearchQuiz : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Quiz inexistente ou expirado", 1);
+			AlertsAPI.instance.makeToast("Quiz inexistente ou expirado", 1);
 		}
 	}
 }

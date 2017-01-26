@@ -15,7 +15,7 @@ public class Voice : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		AudioRec.audioSource = audioSource;
 		isRecording = false;
 
@@ -64,7 +64,7 @@ public class Voice : GenericScreen
 
 		if (isRecording || audioSource.clip == null)
 		{
-			UnityAndroidExtras.instance.makeToast("Termine sua gravação antes de continuar", 1);
+			AlertsAPI.instance.makeToast("Termine sua gravação antes de continuar", 1);
 			return;
 		}
 		else 

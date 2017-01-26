@@ -15,7 +15,7 @@ public class CameraScreen : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		CameraDevice.cameraPlane = CameraField;
 
 		backScene = "Home";
@@ -65,7 +65,7 @@ public class CameraScreen : GenericScreen
 
 		if (latitude == "0" || longitude == "0" || !GPS.IsActive())
 		{
-			UnityAndroidExtras.instance.makeToast("Ative o serviço de localização do celular", 1);
+			AlertsAPI.instance.makeToast("Ative o serviço de localização do celular", 1);
 			return;
 		}
 
@@ -86,12 +86,12 @@ public class CameraScreen : GenericScreen
         }
 
         byte[] bytes = CameraDevice.Photo.EncodeToPNG();
-        UnityAndroidExtras.instance.makeToast("Enviando...", 1);
+        AlertsAPI.instance.makeToast("Enviando...", 1);
 
         GPS.StopGPS();
 
-		WWW photoResponse = Authenticator.SendPhoto (id, latitude, longitude, type, bytes);
-		ProcessPhoto(photoResponse);
+		WWW photoForm = NotificationAPI.SendNotification(id, latitude, longitude, type, bytes);
+		ProcessPhoto(photoForm);
 	}
 
 	private void ProcessPhoto (WWW photoResponse)
@@ -103,13 +103,13 @@ public class CameraScreen : GenericScreen
 		{
 			Debug.Log("Response from sending notification: " + Response);
 
-			UnityAndroidExtras.instance.makeToast("Notificação enviada", 1);
+			AlertsAPI.instance.makeToast("Notificação enviada", 1);
 			CancelPhoto();
 		} 
 		else 
 		{
 			Debug.Log("Error on sending photo: " + Error);
-			UnityAndroidExtras.instance.makeToast("Houve um problema no envio da notificação", 1);
+			AlertsAPI.instance.makeToast("Houve um problema no envio da notificação", 1);
 		}
 
 		CameraDevice.ShowCameraImage();

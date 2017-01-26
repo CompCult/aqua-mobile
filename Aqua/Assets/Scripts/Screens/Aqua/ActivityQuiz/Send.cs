@@ -6,7 +6,7 @@ public class Send : GenericScreen
 {
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 
 		if (QuestManager.activity.text_enabled)
 			backScene = "Write";
@@ -22,12 +22,12 @@ public class Send : GenericScreen
 
 	public void SendActivity ()
 	{
-		UnityAndroidExtras.instance.makeToast("Enviando...", 1);
+		AlertsAPI.instance.makeToast("Enviando...", 1);
 
 		QuestManager.activityResponse.user_id = UsrManager.user.id;
 		QuestManager.activityResponse.activity_id = QuestManager.activity.id;
 
-		WWW responseForm = Authenticator.SendActivity(QuestManager.activityResponse, QuestManager.activity);
+		WWW responseForm = QuestAPI.SendActivity(QuestManager.activityResponse, QuestManager.activity);
 		ProcessSend(responseForm);
 	}
 
@@ -40,17 +40,17 @@ public class Send : GenericScreen
 		{
 			Debug.Log("Response from send activity: " + Response);
 
-			UnityAndroidExtras.instance.makeToast("Enviado com sucesso", 1);
+			AlertsAPI.instance.makeToast("Enviado com sucesso", 1);
 			LoadScene("AquaWorld");
 		}
 		else 
 		{
 			if (Error.Contains("404 "))
-				UnityAndroidExtras.instance.makeToast("Atividade não encontrada ou já expirada", 1);
+				AlertsAPI.instance.makeToast("Atividade não encontrada ou já expirada", 1);
 			else if (Error.Contains("500 "))
-				UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
+				AlertsAPI.instance.makeToast("Houve um problema no Servidor. Tente novamente mais tarde.", 1);
 			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao enviar. Contate um administrador do sistema.", 1);
+				AlertsAPI.instance.makeToast("Falha ao enviar. Contate um administrador do sistema.", 1);
 		}
 	}
 }

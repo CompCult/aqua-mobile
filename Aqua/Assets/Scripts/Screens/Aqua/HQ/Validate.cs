@@ -12,7 +12,7 @@ public class Validate : GenericScreen
 
 	public void Start ()
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "Search HQ";
 		zoomScale = 0;
 
@@ -21,7 +21,7 @@ public class Validate : GenericScreen
 
 	private void ReceiveRandomHQ()
 	{
-		WWW hqRequest = Authenticator.RequestHQ();
+		WWW hqRequest = HQAPI.RequestHQ();
 
 		string Response = hqRequest.text,
 		Error = hqRequest.error;
@@ -35,9 +35,9 @@ public class Validate : GenericScreen
 		else
 		{
 			if (Error.Contains("500 "))
-				UnityAndroidExtras.instance.makeToast("Nenhuma HQ recebida. Tente novamente.", 1);
+				AlertsAPI.instance.makeToast("Nenhuma HQ recebida. Tente novamente.", 1);
 			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao receber HQ. Tente novamente mais tarde.", 1);
+				AlertsAPI.instance.makeToast("Falha ao receber HQ. Tente novamente mais tarde.", 1);
 
 			LoadScene("Search HQ");
 		}
@@ -45,7 +45,7 @@ public class Validate : GenericScreen
 
 	public void SendRate(int value)
 	{
-		WWW rateForm = Authenticator.SendHQRate(currentHQ, value);
+		WWW rateForm = HQAPI.SendHQRate(currentHQ, value);
 
 		string Response = rateForm.text,
 		Error = rateForm.error;
@@ -54,12 +54,12 @@ public class Validate : GenericScreen
 		{
 			Debug.Log("Received:" + Response);
 
-			UnityAndroidExtras.instance.makeToast("Avaliação enviada!", 1);
+			AlertsAPI.instance.makeToast("Avaliação enviada!", 1);
 			ReloadScene();
 		}
 		else
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao avaliar. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeToast("Falha ao avaliar. Tente novamente mais tarde.", 1);
 		}
 	}
 

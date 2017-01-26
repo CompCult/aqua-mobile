@@ -21,7 +21,7 @@ public class ProfileAddress : GenericScreen {
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		ReceiveAddress ();
 
 		backScene = "Profile";
@@ -34,7 +34,7 @@ public class ProfileAddress : GenericScreen {
 		// If the user have address, receive it.
 		if (user.address != noAddress)
 		{
-			WWW addressRequest = Authenticator.RequestAddress(user.address);
+			WWW addressRequest = AddressAPI.RequestAddress(user.address);
 			ProcessAddress(addressRequest);
 		}
 	}
@@ -53,7 +53,7 @@ public class ProfileAddress : GenericScreen {
 		{
 			Debug.Log("Error on get address: " + Error);
 
-			UnityAndroidExtras.instance.makeToast("Falha ao obter seu endereço. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeToast("Falha ao obter seu endereço. Tente novamente mais tarde.", 1);
 			LoadScene(backScene);
 		}
 	}
@@ -88,12 +88,12 @@ public class ProfileAddress : GenericScreen {
 		// Checks if the user have an address
 		if (user.address != noAddress)
 		{
-			WWW updateRequest = Authenticator.UpdateAddress(zipcode, street, number, district, city, state, complement);
+			WWW updateRequest = AddressAPI.UpdateAddress(zipcode, street, number, district, city, state, complement);
 			ProcessUpdate(updateRequest);
 		}
 		else 
 		{
-			WWW createAddressRequest = Authenticator.CreateAddress(zipcode, street, number, district, city, state, complement);
+			WWW createAddressRequest = AddressAPI.CreateAddress(zipcode, street, number, district, city, state, complement);
 			ProcessCreate(createAddressRequest);
 		}
 	}
@@ -113,7 +113,7 @@ public class ProfileAddress : GenericScreen {
 		{
 			Debug.Log("Error on update address: " + Error);
 
-			UnityAndroidExtras.instance.makeToast("Falha ao obter seu endereço. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeToast("Falha ao obter seu endereço. Tente novamente mais tarde.", 1);
 		}
 	}
 
@@ -133,7 +133,7 @@ public class ProfileAddress : GenericScreen {
 		{
 			Debug.Log("Error on create address: " + Error);
 
-			UnityAndroidExtras.instance.makeToast("Falha ao criar seu endereço. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeToast("Falha ao criar seu endereço. Tente novamente mais tarde.", 1);
 		}
 	}
 
@@ -148,7 +148,7 @@ public class ProfileAddress : GenericScreen {
 
 		if (errorMessage != "")
 		{
-			UnityAndroidExtras.instance.makeToast(errorMessage, 1);
+			AlertsAPI.instance.makeToast(errorMessage, 1);
 			return false;
 		}
 

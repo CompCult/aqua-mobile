@@ -22,7 +22,7 @@ public class GroupScreen : GenericScreen
 
 	private void RequestGroupInfo ()
 	{
-		WWW infoRequest = Authenticator.RequestGroupInfo();
+		WWW infoRequest = GroupAPI.RequestGroupInfo();
 
 		string Response = infoRequest.text,
 		Error = infoRequest.error;
@@ -47,7 +47,7 @@ public class GroupScreen : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao abrir o grupo", 1);
+			AlertsAPI.instance.makeToast("Falha ao abrir o grupo", 1);
 			LoadBackScene();
 		}
 	}
@@ -90,14 +90,14 @@ public class GroupScreen : GenericScreen
         {
         	if (memberEmail == member.email)
         	{
-        		UnityAndroidExtras.instance.makeToast("Membro já adicionado", 1);
+        		AlertsAPI.instance.makeToast("Membro já adicionado", 1);
         		return;
         	}
         }
 
-		UnityAndroidExtras.instance.makeToast("Adicionando " + memberEmail, 1);
+		AlertsAPI.instance.makeToast("Adicionando " + memberEmail, 1);
 
-		WWW addRequest = Authenticator.AddGroupMember(memberEmail, groupID);
+		WWW addRequest = GroupAPI.AddGroupMember(memberEmail, groupID);
 		ProcessAdding (addRequest);
 	}
 
@@ -108,16 +108,16 @@ public class GroupScreen : GenericScreen
 
 		if (Error == null) 
 		{
-			UnityAndroidExtras.instance.makeToast("Jogador(a) adicionado(a)", 1);
+			AlertsAPI.instance.makeToast("Jogador(a) adicionado(a)", 1);
 			Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
 		}
 		else 
 		{
 			if (Error.Contains("404 "))
-				UnityAndroidExtras.instance.makeToast("E-mail não encontrado", 1);
+				AlertsAPI.instance.makeToast("E-mail não encontrado", 1);
 			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao adicionar. Tente novamente.", 1);
+				AlertsAPI.instance.makeToast("Falha ao adicionar. Tente novamente.", 1);
 			
 			Debug.Log("Member add error: " + Error);
 		}
@@ -144,7 +144,7 @@ public class GroupScreen : GenericScreen
 
         		Debug.Log("Removing e-mail: " + memberEmail);
 
-        		removeRequest = Authenticator.RemoveGroupMember(memberEmail, groupID);
+        		removeRequest = GroupAPI.RemoveGroupMember(memberEmail, groupID);
         		ProcessRemove(removeRequest);
         		break;
         	}
@@ -160,20 +160,20 @@ public class GroupScreen : GenericScreen
 		{
 			if (isOwner)
 			{
-				UnityAndroidExtras.instance.makeToast("Jogador(a) removido(a)", 1);
+				AlertsAPI.instance.makeToast("Jogador(a) removido(a)", 1);
 
 				Scene scene = SceneManager.GetActiveScene();
 	            SceneManager.LoadScene(scene.name);
 	        }
 	        else 
 	        {
-	        	UnityAndroidExtras.instance.makeToast("Você saiu do grupo", 1);
+	        	AlertsAPI.instance.makeToast("Você saiu do grupo", 1);
 	        	LoadBackScene();
 	        }
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao remover. Tente novamente.", 1);
+			AlertsAPI.instance.makeToast("Falha ao remover. Tente novamente.", 1);
 			Debug.Log("Member remove error: " + Error);
 		}
 	}
@@ -182,7 +182,7 @@ public class GroupScreen : GenericScreen
 	{
 		int groupID = GroupManager.group.id;
 
-		WWW removeRequest = Authenticator.DeleteGroup(groupID);
+		WWW removeRequest = GroupAPI.DeleteGroup(groupID);
 		ProcessDelete (removeRequest);
 	}
 
@@ -193,12 +193,12 @@ public class GroupScreen : GenericScreen
 
 		if (Error == null) 
 		{
-			UnityAndroidExtras.instance.makeToast("Grupo excluído", 1);
+			AlertsAPI.instance.makeToast("Grupo excluído", 1);
 			LoadBackScene();
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao excluir. Tente novamente.", 1);
+			AlertsAPI.instance.makeToast("Falha ao excluir. Tente novamente.", 1);
 			Debug.Log("Group delete error: " + Error);
 		}
 	}

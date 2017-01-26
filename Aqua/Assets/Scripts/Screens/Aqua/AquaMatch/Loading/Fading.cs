@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Fading : MonoBehaviour
 {
-
     public Texture2D fadeOutTexture;
     public float fadeSpeed = 0.5f;
 
@@ -11,7 +10,12 @@ public class Fading : MonoBehaviour
     private float alpha = 1.0f;
     private int fadeDir = -1;
 
-    void OnGUI()
+    public void Start()
+    {
+        BeginFade(-1);
+    }
+
+    public void OnGUI()
     {
         alpha += fadeDir * fadeSpeed * Time.deltaTime;
         alpha = Mathf.Clamp01(alpha);
@@ -25,10 +29,5 @@ public class Fading : MonoBehaviour
     {
         fadeDir = direction;
         return (fadeSpeed);
-    }
-
-    void OnLevelWasLoaded()
-    {
-        BeginFade(-1);
     }
 }

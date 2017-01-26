@@ -48,12 +48,12 @@ public static class WebFunctions
 	{
 		if (_url == urlDefault)
 		{
-			UnityAndroidExtras.instance.makeToast("Modo desenvolvedor ativado", 1);
+			AlertsAPI.instance.makeToast("Modo desenvolvedor ativado", 1);
 			_url = urlDev;
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Modo desenvolvedor desativado", 1);
+			AlertsAPI.instance.makeToast("Modo desenvolvedor desativado", 1);
 			_url = urlDefault;
 		}
 	}

@@ -19,7 +19,7 @@ public class Profile : GenericScreen {
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		UpdateFields();
 
 		backScene = "Home";
@@ -63,7 +63,7 @@ public class Profile : GenericScreen {
 		if (!CheckFields(name, email, birth, cpf, phone, pass, repPass))
 			return;
 
-		WWW updateRequest = Authenticator.UpdateUser(name, email, birth, cpf, address, phone, pass);
+		WWW updateRequest = UserAPI.UpdateUser(name, email, birth, cpf, address, phone, pass);
 		ProcessUpdate(updateRequest);
 	}
 
@@ -76,7 +76,7 @@ public class Profile : GenericScreen {
 		{
 			Debug.Log("Update response: " + Response);
 			
-			UnityAndroidExtras.instance.makeToast("Perfil atualizado", 1);
+			AlertsAPI.instance.makeToast("Perfil atualizado", 1);
 
 			UpdateLocalUser();
 			LoadScene(backScene);
@@ -84,7 +84,7 @@ public class Profile : GenericScreen {
 		else 
 		{
 			Debug.Log("Error on update: " + Error);
-			UnityAndroidExtras.instance.makeToast("Falha ao atualizar. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeToast("Falha ao atualizar. Tente novamente mais tarde.", 1);
 		}
 	}
 
@@ -108,7 +108,7 @@ public class Profile : GenericScreen {
 			errorMessage = "As senhas não confirmam";
 
 		if (errorMessage != "") {
-			UnityAndroidExtras.instance.makeToast(errorMessage, 1);
+			AlertsAPI.instance.makeToast(errorMessage, 1);
 			return false;
 		}
 		

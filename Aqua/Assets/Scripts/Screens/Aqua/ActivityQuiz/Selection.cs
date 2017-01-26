@@ -5,7 +5,7 @@ public class Selection : GenericScreen {
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "AquaHome";
 	}
 }

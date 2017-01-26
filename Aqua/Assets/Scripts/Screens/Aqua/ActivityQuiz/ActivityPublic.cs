@@ -12,7 +12,7 @@ public class ActivityPublic : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "Search Activity";
 
 		ReceivePublicActivities();
@@ -20,7 +20,7 @@ public class ActivityPublic : GenericScreen
 
 	private void ReceivePublicActivities()
 	{
-		WWW activitiesRequest = Authenticator.RequestPublicActivities();
+		WWW activitiesRequest = QuestAPI.RequestPublicActivities();
 
 		string Response = activitiesRequest.text,
 		Error = activitiesRequest.error;
@@ -32,7 +32,7 @@ public class ActivityPublic : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao receber as missões públicas", 1);
+			AlertsAPI.instance.makeToast("Falha ao receber as missões públicas", 1);
 			LoadBackScene();
 		}
 	}

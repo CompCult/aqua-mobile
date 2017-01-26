@@ -9,8 +9,11 @@ public class Bubbles : MonoBehaviour
 	
 	public void Start () 
 	{
-		bubblesLeft.GetComponent<ParticleSystem>().playbackSpeed = 0.15f;
-		bubblesRigth.GetComponent<ParticleSystem>().playbackSpeed = 0.15f;
+		var bubbleLeftMain = bubblesLeft.GetComponent<ParticleSystem>().main;
+		var bubbleRightMain = bubblesRigth.GetComponent<ParticleSystem>().main;
+
+		bubbleLeftMain.simulationSpeed = 0.15f;
+		bubbleRightMain.simulationSpeed = 0.15f;
 
 		bubblesLeft.Play();
 		bubblesRigth.Play();

@@ -18,7 +18,7 @@ public class Login : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = null;
 		
 		CheckSavedEmail();
@@ -41,7 +41,7 @@ public class Login : GenericScreen
 
 	public void CheckVersion()
 	{
-		WWW versionRequest = Authenticator.CheckVersion();
+		WWW versionRequest = MiscAPI.CheckVersion();
 
 		string errorText = versionRequest.error,
 		versionText = versionRequest.text;
@@ -55,13 +55,13 @@ public class Login : GenericScreen
 			}
 			else 
 			{
-				UnityAndroidExtras.instance.makeToast("Versão desatualizada", 1);
-				UnityAndroidExtras.instance.makeToast("Atualize em nossa página na loja de aplicativos", 1);
+				AlertsAPI.instance.makeToast("Versão desatualizada", 1);
+				AlertsAPI.instance.makeToast("Atualize em nossa página na loja de aplicativos", 1);
 			}
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Ocorreu um erro ao verificar sua versão", 1);
+			AlertsAPI.instance.makeToast("Ocorreu um erro ao verificar sua versão", 1);
 		}
 	}
 
@@ -79,9 +79,9 @@ public class Login : GenericScreen
 		if (!AreFieldsCorrect(email, password))
 			return;
 
-		UnityAndroidExtras.instance.makeToast("Entrando em Aqua", 1);
+		AlertsAPI.instance.makeToast("Entrando em Aqua", 1);
 
-		WWW loginRequest = Authenticator.RequestUserID(email, password);
+		WWW loginRequest = LoginAPI.RequestUserID(email, password);
 		ProcessLogin (loginRequest);
 	}
 
@@ -105,16 +105,16 @@ public class Login : GenericScreen
 		else 
 		{
 			if (Error.Contains("404"))
-				UnityAndroidExtras.instance.makeToast("Verifique seu e-mail e senha", 1);
+				AlertsAPI.instance.makeToast("Verifique seu e-mail e senha", 1);
 			else if (Error.Contains("500"))
 			{
 				if (Application.platform == RuntimePlatform.Android) 
-					UnityAndroidExtras.instance.makeToast("Nome de usuário ou senha incorretos", 1);
+					AlertsAPI.instance.makeToast("Nome de usuário ou senha incorretos", 1);
 				else
-					UnityAndroidExtras.instance.makeToast("Houve um problema no Servidor! Tente novamente mais tarde", 1);
+					AlertsAPI.instance.makeToast("Houve um problema no Servidor! Tente novamente mais tarde", 1);
 			}
 			else 
-				UnityAndroidExtras.instance.makeToast("Falha ao conectar! Tente novamente mais tarde", 1);
+				AlertsAPI.instance.makeToast("Falha ao conectar! Tente novamente mais tarde", 1);
 		}
 	}
 
@@ -122,7 +122,7 @@ public class Login : GenericScreen
 	{
 		Debug.Log("Requesting user with ID " + userID);
 
-		WWW userRequest = Authenticator.RequestUser(userID);
+		WWW userRequest = LoginAPI.RequestUser(userID);
 		
 		string Response = userRequest.text,
 		Error = userRequest.error;
@@ -138,7 +138,7 @@ public class Login : GenericScreen
 		{
 			Debug.Log("Error: " + Error);
 
-			UnityAndroidExtras.instance.makeToast("Falha ao receber usuário. Tente novamente.", 1);
+			AlertsAPI.instance.makeToast("Falha ao receber usuário. Tente novamente.", 1);
 			LoadScene("Login");
 		}
 	}
@@ -147,13 +147,13 @@ public class Login : GenericScreen
 	{
 		if (!CheckEmail(email)) 
 		{
-			UnityAndroidExtras.instance.makeToast("Insira um e-mail válido", 1);
+			AlertsAPI.instance.makeToast("Insira um e-mail válido", 1);
 			return false;
 		}
 
 		if (password.Length < 6) 
 		{
-			UnityAndroidExtras.instance.makeToast("A senha deve conter, pelo menos, 6 caracteres", 1);
+			AlertsAPI.instance.makeToast("A senha deve conter, pelo menos, 6 caracteres", 1);
 			return false;
 		}
 

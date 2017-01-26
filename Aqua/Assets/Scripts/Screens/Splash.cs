@@ -13,9 +13,9 @@ public class Splash : GenericScreen {
         yield return new WaitForSeconds(3);
 
         // Disables Android Status Bar
-		ApplicationChrome.statusBarState = ApplicationChrome.States.Hidden;
+		AndroidScreen.statusBarState = AndroidScreen.States.Hidden;
 		// Enables Android Navigation Bar
-		ApplicationChrome.navigationBarState = ApplicationChrome.States.Visible;
+		AndroidScreen.navigationBarState = AndroidScreen.States.Visible;
 
 		LoadScene("Login");
     }

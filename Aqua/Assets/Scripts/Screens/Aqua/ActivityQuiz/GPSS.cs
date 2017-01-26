@@ -8,7 +8,7 @@ public class GPSS : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 
 		if (QuestManager.activity.audio_file)
 			backScene = "Voice";
@@ -35,11 +35,11 @@ public class GPSS : GenericScreen
 
 		if (GPS.location[0] == 0 || GPS.location[1] == 0 || !GPS.IsActive())
 		{
-			UnityAndroidExtras.instance.makeToast("Ative o serviço de localização do celular", 1);
+			AlertsAPI.instance.makeToast("Ative o serviço de localização do celular", 1);
 			return;
 		}
 
-		UnityAndroidExtras.instance.makeToast("Localização obtida", 1);
+		AlertsAPI.instance.makeToast("Localização obtida", 1);
 		string playerLocation = GPS.location[0] + " | " + GPS.location[1];
 
 		switch (step) 
@@ -66,7 +66,7 @@ public class GPSS : GenericScreen
 		} 
 		else
 		{
-			UnityAndroidExtras.instance.makeToast("Marque o local da missão", 1);
+			AlertsAPI.instance.makeToast("Marque o local da missão", 1);
 		}
 	}
 }

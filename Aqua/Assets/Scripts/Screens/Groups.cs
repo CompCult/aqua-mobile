@@ -21,7 +21,7 @@ public class Groups : GenericScreen
 
 	private void RequestUserGroups ()
 	{
-		WWW groupsRequest = Authenticator.RequestGroups();
+		WWW groupsRequest = GroupAPI.RequestGroups();
 
 		string Response = groupsRequest.text,
 		Error = groupsRequest.error;
@@ -33,7 +33,7 @@ public class Groups : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao receber seus grupos", 1);
+			AlertsAPI.instance.makeToast("Falha ao receber seus grupos", 1);
 			LoadBackScene();
 		}
 	}
@@ -89,9 +89,9 @@ public class Groups : GenericScreen
 		if (newGroupName == null || newGroupName == "")
 			return;
 
-		UnityAndroidExtras.instance.makeToast("Criando o grupo " + newGroupName, 1);
+		AlertsAPI.instance.makeToast("Criando o grupo " + newGroupName, 1);
 
-		WWW createRequest = Authenticator.CreateGroup(newGroupName, ownerID);
+		WWW createRequest = GroupAPI.CreateGroup(newGroupName, ownerID);
 		ProcessCreation (createRequest);
 	}
 
@@ -102,7 +102,7 @@ public class Groups : GenericScreen
 
 		if (Error == null) 
 		{
-			UnityAndroidExtras.instance.makeToast("Grupo criado com sucesso", 1);
+			AlertsAPI.instance.makeToast("Grupo criado com sucesso", 1);
 			Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
 
@@ -110,7 +110,7 @@ public class Groups : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao criar. Tente novamente.", 1);
+			AlertsAPI.instance.makeToast("Falha ao criar. Tente novamente.", 1);
 			Debug.Log("Group creation error: " + Error);
 		}
 	}

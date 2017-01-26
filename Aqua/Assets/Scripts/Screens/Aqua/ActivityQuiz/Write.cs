@@ -11,7 +11,7 @@ public class Write : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 
 		if (QuestManager.activity.gps_enabled)
 			backScene = "GPS";
@@ -39,6 +39,6 @@ public class Write : GenericScreen
 			LoadScene("Send");
 		}
 		else 
-			UnityAndroidExtras.instance.makeToast("Escreva o texto da missão antes de continuar", 1);
+			AlertsAPI.instance.makeToast("Escreva o texto da missão antes de continuar", 1);
 	}
 }

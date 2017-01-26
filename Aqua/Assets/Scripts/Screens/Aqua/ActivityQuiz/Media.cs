@@ -9,7 +9,7 @@ public class Media : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		CameraDevice.cameraPlane = cameraField;
 		backScene = "Activity Home";
 

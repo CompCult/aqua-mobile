@@ -9,7 +9,7 @@ public class QuizHome : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "Search Quiz";
 
 		UpdateActivityTexts();
@@ -45,7 +45,7 @@ public class QuizHome : GenericScreen
 		QuestManager.quizResponse.user_id = UsrManager.user.id;
 		QuestManager.quizResponse.quiz_answer = alternative;
 
-		WWW quizForm = Authenticator.SendQuiz(QuestManager.quizResponse);
+		WWW quizForm = QuestAPI.SendQuiz(QuestManager.quizResponse);
 		ProcessQuiz(quizForm);
 	}
 
@@ -55,7 +55,7 @@ public class QuizHome : GenericScreen
 
 		if (Error == null)
 		{
-			UnityAndroidExtras.instance.makeToast("Enviado com sucesso", 1);
+			AlertsAPI.instance.makeToast("Enviado com sucesso", 1);
 
 			LoadBackScene();
 		}
@@ -64,11 +64,11 @@ public class QuizHome : GenericScreen
 			Debug.Log("Error: " + Error);
 
 			if (Error.Contains("500 "))
-				UnityAndroidExtras.instance.makeToast("Falha no servidor! Tente novamente mais tarde", 1);
+				AlertsAPI.instance.makeToast("Falha no servidor! Tente novamente mais tarde", 1);
 			else if (Error.Contains ("404 "))
-				UnityAndroidExtras.instance.makeToast("O quiz não existe mais ou está fora do prazo de envio", 1);
+				AlertsAPI.instance.makeToast("O quiz não existe mais ou está fora do prazo de envio", 1);
 			else 
-				UnityAndroidExtras.instance.makeToast("Falha crítica no servidor! Contate o administrador do sistema", 1);
+				AlertsAPI.instance.makeToast("Falha crítica no servidor! Contate o administrador do sistema", 1);
 		}
 	}
 }

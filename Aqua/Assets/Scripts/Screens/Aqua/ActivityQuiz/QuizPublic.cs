@@ -12,7 +12,7 @@ public class QuizPublic : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "Search Quiz";
 
 		ReceivePublicQuizzes ();
@@ -20,7 +20,7 @@ public class QuizPublic : GenericScreen
 
 	private void ReceivePublicQuizzes ()
 	{
-		WWW quizzesRequest = Authenticator.RequestPublicQuizzes();
+		WWW quizzesRequest = QuestAPI.RequestPublicQuizzes();
 
 		string Response = quizzesRequest.text,
 		Error = quizzesRequest.error;
@@ -32,7 +32,7 @@ public class QuizPublic : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Falha ao receber os quizzes públicos", 1);
+			AlertsAPI.instance.makeToast("Falha ao receber os quizzes públicos", 1);
 			LoadBackScene();
 		}
 	}

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class RandomMove : MonoBehaviour 
 {
-  
 	public float horizontalSpeed,
 	verticalSpeed,
 	finalPosition,

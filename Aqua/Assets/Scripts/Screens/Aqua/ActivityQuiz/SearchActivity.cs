@@ -11,7 +11,7 @@ public class SearchActivity : GenericScreen
 
 	public void Start () 
 	{
-		UnityAndroidExtras.instance.Init();
+		AlertsAPI.instance.Init();
 		backScene = "AquaWorld";
 	}
 
@@ -21,11 +21,11 @@ public class SearchActivity : GenericScreen
 
 		if (activityID == null || activityID.Length == 0)
 		{
-			UnityAndroidExtras.instance.makeToast("Insira o ID da missão", 1);
+			AlertsAPI.instance.makeToast("Insira o ID da missão", 1);
 			return;
 		}
 
-		WWW activityRequest = Authenticator.RequestActivity(activityID);
+		WWW activityRequest = QuestAPI.RequestActivity(activityID);
 		ProcessActivity (activityRequest);
 	}
 
@@ -43,7 +43,7 @@ public class SearchActivity : GenericScreen
 		}
 		else 
 		{
-			UnityAndroidExtras.instance.makeToast("Missão inexistente ou expirada", 1);
+			AlertsAPI.instance.makeToast("Missão inexistente ou expirada", 1);
 		}
 	}
 }

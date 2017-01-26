@@ -11,7 +11,7 @@ public static class GPS
 	public static void StartGPS()
 	{
 		if (Application.platform != RuntimePlatform.Android) 
-			UnityAndroidExtras.instance.makeToast("Dispositivo sem serviço de localização", 1);
+			AlertsAPI.instance.makeToast("Dispositivo sem serviço de localização", 1);
 		else
 			Input.location.Start();
 	}
@@ -19,7 +19,7 @@ public static class GPS
 	public static void StopGPS()
 	{
 		if (Application.platform != RuntimePlatform.Android) 
-			UnityAndroidExtras.instance.makeToast("Dispositivo sem serviço de localização", 1);
+			AlertsAPI.instance.makeToast("Dispositivo sem serviço de localização", 1);
 		else
 			Input.location.Stop();
 	}
@@ -33,25 +33,25 @@ public static class GPS
 	{
 		if (Application.platform != RuntimePlatform.Android) 
 		{
-			UnityAndroidExtras.instance.makeToast("Dispositivo sem serviço de localização", 1);
+			AlertsAPI.instance.makeToast("Dispositivo sem serviço de localização", 1);
 			return false;
 		}
 
 		if (Input.location.status == LocationServiceStatus.Initializing)
 		{
-			UnityAndroidExtras.instance.makeToast("Aguarde o serviço de localização iniciar", 1);
+			AlertsAPI.instance.makeToast("Aguarde o serviço de localização iniciar", 1);
 			return false;
 		}
 
 		if (Input.location.status == LocationServiceStatus.Stopped)
 		{
-			UnityAndroidExtras.instance.makeToast("Ative o serviço de localização do celular", 1);
+			AlertsAPI.instance.makeToast("Ative o serviço de localização do celular", 1);
 			return false;
 		}
 
 		if (Input.location.status == LocationServiceStatus.Failed)
 		{
-			UnityAndroidExtras.instance.makeToast("Autorize o Aqua Guardians a receber a localização do celular", 1);
+			AlertsAPI.instance.makeToast("Autorize o Aqua Guardians a receber a localização do celular", 1);
 			return false;
 		}
 		else
