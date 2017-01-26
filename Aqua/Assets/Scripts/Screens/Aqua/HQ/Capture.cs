@@ -16,16 +16,7 @@ public class Capture : GenericScreen
 
 		CameraDevice.ShowCameraImage();
 	}
-
-	public new void Update()
-	{
-		if (Input.GetKeyUp(KeyCode.Escape)) 
-		{
-			LoadBackScene();
-			CameraDevice.StopCameraImage();
-		}
-	}
-
+	
 	public void SendHQ ()
 	{
 		CameraDevice.RecordPhoto();

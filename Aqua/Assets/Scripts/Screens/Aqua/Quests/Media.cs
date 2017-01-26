@@ -22,8 +22,6 @@ public class Media : GenericScreen
 		if (Input.GetKeyUp(KeyCode.Escape)) 
 		{
 			LoadBackScene();
-
-			CameraDevice.StopCameraImage();
 		}
 	}
 	

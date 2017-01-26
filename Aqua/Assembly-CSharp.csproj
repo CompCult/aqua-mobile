@@ -170,6 +170,7 @@
      <Compile Include="Assets\Scripts\Screens\Groups.cs" />
      <Compile Include="Assets\Scripts\Screens\Home.cs" />
      <Compile Include="Assets\Scripts\Screens\Login.cs" />
+     <Compile Include="Assets\Scripts\Screens\Market\Market.cs" />
      <Compile Include="Assets\Scripts\Screens\Notifications.cs" />
      <Compile Include="Assets\Scripts\Screens\Profile.cs" />
      <Compile Include="Assets\Scripts\Screens\ProfileAddress.cs" />
@@ -500,6 +501,10 @@
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>C:/Users/GCint/OneDrive/Documentos/GitHub/aqua-mobile/Aqua/Assets/Scripts/Modules/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{9A725C24-3BA1-67F2-4009-12BD62B9B6C6}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

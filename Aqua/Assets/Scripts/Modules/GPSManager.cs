@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
+using SingleShadePlugin;
 
 public static class GPSManager
 {
@@ -13,7 +14,7 @@ public static class GPSManager
 		if (Application.platform != RuntimePlatform.Android) 
 			AlertsAPI.instance.makeToast("Dispositivo sem serviço de localização", 1);
 		else
-			Input.location.Start();
+			InputLocation.Start();
 	}
 
 	public static void StopGPS()
@@ -21,12 +22,13 @@ public static class GPSManager
 		if (Application.platform != RuntimePlatform.Android) 
 			AlertsAPI.instance.makeToast("Dispositivo sem serviço de localização", 1);
 		else
-			Input.location.Stop();
+			if (IsActive())
+				InputLocation.Stop();
 	}
 
 	public static bool IsActive()
 	{
-		return (Input.location.isEnabledByUser);
+		return (InputLocation.isEnabledByUser);
 	}
 
 	public static bool ReceivePlayerLocation()
@@ -37,30 +39,30 @@ public static class GPSManager
 			return false;
 		}
 
-		if (Input.location.status == LocationServiceStatus.Initializing)
-		{
-			AlertsAPI.instance.makeToast("Ative o serviço de localização iniciar", 1);
-			return false;
-		}
+		// if (Input.location.status == LocationServiceStatus.Initializing)
+		// {
+		// 	AlertsAPI.instance.makeToast("Aguardando o serviço de localização iniciar", 1);
+		// 	return false;
+		// }
 
-		if (Input.location.status == LocationServiceStatus.Stopped)
-		{
-			AlertsAPI.instance.makeToast("Ative o serviço de localização do celular", 1);
-			return false;
-		}
+		// if (Input.location.status == LocationServiceStatus.Stopped)
+		// {
+		// 	AlertsAPI.instance.makeToast("Ative o serviço de localização do celular", 1);
+		// 	return false;
+		// }
 
-		if (Input.location.status == LocationServiceStatus.Failed)
-		{
-			AlertsAPI.instance.makeToast("Autorize o Aqua Guardians a receber a localização do celular", 1);
-			return false;
-		}
-		else
-		{
+		// if (Input.location.status == LocationServiceStatus.Failed)
+		// {
+		// 	AlertsAPI.instance.makeToast("Autorize o Aqua Guardians a receber a localização do celular", 1);
+		// 	return false;
+		// }
+		// else
+		// {
 			_location = new double[2];
 
-			_location[0] = System.Convert.ToDouble(Input.location.lastData.latitude);
-			_location[1] = System.Convert.ToDouble(Input.location.lastData.longitude);
-		}
+			_location[0] = System.Convert.ToDouble(InputLocation.lastData.latitude);
+			_location[1] = System.Convert.ToDouble(InputLocation.lastData.longitude);
+		//}
 
 		return true;
 	}

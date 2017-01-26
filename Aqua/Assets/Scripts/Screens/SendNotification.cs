@@ -27,9 +27,7 @@ public class SendNotification : GenericScreen
 	{
 		if (Input.GetKeyUp(KeyCode.Escape)) 
 		{
-			CameraDevice.StopCameraImage();
 			GPSManager.StopGPS();
-
 			LoadBackScene();
 		}
 	}
