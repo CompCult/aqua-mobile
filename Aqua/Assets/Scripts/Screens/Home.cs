@@ -38,7 +38,7 @@ public class Home : GenericScreen {
 		{
 			Debug.Log("Error: " + Error);
 
-			AlertsAPI.instance.makeToast("Falha ao atualizar usuário. Tente novamente.", 1);
+			AlertsAPI.instance.makeAlert("Falha ao atualizar\nVerifique sua conexão com a internet e tente novamente.", "OK");
 		}
 	}
 

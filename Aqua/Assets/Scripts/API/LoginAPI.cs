@@ -10,18 +10,18 @@ public static class LoginAPI {
 		loginForm.AddField ("login", email);
 		loginForm.AddField ("password", CalculateSHA1(password));
 
-		WebFunctions.apiPlace = "/auth/";
-		WebFunctions.pvtKey = "f51e8e6754";
+		WebAPI.apiPlace = "/auth/";
+		WebAPI.pvtKey = "f51e8e6754";
 
-		return WebFunctions.Post(loginForm);
+		return WebAPI.Post(loginForm);
 	}
 
 	public static WWW RequestUser (int id)
 	{
-		WebFunctions.apiPlace = "/user/" + id + "/";
-		WebFunctions.pvtKey = "6b2b7f9bc0";
+		WebAPI.apiPlace = "/user/" + id + "/";
+		WebAPI.pvtKey = "6b2b7f9bc0";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 
 	public static WWW RequestRegister (string name, string email, string password) 
@@ -31,10 +31,10 @@ public static class LoginAPI {
 		registerForm.AddField ("email", email);
 		registerForm.AddField ("password", CalculateSHA1(password));
 
-		WebFunctions.apiPlace = "/user/";
-		WebFunctions.pvtKey = "6b2b7f9bc0";
+		WebAPI.apiPlace = "/user/";
+		WebAPI.pvtKey = "6b2b7f9bc0";
 
-		return WebFunctions.Post(registerForm);
+		return WebAPI.Post(registerForm);
 	}
 
 	private static string CalculateSHA1 (string input)

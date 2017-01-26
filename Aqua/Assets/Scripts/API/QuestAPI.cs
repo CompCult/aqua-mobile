@@ -6,26 +6,26 @@ public static class QuestAPI
 {
 	public static WWW RequestPublicActivities()
 	{
-		WebFunctions.apiPlace = "/mission/public/";
-		WebFunctions.pvtKey = "ec689306c5";
+		WebAPI.apiPlace = "/mission/public/";
+		WebAPI.pvtKey = "ec689306c5";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 
 	public static WWW RequestPublicQuizzes()
 	{
-		WebFunctions.apiPlace = "/quiz/public/";
-		WebFunctions.pvtKey = "ec689306c5";
+		WebAPI.apiPlace = "/quiz/public/";
+		WebAPI.pvtKey = "ec689306c5";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 
 		public static WWW RequestQuiz(string quizID)
 	{
-		WebFunctions.apiPlace = "/quiz/" + quizID + "/";
-		WebFunctions.pvtKey = "ec689306c5";
+		WebAPI.apiPlace = "/quiz/" + quizID + "/";
+		WebAPI.pvtKey = "ec689306c5";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 
 	public static WWW SendQuiz(QuizResponse quizResponse)
@@ -37,18 +37,18 @@ public static class QuestAPI
 		quizForm.AddField ("user_id", quizResponse.user_id);
 		quizForm.AddField ("quiz_answer", quizResponse.quiz_answer);
 
-		WebFunctions.apiPlace = "/answer/";
-		WebFunctions.pvtKey = "ec689306c5";
+		WebAPI.apiPlace = "/answer/";
+		WebAPI.pvtKey = "ec689306c5";
 
-		return WebFunctions.Post(quizForm);
+		return WebAPI.Post(quizForm);
 	}
 
 	public static WWW RequestActivity(string activityID)
 	{
-		WebFunctions.apiPlace = "/mission/" + activityID + "/";
-		WebFunctions.pvtKey = "ec689306c5";
+		WebAPI.apiPlace = "/mission/" + activityID + "/";
+		WebAPI.pvtKey = "ec689306c5";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 
 	public static WWW SendActivity(ActivityResponse activityResponse, Activity activity)
@@ -74,9 +74,9 @@ public static class QuestAPI
  		if (activity.audio_file)
  			responseForm.AddBinaryData("audio", activityResponse.audio, "voice.wav", "audio/wav");
 
-		WebFunctions.apiPlace = "/answer/";
-		WebFunctions.pvtKey = "ec689306c5";
+		WebAPI.apiPlace = "/answer/";
+		WebAPI.pvtKey = "ec689306c5";
 
-		return WebFunctions.Post(responseForm);
+		return WebAPI.Post(responseForm);
 	}
 }

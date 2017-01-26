@@ -47,7 +47,7 @@ public class Register : GenericScreen {
 		}
 		else 
 		{
-			AlertsAPI.instance.makeToast("E-mail já registrado", 1);
+			AlertsAPI.instance.makeAlert("E-mail em uso!\nInsira outro endereço de e-mail para continuar.", "OK");
 		}
 	}
 
@@ -55,19 +55,19 @@ public class Register : GenericScreen {
 	{
 		if (name.Length < 3) 
 		{
-			AlertsAPI.instance.makeToast("O nome deve conter pelo menos 3 caracteres", 1);
+			AlertsAPI.instance.makeAlert("Nome muito curto!\nSeu nome deve conter pelo menos 3 caracteres.", "OK");
 			return false;
 		}
 
 		if (password.Length < 6 || repPassword.Length < 6 || password != repPassword)
 		{
-			AlertsAPI.instance.makeToast("As senhas devem conter pelo menos 6 caracteres e serem iguais", 1);
+			AlertsAPI.instance.makeAlert("As senhas devem conter pelo menos 3 caracteres e serem iguais.", "OK");
 			return false;
 		}
 
 		if (!CheckEmail(email)) 
 		{
-			AlertsAPI.instance.makeToast("Insira um e-mail válido", 1);
+			AlertsAPI.instance.makeAlert("E-mail inválido!\nInsira seu e-mail corretamente e tente novamente.", "OK");
 			return false;
 		}
 

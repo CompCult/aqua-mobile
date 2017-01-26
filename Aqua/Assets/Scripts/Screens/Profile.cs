@@ -84,7 +84,7 @@ public class Profile : GenericScreen {
 		else 
 		{
 			Debug.Log("Error on update: " + Error);
-			AlertsAPI.instance.makeToast("Falha ao atualizar. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao atualizar seu perfil. Tente novamente em alguns instantes.", "Tudo bem");
 		}
 	}
 
@@ -95,20 +95,20 @@ public class Profile : GenericScreen {
 		if (name.Length < 3)
 			errorMessage = "Seu nome deve conter pelo menos 3 caracteres";
 		if (!CheckEmail(email))
-			errorMessage = "Insira um e-mail válido";
+			errorMessage = "Insira um e-mail válido.";
 		if (birth.Length != 0 && !CheckDate(birth, "dd/mm/yyyy"))
-			errorMessage = "Insira uma data de nascimento válida";
+			errorMessage = "Insira uma data de nascimento válida.";
 		if (cpf.Length != 0 && !CheckCPF(cpf))
-			errorMessage = "Insira um CPF válido";
+			errorMessage = "Insira um CPF válido\nO formato correto é 111.222.333-55.";
 		if (phone.Length != 0 && phone.Length < 10)
-			errorMessage = "Insira um número de telefone válido";
+			errorMessage = "Insira um número de telefone válido\nInsira seu telefone com DDD.";
 		if (pass.Length < 6 || repPass.Length < 6)
-			errorMessage = "As senhas devem possuir pelo menos 6 caracteres";
+			errorMessage = "As senhas devem possuir pelo menos 6 caracteres.";
 		if (pass != repPass)
-			errorMessage = "As senhas não confirmam";
+			errorMessage = "As senhas digitadas não estão iguais.";
 
 		if (errorMessage != "") {
-			AlertsAPI.instance.makeToast(errorMessage, 1);
+			AlertsAPI.instance.makeAlert(errorMessage, "OK");
 			return false;
 		}
 		

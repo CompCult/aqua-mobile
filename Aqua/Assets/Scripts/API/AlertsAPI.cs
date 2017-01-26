@@ -47,9 +47,12 @@ public class AlertsAPI : MonoBehaviour {
 	/// </summary>
 	/// <param name="message">Message.</param>
 	/// <param name="neutralButtonText">Neutral button text.</param>
-	public void alert(string message, string neutralButtonText)
+	public void makeAlert(string message, string neutralButtonText)
 	{
 		Debug.Log("Toast: " + message + " / Button: " + neutralButtonText);
+
+		if (Application.platform != RuntimePlatform.Android) 
+			return;
 
 		#if !DEBUGMODE && UNITY_ANDROID
 		using(AndroidJavaObject jo =  new AndroidJavaObject("com.nevzatarman.unityextras.UnityExtras"))
@@ -63,8 +66,11 @@ public class AlertsAPI : MonoBehaviour {
 	/// <param name="message">Message.</param>
 	/// <param name="neutralButtonText">Neutral button text.</param>
 	/// <param name="negativeButtonText">Negative button text.</param>
-	public void alert(string message,string neutralButtonText,string negativeButtonText)
+	public void makeAlert(string message, string neutralButtonText, string negativeButtonText)
 	{
+		if (Application.platform != RuntimePlatform.Android) 
+			return;
+
 		#if !DEBUGMODE && UNITY_ANDROID
 		using(AndroidJavaObject jo =  new AndroidJavaObject("com.nevzatarman.unityextras.UnityExtras"))
 			jo.Call("alert",message,neutralButtonText,negativeButtonText,gameObject.name);

@@ -4,10 +4,10 @@ public static class AddressAPI
 {
 	public static WWW RequestAddress(int id)
 	{
-		WebFunctions.apiPlace = "/address/" + id + "/";
-		WebFunctions.pvtKey = "fc64ec6244";
+		WebAPI.apiPlace = "/address/" + id + "/";
+		WebAPI.pvtKey = "fc64ec6244";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 
 	public static WWW UpdateAddress (string zipcode, string street, string number, string district, string city, string state, string complement)
@@ -21,10 +21,10 @@ public static class AddressAPI
 		updateForm.AddField ("state", state);
 		updateForm.AddField ("complement", complement);
 
-		WebFunctions.apiPlace = "/address/" + AddressManager.address.id + "/";
-		WebFunctions.pvtKey = "fc64ec6244";
+		WebAPI.apiPlace = "/address/" + AddressManager.address.id + "/";
+		WebAPI.pvtKey = "fc64ec6244";
 
-		return WebFunctions.Post(updateForm);
+		return WebAPI.Post(updateForm);
 	}
 
 	public static WWW CreateAddress (string zipcode, string street, string number, string district, string city, string state, string complement)
@@ -38,9 +38,9 @@ public static class AddressAPI
 		updateForm.AddField ("state", state);
 		updateForm.AddField ("complement", complement);
 
-		WebFunctions.apiPlace = "/address/";
-		WebFunctions.pvtKey = "fc64ec6244";
+		WebAPI.apiPlace = "/address/";
+		WebAPI.pvtKey = "fc64ec6244";
 
-		return WebFunctions.Post(updateForm);
+		return WebAPI.Post(updateForm);
 	}
 }

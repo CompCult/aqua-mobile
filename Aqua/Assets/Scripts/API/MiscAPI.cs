@@ -10,9 +10,9 @@ public static class MiscAPI
 {
 	public static WWW CheckVersion ()
 	{
-		WebFunctions.apiPlace = "/sysinfo/mobile-version";
-		WebFunctions.pvtKey = "";
+		WebAPI.apiPlace = "/sysinfo/mobile-version";
+		WebAPI.pvtKey = "";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 }

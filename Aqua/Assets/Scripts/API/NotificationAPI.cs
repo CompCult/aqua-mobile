@@ -6,10 +6,10 @@ public static class NotificationAPI
 {
 	public static WWW RequestNotifications(int id)
 	{
-		WebFunctions.apiPlace = "/notification/user/" + id + "/";
-		WebFunctions.pvtKey = "d86c362f4b";
+		WebAPI.apiPlace = "/notification/user/" + id + "/";
+		WebAPI.pvtKey = "d86c362f4b";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 
 	public static WWW SendNotification (int id, string latitude, string longitude, string type, byte[] bytes)
@@ -22,9 +22,9 @@ public static class NotificationAPI
 		photoForm.AddField ("type", type);
 		photoForm.AddBinaryData("photo", bytes, "Photo.png", "image/png");
 
-		WebFunctions.apiPlace = "/notification/";
-		WebFunctions.pvtKey = "d86c362f4b";
+		WebAPI.apiPlace = "/notification/";
+		WebAPI.pvtKey = "d86c362f4b";
 
-		return WebFunctions.Post(photoForm);
+		return WebAPI.Post(photoForm);
 	}
 }

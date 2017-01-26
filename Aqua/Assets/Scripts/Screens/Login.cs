@@ -55,13 +55,12 @@ public class Login : GenericScreen
 			}
 			else 
 			{
-				AlertsAPI.instance.makeToast("Versão desatualizada", 1);
-				AlertsAPI.instance.makeToast("Atualize em nossa página na loja de aplicativos", 1);
+				AlertsAPI.instance.makeAlert("Versão desatualizada!\nBaixe a versão mais recente na Play Store.", "Entendi");
 			}
 		}
 		else 
 		{
-			AlertsAPI.instance.makeToast("Ocorreu um erro ao verificar sua versão", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nOcorreu um erro ao verificar sua versão. Tente novamente em alguns instantes.", "Tudo bem");
 		}
 	}
 
@@ -105,16 +104,14 @@ public class Login : GenericScreen
 		else 
 		{
 			if (Error.Contains("404"))
-				AlertsAPI.instance.makeToast("Verifique seu e-mail e senha", 1);
+				AlertsAPI.instance.makeAlert("Usuário não encontrado!\nVerifique se inseriu seu e-mail corretamente.", "OK");
 			else if (Error.Contains("500"))
 			{
 				if (Application.platform == RuntimePlatform.Android) 
-					AlertsAPI.instance.makeToast("Nome de usuário ou senha incorretos", 1);
-				else
-					AlertsAPI.instance.makeToast("Houve um problema no Servidor! Tente novamente mais tarde", 1);
+					AlertsAPI.instance.makeAlert("Dados incorretos!\nVerifique seu e-mail e senha.", "OK");
 			}
 			else 
-				AlertsAPI.instance.makeToast("Falha ao conectar! Tente novamente mais tarde", 1);
+				AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao conectar-se com o servidor. Tente novamente mais tarde.", "OK");
 		}
 	}
 
@@ -138,7 +135,7 @@ public class Login : GenericScreen
 		{
 			Debug.Log("Error: " + Error);
 
-			AlertsAPI.instance.makeToast("Falha ao receber usuário. Tente novamente.", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nOcorreu um erro ao receber seus dados. Tente novamente em alguns instantes.", "OK");
 			LoadScene("Login");
 		}
 	}
@@ -147,13 +144,13 @@ public class Login : GenericScreen
 	{
 		if (!CheckEmail(email)) 
 		{
-			AlertsAPI.instance.makeToast("Insira um e-mail válido", 1);
+			AlertsAPI.instance.makeAlert("E-mail inválido!\nInsira seu e-mail corretamente e tente mais uma vez.", "OK");
 			return false;
 		}
 
 		if (password.Length < 6) 
 		{
-			AlertsAPI.instance.makeToast("A senha deve conter, pelo menos, 6 caracteres", 1);
+			AlertsAPI.instance.makeAlert("Senha curta!\nSua senha deve conter pelo menos 6 caracteres", "OK");
 			return false;
 		}
 
@@ -177,7 +174,9 @@ public class Login : GenericScreen
 		if (devModeCounter == 10)
 		{
 			devModeCounter = 0;
-			WebFunctions.ToggleURL();
+			WebAPI.ToggleURL();
+
+			ReloadScene();
 		}
 	}
 }

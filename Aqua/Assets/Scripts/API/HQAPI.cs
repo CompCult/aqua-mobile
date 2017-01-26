@@ -6,10 +6,10 @@ public static class HQAPI
 {
 	public static WWW RequestHQ ()
 	{
-		WebFunctions.apiPlace = "/hq/random/";
-		WebFunctions.pvtKey = "6b2b7f9bc0";
+		WebAPI.apiPlace = "/hq/random/";
+		WebAPI.pvtKey = "6b2b7f9bc0";
 
-		return WebFunctions.Get();
+		return WebAPI.Get();
 	}
 
 	public static WWW SendHQ (HQResponse hqResponse)
@@ -18,10 +18,10 @@ public static class HQAPI
 		hqForm.AddField ("user_id", hqResponse.user_id);
 		hqForm.AddBinaryData("photo", hqResponse.photo, "Photo.png", "image/png");
 
-		WebFunctions.apiPlace = "/hq/";
-		WebFunctions.pvtKey = "6b2b7f9bc0";
+		WebAPI.apiPlace = "/hq/";
+		WebAPI.pvtKey = "6b2b7f9bc0";
 
-		return WebFunctions.Post(hqForm);
+		return WebAPI.Post(hqForm);
 	}
 
 	public static WWW SendHQRate (HQ currentHQ, int hqRate)
@@ -31,9 +31,9 @@ public static class HQAPI
 		rateForm.AddField ("hq_id", currentHQ.photo.hq_id);
 		rateForm.AddField ("value", hqRate);
 
-		WebFunctions.apiPlace = "/rating/";
-		WebFunctions.pvtKey = "6b2b7f9bc0";
+		WebAPI.apiPlace = "/rating/";
+		WebAPI.pvtKey = "6b2b7f9bc0";
 
-		return WebFunctions.Post(rateForm);
+		return WebAPI.Post(rateForm);
 	}
 }

@@ -11,7 +11,7 @@ public class Groups : GenericScreen
 	public Text groupName;
 
 	public List<Group> groupsList;
-
+	
 	public void Start () 
 	{
 		backScene = "Home";
@@ -29,11 +29,10 @@ public class Groups : GenericScreen
 		if (Error == null)
 		{
 			FillGroupsList(Response);
-			CreateGroupsCard();
 		}
 		else 
 		{
-			AlertsAPI.instance.makeToast("Falha ao receber seus grupos", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao receber seus grupos. Tente novamente em alguns instantes.", "Tudo bem");
 			LoadBackScene();
 		}
 	}
@@ -49,7 +48,7 @@ public class Groups : GenericScreen
         	groupsList.Add(group);
         }
 
-        Debug.Log("Size: " + groupsList.Count);
+        CreateGroupsCard();
     }
 
     private void CreateGroupsCard ()
@@ -103,14 +102,13 @@ public class Groups : GenericScreen
 		if (Error == null) 
 		{
 			AlertsAPI.instance.makeToast("Grupo criado com sucesso", 1);
-			Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+			ReloadScene();
 
 			Debug.Log("Group creation response: " + Response);
 		}
 		else 
 		{
-			AlertsAPI.instance.makeToast("Falha ao criar. Tente novamente.", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve uma falha ao criar seu grupo. Tente novamente em alguns instantes.", "Tudo bem");
 			Debug.Log("Group creation error: " + Error);
 		}
 	}

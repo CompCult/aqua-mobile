@@ -33,7 +33,8 @@ public class GenericScreen : MonoBehaviour
 
 	public void ReloadScene()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
 	}
 }
 

@@ -16,10 +16,10 @@ public static class UserAPI
 			updateForm.AddField ("address", address);
 		updateForm.AddField ("phone", phone);
 
-		WebFunctions.apiPlace = "/user/" + UsrManager.user.id + "/";
-		WebFunctions.pvtKey = "6b2b7f9bc0";
+		WebAPI.apiPlace = "/user/" + UsrManager.user.id + "/";
+		WebAPI.pvtKey = "6b2b7f9bc0";
 
-		return WebFunctions.Post(updateForm);
+		return WebAPI.Post(updateForm);
 	}
 
 	private static string CalculateSHA1 (string input)

@@ -53,7 +53,7 @@ public class ProfileAddress : GenericScreen {
 		{
 			Debug.Log("Error on get address: " + Error);
 
-			AlertsAPI.instance.makeToast("Falha ao obter seu endereço. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao receber seu endereço. Tente novamente em alguns instantes.", "Tudo bem");
 			LoadScene(backScene);
 		}
 	}
@@ -113,7 +113,7 @@ public class ProfileAddress : GenericScreen {
 		{
 			Debug.Log("Error on update address: " + Error);
 
-			AlertsAPI.instance.makeToast("Falha ao obter seu endereço. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao receber seu endereço. Tente novamente em alguns instantes.", "Tudo bem");
 		}
 	}
 
@@ -133,7 +133,7 @@ public class ProfileAddress : GenericScreen {
 		{
 			Debug.Log("Error on create address: " + Error);
 
-			AlertsAPI.instance.makeToast("Falha ao criar seu endereço. Tente novamente mais tarde.", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao atualizar seu endereço. Tente novamente em alguns instantes.", "Tudo bem");
 		}
 	}
 
@@ -148,7 +148,7 @@ public class ProfileAddress : GenericScreen {
 
 		if (errorMessage != "")
 		{
-			AlertsAPI.instance.makeToast(errorMessage, 1);
+			AlertsAPI.instance.makeAlert(errorMessage, "OK");
 			return false;
 		}
 

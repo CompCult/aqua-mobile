@@ -47,7 +47,7 @@ public class GroupScreen : GenericScreen
 		}
 		else 
 		{
-			AlertsAPI.instance.makeToast("Falha ao abrir o grupo", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao receber as informações do grupo. Poderia tentar novamente em alguns instantes?", "Tudo bem");
 			LoadBackScene();
 		}
 	}
@@ -90,7 +90,7 @@ public class GroupScreen : GenericScreen
         {
         	if (memberEmail == member.email)
         	{
-        		AlertsAPI.instance.makeToast("Membro já adicionado", 1);
+        		AlertsAPI.instance.makeAlert("Essa pessoa já faz parte do grupo", "OK");
         		return;
         	}
         }
@@ -108,16 +108,15 @@ public class GroupScreen : GenericScreen
 
 		if (Error == null) 
 		{
-			AlertsAPI.instance.makeToast("Jogador(a) adicionado(a)", 1);
-			Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+			AlertsAPI.instance.makeToast("Membro adicionado", 1);
+			ReloadScene();
 		}
 		else 
 		{
 			if (Error.Contains("404 "))
-				AlertsAPI.instance.makeToast("E-mail não encontrado", 1);
+				AlertsAPI.instance.makeAlert("E-mail não encontrado!\nParece que não há um jogador com esse e-mail. Você digitou corretamente?", "Corrigir");
 			else 
-				AlertsAPI.instance.makeToast("Falha ao adicionar. Tente novamente.", 1);
+				AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao adicionar o membro. Tente novamente em alguns instantes.", "Tudo bem");
 			
 			Debug.Log("Member add error: " + Error);
 		}
@@ -160,7 +159,7 @@ public class GroupScreen : GenericScreen
 		{
 			if (isOwner)
 			{
-				AlertsAPI.instance.makeToast("Jogador(a) removido(a)", 1);
+				AlertsAPI.instance.makeToast("Membro removido", 1);
 
 				Scene scene = SceneManager.GetActiveScene();
 	            SceneManager.LoadScene(scene.name);
@@ -173,7 +172,7 @@ public class GroupScreen : GenericScreen
 		}
 		else 
 		{
-			AlertsAPI.instance.makeToast("Falha ao remover. Tente novamente.", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve uma falha no processo de retirada. Tente novamente mais tarde.", "Tudo bem");
 			Debug.Log("Member remove error: " + Error);
 		}
 	}
@@ -198,7 +197,7 @@ public class GroupScreen : GenericScreen
 		}
 		else 
 		{
-			AlertsAPI.instance.makeToast("Falha ao excluir. Tente novamente.", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nHouve um problema ao excluir o grupo. Tente novamente em instantes.", "Tudo bem");
 			Debug.Log("Group delete error: " + Error);
 		}
 	}

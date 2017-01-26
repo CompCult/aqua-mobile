@@ -36,7 +36,7 @@ public class Ranking : GenericScreen
 		}
 		else 
 		{
-			AlertsAPI.instance.makeToast("Falha ao receber o Ranking", 1);
+			AlertsAPI.instance.makeAlert("Ops!\nNão conseguimos receber o ranking. Tente novamente em alguns instantes.", "Tudo bem");
 			LoadBackScene();
 		}
 	}
