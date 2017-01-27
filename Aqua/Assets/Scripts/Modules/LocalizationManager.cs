@@ -6,11 +6,13 @@ using System.IO;
 
 public static class LocalizationManager 
 {
-	private static string[] tags;
 	private static TextAsset languageFile;
 	private static Dictionary<string, Dictionary<string, string>> languages;
+	
 	private static XmlDocument xmlDoc = new XmlDocument();
 	private static XmlReader reader;
+	
+	private static string[] tags;
 	private static string lang;
 	private static string Lang {
 		get 
