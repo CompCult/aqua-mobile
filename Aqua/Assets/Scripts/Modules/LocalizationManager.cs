@@ -65,12 +65,12 @@ public static class LocalizationManager
 		}
 	}
 
-	public static string GetWord(string lan, string key) 
+	public static string GetText(string lan, string key) 
 	{
 		return languages[lan][key];
 	}
 
-	public static string GetWord(string key) 
+	public static string GetText(string key) 
 	{
 		return languages[lang][key];
 	}

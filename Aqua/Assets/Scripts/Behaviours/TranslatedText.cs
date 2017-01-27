@@ -9,6 +9,6 @@ public class TranslatedText : MonoBehaviour
 	
 	public void Start()
 	{
-		GetComponent<Text>().text = LocalizationManager.GetWord(keyName);
+		GetComponent<Text>().text = LocalizationManager.GetText(keyName);
 	}
 }
