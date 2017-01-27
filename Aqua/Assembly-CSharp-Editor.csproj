@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_DUCK_TYPING</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_DUCK_TYPING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -36,52 +36,18 @@
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Editor\PhotonNetwork\PhotonConverter.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditor.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewHandler.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewInspector.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewPrefabApply.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Editor\PhotonNetwork\ServerSettingsInspector.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\PlayMaker\Editor\PlayMakerPhotonEditorUtility.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\PlayMaker\Editor\PlayMakerPhotonGameObjectProxyEditor.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\PlayMaker\Editor\PlayMakerPhotonWizard.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Actions\Editor\LookAtActionEditor.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Actions\Editor\MoveTowardsActionEditor.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Actions\Editor\SetCameraFOVActionEditor.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\AboutWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\ContextToolWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmActionWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmComponentInspector.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmEditorHelpers.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmEditorWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmErrorWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmEventsWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmGlobalsWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmLogWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmSelectorWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmStateWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmTemplate.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmTemplateEditor.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\FsmTemplateWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\PlayMakerBugReportWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\PlayMakerCustomActionWizard.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\PlayMakerGUIInspector.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\PlayMakerGlobalsInspector.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\PlayMakerMainMenu.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\PlayMakerWelcomeWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Editor\ReportWindow.cs" />
-     <Compile Include="Assets\Scenes\Games\PlayerMaker\iTween\PlayMaker\Editor\iTweenMoveToActionEditor.cs" />
-     <None Include="Assets\Lang\en.txt" />
+     <Compile Include="Assets\LocalizeService\Scripts\Editor\LocalizationServiceEditor.cs" />
+     <Compile Include="Assets\LocalizeService\Scripts\Editor\UILocalizationEditor.cs" />
      <None Include="Assets\Resources\Maps\1-51.txt" />
      <None Include="Assets\Resources\Maps\1-68.txt" />
      <None Include="Assets\Resources\Maps\3-90.txt" />
@@ -89,7 +55,6 @@
      <None Include="Assets\Resources\Maps\New Text Document.txt" />
      <None Include="Assets\Resources\Maps\1-23.txt" />
      <None Include="Assets\Resources\Maps\2-4.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\PlayMaker\ReleaseNotes.txt" />
      <None Include="Assets\Resources\Maps\3-42.txt" />
      <None Include="Assets\Resources\Maps\1-85.txt" />
      <None Include="Assets\Resources\Maps\2-41.txt" />
@@ -112,7 +77,6 @@
      <None Include="Assets\Resources\Maps\3-57.txt" />
      <None Include="Assets\Resources\Maps\3-22.txt" />
      <None Include="Assets\Resources\Maps\3-25.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Readme.txt" />
      <None Include="Assets\Resources\Maps\2-6.txt" />
      <None Include="Assets\Resources\Maps\2-7.txt" />
      <None Include="Assets\Resources\Maps\2-2.txt" />
@@ -142,7 +106,6 @@
      <None Include="Assets\Resources\WorldData.txt" />
      <None Include="Assets\Resources\Maps\2-79.txt" />
      <None Include="Assets\Resources\Maps\3-31.txt" />
-     <None Include="Assets\Lang\pt.txt" />
      <None Include="Assets\Resources\Maps\1-62.txt" />
      <None Include="Assets\Resources\Maps\2-43.txt" />
      <None Include="Assets\Resources\Maps\1-61.txt" />
@@ -187,7 +150,6 @@
      <None Include="Assets\Resources\Maps\1-83.txt" />
      <None Include="Assets\Resources\Maps\2-95.txt" />
      <None Include="Assets\Resources\Maps\2-90.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Plugins\PhotonNetwork\library\Photon3Unity3D.xml" />
      <None Include="Assets\Resources\Maps\1-84.txt" />
      <None Include="Assets\Resources\Maps\3-45.txt" />
      <None Include="Assets\Resources\Maps\1-87.txt" />
@@ -208,7 +170,6 @@
      <None Include="Assets\Resources\Maps\2-58.txt" />
      <None Include="Assets\Resources\Maps\3-36.txt" />
      <None Include="Assets\Resources\Maps\1-12.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\Plugins\PhotonNetwork\library\release_history.txt" />
      <None Include="Assets\Resources\Maps\1-73.txt" />
      <None Include="Assets\Resources\Maps\1-39.txt" />
      <None Include="Assets\Resources\Maps\3-91.txt" />
@@ -239,7 +200,7 @@
      <None Include="Assets\Resources\Maps\2-36.txt" />
      <None Include="Assets\Resources\Maps\3-17.txt" />
      <None Include="Assets\Resources\Maps\3-69.txt" />
-     <None Include="Assets\Scenes\Games\Match\readme.txt" />
+     <None Include="Assets\Scenes\Aqua\Games\Match\readme.txt" />
      <None Include="Assets\Resources\Maps\2-78.txt" />
      <None Include="Assets\Resources\Maps\2-66.txt" />
      <None Include="Assets\Resources\Maps\3-58.txt" />
@@ -306,7 +267,6 @@
      <None Include="Assets\Resources\Maps\1-93.txt" />
      <None Include="Assets\Resources\Maps\3-94.txt" />
      <None Include="Assets\Resources\Maps\2-31.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Resources\Maps\2-13.txt" />
      <None Include="Assets\Resources\Maps\3-19.txt" />
      <None Include="Assets\Resources\Maps\1-38.txt" />
@@ -320,7 +280,6 @@
      <None Include="Assets\Resources\Maps\2-81.txt" />
      <None Include="Assets\Resources\Maps\3-28.txt" />
      <None Include="Assets\Resources\Maps\1-29.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Resources\PlayMakerAssemblies.txt" />
      <None Include="Assets\Resources\Maps\3-73.txt" />
      <None Include="Assets\Resources\Maps\1-89.txt" />
      <None Include="Assets\Resources\Maps\2-1.txt" />
@@ -334,7 +293,6 @@
      <None Include="Assets\Resources\Maps\1-44.txt" />
      <None Include="Assets\Resources\Maps\1-37.txt" />
      <None Include="Assets\Resources\Maps\1-13.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\readme.txt" />
      <None Include="Assets\Resources\Maps\3-6.txt" />
      <None Include="Assets\Resources\Maps\3-93.txt" />
      <None Include="Assets\Resources\Maps\3-1.txt" />
@@ -373,7 +331,6 @@
      <None Include="Assets\Resources\Maps\1-49.txt" />
      <None Include="Assets\Resources\Maps\1-45.txt" />
      <None Include="Assets\Resources\Maps\3-38.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\PlayMaker\Versions\readme.txt" />
      <None Include="Assets\Resources\Maps\3-78.txt" />
      <None Include="Assets\Resources\Maps\1-21.txt" />
      <None Include="Assets\Resources\Maps\2-70.txt" />
@@ -384,7 +341,6 @@
      <None Include="Assets\Resources\Maps\2-22.txt" />
      <None Include="Assets\Resources\Maps\2-60.txt" />
      <None Include="Assets\Resources\Maps\3-37.txt" />
-     <None Include="Assets\Scenes\Games\PlayerMaker\Photon Unity Networking\changelog.txt" />
      <None Include="Assets\Resources\Maps\3-49.txt" />
      <None Include="Assets\Resources\Maps\1-78.txt" />
      <None Include="Assets\Resources\Maps\3-23.txt" />
@@ -394,86 +350,73 @@
      <None Include="Assets\Resources\Maps\2-9.txt" />
      <None Include="Assets\Resources\Maps\1-76.txt" />
      <None Include="Assets\Resources\Maps\3-50.txt" />
+ <Reference Include="Assembly-UnityScript">
+ <HintPath>C:/Users/GCint/OneDrive/Documentos/GitHub/aqua-mobile/Aqua/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.EditorTestsRunner">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.PlaymodeTestsRunner">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/Editor/UnityEditor.PlaymodeTestsRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.PlaymodeTestsRunner">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.TreeEditor">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Analytics">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/Editor/UnityEditor.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.HoloLens">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.VR">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VR">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.SharpZipLib">
+ <HintPath>C:/Users/GCint/OneDrive/Documentos/GitHub/aqua-mobile/Aqua/Assets/Scripts/Modules/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
- <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Android.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/Photon Unity Networking/Plugins/PhotonNetwork/library/Photon3Unity3D.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditorResources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/PlayMakerEditorResources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.fr.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/fr/PlayMakerEditor.fr.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMaker">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/PlayMaker.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.sv-SE.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/sv-SE/PlayMakerEditor.sv-SE.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.es-ES.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/es-ES/PlayMakerEditor.es-ES.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.de.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/de/PlayMakerEditor.de.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.pt-BR.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/pt-BR/PlayMakerEditor.pt-BR.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/PlayMakerEditor.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.it.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/it/PlayMakerEditor.it.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.ja.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/ja/PlayMakerEditor.ja.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.zh-TW.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/zh-TW/PlayMakerEditor.zh-TW.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.nl.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/nl/PlayMakerEditor.nl.resources.dll</HintPath>
- </Reference>
- <Reference Include="PlayMakerEditor.zh-CN.resources">
- <HintPath>C:/Users/Rafaela Lacerda/aqua-mobile/Aqua/Assets/Scenes/Games/PlayerMaker/PlayMaker/Editor/zh-CN/PlayMakerEditor.zh-CN.resources.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{9A725C24-3BA1-67F2-4009-12BD62B9B6C6}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{F41C101C-71A2-CABD-76FD-62517701B988}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>

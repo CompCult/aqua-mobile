@@ -1,0 +1,35 @@
+<Data>
+	<!-- Text fields -->
+	<PT Key = "Email"	Word = "E-mail"/>
+	<PT Key = "Password"	Word = "Senha"/>
+	<PT Key = "Remember"	Word = "Lembrar-me"/>
+	<PT Key = "NewUser?"	Word = "Não possui uma conta?"/>
+	<PT Key = "Welcome"	Word = "Bem-vindo(a)"/>
+
+	<EN Key = "Email"	Word = "Email"/>
+	<EN Key = "Password"	Word = "Password"/>
+	<EN Key = "Remember"	Word = "Remember Me"/>
+	<EN Key = "NewUser?"	Word = "Are you new?"/>
+	<EN Key = "Welcome"	Word = "Welcome"/>
+
+	<!-- Buttons -->
+	<PT Key = "Register"	Word = "Registre-se"/>
+	<PT Key = "Enter"	Word = "Entrar"/>
+	<PT Key = "ClickExplore"	Word = "Clique para explorar"/>
+	<PT Key = "SendNotification"	Word = "Enviar notificação"/>
+	<PT Key = "MyNotifications"	Word = "Minhas notificações"/>
+	<PT Key = "Profile"	Word = "Perfil"/>
+	<PT Key = "Ranking"	Word = "Ranking"/>
+	<PT Key = "Market"	Word = "Feira"/>
+	<PT Key = "Groups"	Word = "Grupos"/>
+
+	<EN Key = "Register"	Word = "Register"/>
+	<EN Key = "Enter"	Word = "Enter"/>
+	<EN Key = "ClickExplore"	Word = "Click to explore"/>
+	<EN Key = "SendNotification"	Word = "Send Notification"/>
+	<EN Key = "MyNotifications"	Word = "My Notifications"/>
+	<EN Key = "Profile"	Word = "Profile"/>
+	<EN Key = "Ranking"	Word = "Ranking"/>
+	<EN Key = "Market"	Word = "Market"/>
+	<EN Key = "Groups"	Word = "Groups"/>
+</Data>

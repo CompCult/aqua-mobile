@@ -20,7 +20,7 @@ public class Login : GenericScreen
 	{
 		AlertsAPI.instance.Init();
 		backScene = null;
-		
+
 		CheckSavedEmail();
 		CheckVersion();
 	}

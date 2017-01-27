@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\API\WebAPI.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Bubbles.cs" />
      <Compile Include="Assets\Scripts\Behaviours\RandomMove.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\TranslatedText.cs" />
      <Compile Include="Assets\Scripts\Modules\AddressManager.cs" />
      <Compile Include="Assets\Scripts\Modules\AndroidScreen.cs" />
      <Compile Include="Assets\Scripts\Modules\AudioRec.cs" />
@@ -66,6 +67,7 @@
      <Compile Include="Assets\Scripts\Modules\FormatInput.cs" />
      <Compile Include="Assets\Scripts\Modules\GPSManager.cs" />
      <Compile Include="Assets\Scripts\Modules\GroupManager.cs" />
+     <Compile Include="Assets\Scripts\Modules\LocalizationManager.cs" />
      <Compile Include="Assets\Scripts\Modules\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Modules\SavWav.cs" />
      <Compile Include="Assets\Scripts\Modules\UsrManager.cs" />
@@ -165,6 +167,7 @@
      <Compile Include="Assets\Scripts\Screens\Aqua\Quests\Send.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Quests\Voice.cs" />
      <Compile Include="Assets\Scripts\Screens\Aqua\Quests\Write.cs" />
+     <Compile Include="Assets\Scripts\Screens\Configurations.cs" />
      <Compile Include="Assets\Scripts\Screens\GenericScreen.cs" />
      <Compile Include="Assets\Scripts\Screens\GroupScreen.cs" />
      <Compile Include="Assets\Scripts\Screens\Groups.cs" />
@@ -179,6 +182,7 @@
      <Compile Include="Assets\Scripts\Screens\SendNotification.cs" />
      <Compile Include="Assets\Scripts\Screens\Splash.cs" />
      <None Include="Assets\Resources\Maps\1-51.txt" />
+     <None Include="Assets\Resources\Lang\Translations.xml" />
      <None Include="Assets\Resources\Maps\1-68.txt" />
      <None Include="Assets\Resources\Maps\3-90.txt" />
      <None Include="Assets\Resources\Maps\2-42.txt" />

@@ -5,12 +5,27 @@ public class Splash : GenericScreen {
 
 	public void Start () 
 	{
-		StartCoroutine(SplashTime());
+		LocalizationManager.Start();
+		CheckLocalization();
+	}
+
+	private void CheckLocalization()
+	{
+		if (LocalizationManager.GetLang() == "NULL")
+		{
+			LoadScene("Configurations");
+			Debug.Log("No language selected");
+		}
+		else
+		{
+			Debug.Log("Language selected: " + LocalizationManager.GetLang());
+			StartCoroutine(SplashTime());
+		}
 	}
 
 	private IEnumerator SplashTime () 
 	{
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
 
         // Disables Android Status Bar
 		AndroidScreen.statusBarState = AndroidScreen.States.Hidden;
