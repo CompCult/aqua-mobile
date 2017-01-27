@@ -10,7 +10,7 @@ using System.Text;
 public class Login : GenericScreen 
 {
 	public InputField emailField, passField;
-	public Text versionInfo;
+	public Text versionInfo, devInfo;
 	public Toggle rememberMe;
 	public Button registerButton, loginButton;
 
@@ -23,6 +23,14 @@ public class Login : GenericScreen
 
 		CheckSavedEmail();
 		CheckVersion();
+	}
+
+	private void CheckDevMode()
+	{
+		if (WebAPI.IsDev())
+			devInfo.gameObject.SetActive(true);
+		else
+			devInfo.gameObject.SetActive(false);
 	}
 
 	public void CheckSavedEmail()
@@ -62,6 +70,8 @@ public class Login : GenericScreen
 		{
 			AlertsAPI.instance.makeAlert("Ops!\nOcorreu um erro ao verificar sua versão. Tente novamente em alguns instantes.", "Tudo bem");
 		}
+
+		CheckDevMode();
 	}
 
 	public void ToggleButtons (bool newState)

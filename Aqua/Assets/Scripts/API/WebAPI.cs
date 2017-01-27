@@ -44,6 +44,11 @@ public static class WebAPI
 		return www; 
 	}
 
+	public static bool IsDev()
+	{
+		return _url == urlDev;
+	}
+
 	public static void ToggleURL()
 	{
 		if (_url == urlDefault)
