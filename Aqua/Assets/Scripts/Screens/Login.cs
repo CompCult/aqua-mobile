@@ -176,7 +176,7 @@ public class Login : GenericScreen
 			devModeCounter = 0;
 			WebAPI.ToggleURL();
 
-			ReloadScene();
+			CheckVersion();
 		}
 	}
 }

@@ -6,33 +6,34 @@ public class Splash : GenericScreen {
 	public void Start () 
 	{
 		LocalizationManager.Start();
-		CheckLocalization();
+
+		StartCoroutine(SplashTime());
 	}
 
 	private void CheckLocalization()
 	{
 		if (LocalizationManager.GetLang() == "NULL")
 		{
-			LoadScene("Configurations");
 			Debug.Log("No language selected");
+			LoadScene("Configurations");
 		}
 		else
 		{
 			Debug.Log("Language selected: " + LocalizationManager.GetLang());
-			StartCoroutine(SplashTime());
+			LoadScene("Login");
 		}
 	}
 
 	private IEnumerator SplashTime () 
 	{
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         // Disables Android Status Bar
 		AndroidScreen.statusBarState = AndroidScreen.States.Hidden;
 		// Enables Android Navigation Bar
 		AndroidScreen.navigationBarState = AndroidScreen.States.Visible;
 
-		LoadScene("Login");
+		CheckLocalization();
     }
 
 }
