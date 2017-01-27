@@ -5,12 +5,14 @@
 	<PT Key = "Remember"	Word = "Lembrar-me"/>
 	<PT Key = "NewUser?"	Word = "Não possui uma conta?"/>
 	<PT Key = "Welcome"	Word = "Bem-vindo(a)"/>
+	<PT Key = "Development"	Word = "Desenvolvimento"/>
 
 	<EN Key = "Email"	Word = "Email"/>
 	<EN Key = "Password"	Word = "Password"/>
 	<EN Key = "Remember"	Word = "Remember Me"/>
 	<EN Key = "NewUser?"	Word = "Are you new?"/>
 	<EN Key = "Welcome"	Word = "Welcome"/>
+	<EN Key = "Development"	Word = "Development"/>
 
 	<!-- Buttons -->
 	<PT Key = "Register"	Word = "Registre-se"/>
