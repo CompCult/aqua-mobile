@@ -2,17 +2,37 @@
 	<!-- Text fields -->
 	<PT Key = "Email"	Word = "E-mail"/>
 	<PT Key = "Password"	Word = "Senha"/>
+	<PT Key = "RepeatPassword"	Word = "Senha"/>
 	<PT Key = "Remember"	Word = "Lembrar-me"/>
 	<PT Key = "NewUser?"	Word = "Não possui uma conta?"/>
 	<PT Key = "Welcome"	Word = "Bem-vindo(a)"/>
 	<PT Key = "Development"	Word = "Desenvolvimento"/>
+	<PT Key = "Name"	Word = "Nome"/>
+	<PT Key = "NoMembers"	Word = "Nenhum integrante"/>
+	<PT Key = "Empty"	Word = "Grupo vazio"/>
+	<PT Key = "InviteMember"	Word = "Convidar novo integrante"/>
+	<PT Key = "YourGroups"	Word = "Seus grupos"/>
+	<PT Key = "NotInGroups"	Word = "Você não está em nenhum grupo"/>
+	<PT Key = "CreateGroup"	Word = "Criar um novo grupo"/>
+	<PT Key = "NewGroupName"	Word = "Nome do novo grupo"/>
 
 	<EN Key = "Email"	Word = "Email"/>
 	<EN Key = "Password"	Word = "Password"/>
-	<EN Key = "Remember"	Word = "Remember Me"/>
-	<EN Key = "NewUser?"	Word = "Are you new?"/>
+	<EN Key = "RepeatPassword"	Word = "Repeat your password"/>
+	<EN Key = "Remember"	Word = "Remember me"/>
+	<EN Key = "NewUser?"	Word = "Don't have a account?"/>
 	<EN Key = "Welcome"	Word = "Welcome"/>
 	<EN Key = "Development"	Word = "Development"/>
+	<EN Key = "Name"	Word = "Name"/>
+	<EN Key = "NoMembers"	Word = "No Members"/>
+	<EN Key = "Empty"	Word = "Empty"/>
+	<EN Key = "InviteMember"	Word = "Invite new member"/>
+	<EN Key = "PlayerEmail"	Word = "Player email"/>
+	<EN Key = "YourGroups"	Word = "Your Groups"/>
+	<EN Key = "NotInGroups"	Word = "You are not in any group"/>
+	<EN Key = "CreateGroup"	Word = "Create a new group"/>
+	<EN Key = "NewGroupName"	Word = "New group name"/>
+
 
 	<!-- Buttons -->
 	<PT Key = "Register"	Word = "Registre-se"/>
@@ -24,14 +44,18 @@
 	<PT Key = "Ranking"	Word = "Ranking"/>
 	<PT Key = "Market"	Word = "Feira"/>
 	<PT Key = "Groups"	Word = "Grupos"/>
+	<PT Key = "DeleteGroup"	Word = "Excluir grupo"/>
+	<PT Key = "ExitGroup"	Word = "Sair do grupo"/>
 
 	<EN Key = "Register"	Word = "Register"/>
 	<EN Key = "Enter"	Word = "Enter"/>
 	<EN Key = "ClickExplore"	Word = "Click to explore"/>
-	<EN Key = "SendNotification"	Word = "Send Notification"/>
-	<EN Key = "MyNotifications"	Word = "My Notifications"/>
+	<EN Key = "SendNotification"	Word = "Send notification"/>
+	<EN Key = "MyNotifications"	Word = "My notifications"/>
 	<EN Key = "Profile"	Word = "Profile"/>
 	<EN Key = "Ranking"	Word = "Ranking"/>
 	<EN Key = "Market"	Word = "Market"/>
 	<EN Key = "Groups"	Word = "Groups"/>
+	<EN Key = "DeleteGroup"	Word = "Delete group"/>
+	<EN Key = "ExitGroup"	Word = "Exit group"/>
 </Data>
