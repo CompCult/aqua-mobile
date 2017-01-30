@@ -53,8 +53,9 @@ public class Groups : GenericScreen
 
     private void CreateGroupsCard ()
      {
-     	Vector3 Position = groupCard.transform.position;
+     	groupName.text = LocalizationManager.GetText("NotInGroups");
 
+     	Vector3 Position = groupCard.transform.position;
      	foreach (Group group in groupsList)
         {
         	groupName.text = group.name;

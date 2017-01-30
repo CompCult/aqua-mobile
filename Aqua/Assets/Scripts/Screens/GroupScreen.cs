@@ -54,8 +54,10 @@ public class GroupScreen : GenericScreen
 
     private void CreateMembersCard ()
      {
-     	Vector3 Position = memberCard.transform.position;
+     	memberName.text = LocalizationManager.GetText("NoMembers");
+     	memberEmail.text = LocalizationManager.GetText("Empty");
 
+     	Vector3 Position = memberCard.transform.position;
      	foreach (User member in GroupManager.group.members)
         {
         	memberName.text = member.name;
