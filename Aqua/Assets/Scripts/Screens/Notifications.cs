@@ -53,23 +53,30 @@ public class Notifications : GenericScreen {
 
 	public void FillOptionsOnDropDown()
 	{
+		string textHolder = LocalizationManager.GetText("SelectNotification");
+
 		ReportDropdown.options.Clear();
-		ReportDropdown.options.Add(new Dropdown.OptionData() {text = "Selecione uma notificação"});
+		ReportDropdown.options.Add(new Dropdown.OptionData() {text = textHolder});
 		
 		foreach (Report rp in ReportList)
-			ReportDropdown.options.Add(new Dropdown.OptionData() {text = "Notificação - ID " + rp.id});
+		{
+			textHolder = LocalizationManager.GetText("NotificationID");
+			ReportDropdown.options.Add(new Dropdown.OptionData() {text = textHolder + rp.id});
+		}
 
 	  	ReportDropdown.RefreshShownValue();
 	}
 
 	public void MarkSelectedLocation()
 	{
+		string textHolder = LocalizationManager.GetText("NotificationID");
+
 		Text AddressSelected = ReportDropdown.captionText;
 		Report SelectedReport = null;	
 
 		foreach (Report rp in ReportList)
 		{
-			if (AddressSelected.text.Equals("Notificação - ID " + rp.id))
+			if (AddressSelected.text.Equals(textHolder + rp.id))
 			{
 				SelectedReport = rp;
 				break;
@@ -85,11 +92,11 @@ public class Notifications : GenericScreen {
 			switch (SelectedReport.status)
 			{
 				case "pending":
-					ReportStatus.text = "Pendente"; break;
+					ReportStatus.text = LocalizationManager.GetText("Pending"); break;
 				case "invalid":
-					ReportStatus.text = "Inválida"; break;
+					ReportStatus.text = LocalizationManager.GetText("Invalid"); break;
 				case "validated":
-					ReportStatus.text = "Validada"; break;
+					ReportStatus.text = LocalizationManager.GetText("Validated"); break;
 				default:
 					ReportStatus.text = ""; break;
 			}

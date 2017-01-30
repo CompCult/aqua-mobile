@@ -15,6 +15,15 @@
 	<PT Key = "NotInGroups"	Word = "Você não está em nenhum grupo"/>
 	<PT Key = "CreateGroup"	Word = "Criar um novo grupo"/>
 	<PT Key = "NewGroupName"	Word = "Nome do novo grupo"/>
+	<PT Key = "Your"	Word = "Suas"/>
+	<PT Key = "Notifications"	Word = "Notificações"/>
+
+	<PT Key = "SelectNotification"	Word = "Selecione uma notificação"/>
+	<PT Key = "NotificationID"	Word = "Notificação de ID "/>
+	<PT Key = "Pending"	Word = "Pendente"/>
+	<PT Key = "Invalid"	Word = "Inválida"/>
+	<PT Key = "Validated"	Word = "Validada"/>
+	<PT Key = "Level"	Word = "Nível "/>
 
 	<EN Key = "Email"	Word = "Email"/>
 	<EN Key = "Password"	Word = "Password"/>
@@ -32,7 +41,15 @@
 	<EN Key = "NotInGroups"	Word = "You are not in any group"/>
 	<EN Key = "CreateGroup"	Word = "Create a new group"/>
 	<EN Key = "NewGroupName"	Word = "New group name"/>
+	<EN Key = "Your"	Word = "Your"/>
+	<EN Key = "Notifications"	Word = "Notifications"/>
 
+	<EN Key = "Level"	Word = "Level "/>
+	<EN Key = "SelectNotification"	Word = "Select a notification"/>
+	<EN Key = "NotificationID"	Word = "Notification ID "/>
+	<EN Key = "Pending"	Word = "Pendent"/>
+	<EN Key = "Invalid"	Word = "Invalid"/>
+	<EN Key = "Validated"	Word = "Validated"/>
 
 	<!-- Buttons -->
 	<PT Key = "Register"	Word = "Registre-se"/>
