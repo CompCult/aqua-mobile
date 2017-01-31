@@ -20,6 +20,7 @@ public class SendNotification : GenericScreen
 
 		backScene = "Home";
 
+		FillDropdown();
 		CameraDevice.ShowCameraImage();
 	}
 
@@ -29,6 +30,23 @@ public class SendNotification : GenericScreen
 		{
 			GPSManager.StopGPS();
 			LoadBackScene();
+		}
+	}
+
+	private void FillDropdown()
+	{
+		string[] dropdownValues = new string[] 
+		{
+			LocalizationManager.GetText("Leak"),
+			LocalizationManager.GetText("MosquitoNest"),
+			LocalizationManager.GetText("Contamination"),
+			LocalizationManager.GetText("WaterBill"),
+			LocalizationManager.GetText("ProductiveActivity")
+		};
+
+		foreach (string value in dropdownValues)
+		{
+			Dropdown.options.Add(new Dropdown.OptionData() {text = value});
 		}
 	}
 

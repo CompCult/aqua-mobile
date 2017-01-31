@@ -17,7 +17,6 @@
 	<PT Key = "NewGroupName"	Word = "Nome do novo grupo"/>
 	<PT Key = "Your"	Word = "Suas"/>
 	<PT Key = "Notifications"	Word = "Notificações"/>
-
 	<PT Key = "SelectNotification"	Word = "Selecione uma notificação"/>
 	<PT Key = "NotificationID"	Word = "Notificação de ID "/>
 	<PT Key = "Pending"	Word = "Pendente"/>
@@ -43,7 +42,6 @@
 	<EN Key = "NewGroupName"	Word = "New group name"/>
 	<EN Key = "Your"	Word = "Your"/>
 	<EN Key = "Notifications"	Word = "Notifications"/>
-
 	<EN Key = "Level"	Word = "Level "/>
 	<EN Key = "SelectNotification"	Word = "Select a notification"/>
 	<EN Key = "NotificationID"	Word = "Notification ID "/>
@@ -63,6 +61,7 @@
 	<PT Key = "Groups"	Word = "Grupos"/>
 	<PT Key = "DeleteGroup"	Word = "Excluir grupo"/>
 	<PT Key = "ExitGroup"	Word = "Sair do grupo"/>
+	<PT Key = "CapturePhoto"	Word = "Capturar imagem"/>
 
 	<EN Key = "Register"	Word = "Register"/>
 	<EN Key = "Enter"	Word = "Enter"/>
@@ -75,4 +74,19 @@
 	<EN Key = "Groups"	Word = "Groups"/>
 	<EN Key = "DeleteGroup"	Word = "Delete group"/>
 	<EN Key = "ExitGroup"	Word = "Exit group"/>
+	<EN Key = "CapturePhoto"	Word = "Capture Photo"/>
+
+	<!-- Dropdown Values -->
+	<PT Key = "Leak"	Word = "Vazamento"/>
+	<PT Key = "MosquitoNest"	Word = "Foco de mosquito"/>
+	<PT Key = "Contamination"	Word = "Contaminação"/>
+	<PT Key = "WaterBill"	Word = "Conta de água"/>
+	<PT Key = "ProductiveActivity"	Word = "Atividade produtiva"/>
+
+	<EN Key = "Leak"	Word = "Leak"/>
+	<EN Key = "MosquitoNest"	Word = "Mosquito nest"/>
+	<EN Key = "Contamination"	Word = "Contamination"/>
+	<EN Key = "WaterBill"	Word = "Water bill"/>
+	<EN Key = "ProductiveActivity"	Word = "Productive activity"/>
+
 </Data>
