@@ -32,7 +32,7 @@ public class PlayerInfo : GenericScreen
 		playerName.text = UsrManager.user.name;
 		silverCoins.text = "" + silver;
 		goldCoins.text = "" + gold;
-		levelText.text = "Nível " + playerLevel;
+		levelText.text = LocalizationManager.GetText("Level") + playerLevel;
 		expText.text = "EXP " + xpRemainingToLevelUP + "/1000";
 
 		xpBar.fillAmount = (xpRemainingToLevelUP / 1000);

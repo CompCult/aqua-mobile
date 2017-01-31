@@ -114,7 +114,7 @@ public class Login : GenericScreen
 		else 
 		{
 			if (Error.Contains("404"))
-				AlertsAPI.instance.makeAlert("Usuário não encontrado!\nVerifique se inseriu seu e-mail corretamente.", "OK");
+				AlertsAPI.instance.makeAlert("Dados incorretos!\nVerifique se inseriu seu e-mail corretamente.", "OK");
 			else if (Error.Contains("500"))
 			{
 				if (Application.platform == RuntimePlatform.Android) 

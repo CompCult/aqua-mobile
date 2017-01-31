@@ -46,9 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\LocalizeService\Scripts\Editor\LocalizationServiceEditor.cs" />
-     <Compile Include="Assets\LocalizeService\Scripts\Editor\UILocalizationEditor.cs" />
+     <Compile Include="Assets\UITween\Editor\EditorUITween.cs" />
      <None Include="Assets\Resources\Maps\1-51.txt" />
+     <None Include="Assets\Resources\Lang\Translations.xml" />
      <None Include="Assets\Resources\Maps\1-68.txt" />
      <None Include="Assets\Resources\Maps\3-90.txt" />
      <None Include="Assets\Resources\Maps\2-42.txt" />
