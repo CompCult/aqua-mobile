@@ -12,7 +12,6 @@ public class Login : GenericScreen
 	public InputField emailField, passField;
 	public Text versionInfo, devInfo;
 	public Toggle rememberMe;
-	public Button registerButton, loginButton;
 
 	private int devModeCounter = 0;
 
@@ -22,18 +21,9 @@ public class Login : GenericScreen
 		backScene = null;
 
 		CheckSavedEmail();
-		CheckVersion();
 	}
 
-	private void CheckDevMode()
-	{
-		if (WebAPI.IsDev())
-			devInfo.gameObject.SetActive(true);
-		else
-			devInfo.gameObject.SetActive(false);
-	}
-
-	public void CheckSavedEmail()
+	private void CheckSavedEmail()
 	{
 		// If user saved an email, enables Remember button
 		if (PlayerPrefs.HasKey("Email"))
@@ -45,39 +35,6 @@ public class Login : GenericScreen
 		{
 			rememberMe.isOn = false;
 		}
-	}
-
-	public void CheckVersion()
-	{
-		WWW versionRequest = MiscAPI.CheckVersion();
-
-		string errorText = versionRequest.error,
-		versionText = versionRequest.text;
-
-		if (errorText == null)
-		{
-			if (versionText == versionInfo.text)
-			{
-				Debug.Log("Updated version! v" + versionText);
-				ToggleButtons(true);
-			}
-			else 
-			{
-				AlertsAPI.instance.makeAlert("Versão desatualizada!\nBaixe a versão mais recente na Play Store.", "Entendi");
-			}
-		}
-		else 
-		{
-			AlertsAPI.instance.makeAlert("Ops!\nOcorreu um erro ao verificar sua versão. Tente novamente em alguns instantes.", "Tudo bem");
-		}
-
-		CheckDevMode();
-	}
-
-	public void ToggleButtons (bool newState)
-	{
-		registerButton.interactable = newState;
-		loginButton.interactable = newState;
 	}
 	
 	public void SignIn () 
@@ -94,7 +51,7 @@ public class Login : GenericScreen
 		ProcessLogin (loginRequest);
 	}
 
-	public void ProcessLogin (WWW loginRequest)
+	private void ProcessLogin (WWW loginRequest)
 	{
 		string Error = loginRequest.error,
 		Response = loginRequest.text;
@@ -125,7 +82,7 @@ public class Login : GenericScreen
 		}
 	}
 
-	public void RequestUser(int userID)
+	private void RequestUser(int userID)
 	{
 		Debug.Log("Requesting user with ID " + userID);
 
@@ -150,7 +107,7 @@ public class Login : GenericScreen
 		}
 	}
 
-	public bool AreFieldsCorrect (string email, string password)
+	private bool AreFieldsCorrect (string email, string password)
 	{
 		if (!CheckEmail(email)) 
 		{
@@ -167,7 +124,7 @@ public class Login : GenericScreen
 		return true;
 	}
 
-	public bool CheckEmail(string email)
+	private bool CheckEmail(string email)
 	{
 		string emailRegularExpression = @"^([a-zA-Z0-9_\-\.a-zA-Z0-9]+)@((\[[0-9]{1,3}" +
     	 @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" + 
@@ -185,8 +142,14 @@ public class Login : GenericScreen
 		{
 			devModeCounter = 0;
 			WebAPI.ToggleURL();
-
-			CheckVersion();
 		}
+	}
+
+	private void CheckDevMode()
+	{
+		if (WebAPI.IsDev())
+			devInfo.gameObject.SetActive(true);
+		else
+			devInfo.gameObject.SetActive(false);
 	}
 }
