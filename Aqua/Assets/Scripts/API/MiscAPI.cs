@@ -8,11 +8,18 @@ using System.Text;
 
 public static class MiscAPI
 {
+	private static string version = "2.0.3";
+
 	public static WWW CheckVersion ()
 	{
 		WebAPI.apiPlace = "/sysinfo/mobile-version";
 		WebAPI.pvtKey = "";
 
 		return WebAPI.Get();
+	}
+
+	public static string GetVersion()
+	{
+		return version;
 	}
 }

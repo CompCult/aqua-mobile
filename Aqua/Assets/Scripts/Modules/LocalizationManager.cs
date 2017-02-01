@@ -7,24 +7,13 @@ using System.IO;
 public static class LocalizationManager 
 {
 	private static TextAsset languageFile;
-	private static Dictionary<string, Dictionary<string, string>> languages;
+	private static Dictionary<string, string> texts;
 	
 	private static XmlDocument xmlDoc = new XmlDocument();
 	private static XmlReader reader;
 	
 	private static string[] tags;
 	private static string lang;
-	private static string Lang {
-		get 
-		{
-			return lang;
-		}
-		set 
-		{
-			PlayerPrefs.SetString("Language", value);
-			lang = value;
-		}
-	}
 
 	public static string GetLang () 
 	{
@@ -43,37 +32,28 @@ public static class LocalizationManager
 
 		if (!PlayerPrefs.HasKey("Language")) 
 		{
-			Lang = tags[0];
+			lang = tags[0];
 			return;
 		}
 		else 
 		{
-			Lang = PlayerPrefs.GetString("Language");
+			lang = PlayerPrefs.GetString("Language");
 		}
 
-		languages = new Dictionary<string, Dictionary<string, string>>();
+		texts = new Dictionary<string, string>();
 		reader = XmlReader.Create(new StringReader(languageFile.text));
 		xmlDoc.Load(reader);
 
-		for (int i = 0; i < tags.Length; i++) 
+		XmlNodeList langs = xmlDoc["Data"].GetElementsByTagName(lang);
+		
+		for (int j = 0; j < langs.Count; j++) 
 		{
-			languages.Add(tags[i], new Dictionary<string, string>());
-			XmlNodeList langs = xmlDoc["Data"].GetElementsByTagName(tags[i]);
-			
-			for (int j = 0; j < langs.Count; j++) 
-			{
-				languages[tags[i]].Add(langs[j].Attributes["Key"].Value, langs[j].Attributes["Word"].Value);
-			}
+			texts.Add(langs[j].Attributes["Key"].Value, langs[j].Attributes["Word"].Value);
 		}
-	}
-
-	public static string GetText(string lan, string key) 
-	{
-		return languages[lan][key];
 	}
 
 	public static string GetText(string key) 
 	{
-		return languages[lang][key];
+		return texts[key];
 	}
 }

@@ -24,6 +24,33 @@ public class Splash : GenericScreen {
 		}
 	}
 
+	public void CheckVersion()
+	{
+		WWW versionRequest = MiscAPI.CheckVersion();
+
+		string errorText = versionRequest.error,
+		versionText = versionRequest.text;
+
+		if (errorText == null)
+		{
+			if (versionText == MiscAPI.GetVersion())
+			{
+				Debug.Log("Updated version! v" + versionText);
+			}
+			else 
+			{
+				AlertsAPI.instance.makeAlert("Versão desatualizada!\nBaixe a versão mais recente na Play Store.", "Entendi");
+			}
+		}
+		else 
+		{
+			AlertsAPI.instance.makeAlert("Ops!\nOcorreu um erro ao verificar sua versão. Tentando mais uma vez...", "Tudo bem");
+			ReloadScene();
+		}
+
+		CheckLocalization();
+	}
+
 	private IEnumerator SplashTime () 
 	{
         yield return new WaitForSeconds(2);
@@ -33,7 +60,7 @@ public class Splash : GenericScreen {
 		// Enables Android Navigation Bar
 		AndroidScreen.navigationBarState = AndroidScreen.States.Visible;
 
-		CheckLocalization();
+		CheckVersion();
     }
 
 }

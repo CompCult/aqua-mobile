@@ -5,8 +5,6 @@ Project("{255F1B95-2B2C-4D55-66AD-E29C3460B3BA}") = "Aqua", "Assembly-CSharp-fir
 EndProject
 Project("{255F1B95-2B2C-4D55-66AD-E29C3460B3BA}") = "Aqua", "Assembly-CSharp.csproj", "{F41C101C-71A2-CABD-76FD-62517701B988}"
 EndProject
-Project("{255F1B95-2B2C-4D55-66AD-E29C3460B3BA}") = "Aqua", "Assembly-CSharp-Editor-firstpass.csproj", "{6D5A1EDE-8B09-3870-821D-ADECFFAEF09D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,10 +19,6 @@ Global
 		{F41C101C-71A2-CABD-76FD-62517701B988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F41C101C-71A2-CABD-76FD-62517701B988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F41C101C-71A2-CABD-76FD-62517701B988}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D5A1EDE-8B09-3870-821D-ADECFFAEF09D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D5A1EDE-8B09-3870-821D-ADECFFAEF09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D5A1EDE-8B09-3870-821D-ADECFFAEF09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D5A1EDE-8B09-3870-821D-ADECFFAEF09D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
