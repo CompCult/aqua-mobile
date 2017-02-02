@@ -10,18 +10,16 @@ public class Splash : GenericScreen {
 		StartCoroutine(SplashTime());
 	}
 
-	private void CheckLocalization()
+	private IEnumerator SplashTime () 
 	{
-		if (LocalizationManager.GetLang() == "NULL")
-		{
-			Debug.Log("No language selected");
-			LoadScene("Configurations");
-		}
-		else
-		{
-			Debug.Log("Language selected: " + LocalizationManager.GetLang());
-			LoadScene("Login");
-		}
+		yield return new WaitForSeconds(2);
+
+		// Disables Android Status Bar
+		AndroidScreen.statusBarState = AndroidScreen.States.Hidden;
+		// Enables Android Navigation Bar
+		AndroidScreen.navigationBarState = AndroidScreen.States.Visible;
+
+		CheckVersion();
 	}
 
 	public void CheckVersion()
@@ -35,7 +33,7 @@ public class Splash : GenericScreen {
 		{
 			if (versionText == MiscAPI.GetVersion())
 			{
-				Debug.Log("Updated version! v" + versionText);
+				Debug.Log("Updated version! v" + MiscAPI.GetVersion());
 			}
 			else 
 			{
@@ -51,16 +49,18 @@ public class Splash : GenericScreen {
 		CheckLocalization();
 	}
 
-	private IEnumerator SplashTime () 
+	private void CheckLocalization()
 	{
-        yield return new WaitForSeconds(2);
-
-        // Disables Android Status Bar
-		AndroidScreen.statusBarState = AndroidScreen.States.Hidden;
-		// Enables Android Navigation Bar
-		AndroidScreen.navigationBarState = AndroidScreen.States.Visible;
-
-		CheckVersion();
-    }
+		if (LocalizationManager.GetLang() == "NULL")
+		{
+			Debug.Log("No language selected");
+			LoadScene("Configurations");
+		}
+		else
+		{
+			Debug.Log("Language selected: " + LocalizationManager.GetLang());
+			LoadScene("Login");
+		}
+	}
 
 }

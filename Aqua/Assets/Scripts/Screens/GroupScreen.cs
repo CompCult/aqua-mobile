@@ -55,7 +55,7 @@ public class GroupScreen : GenericScreen
     private void CreateMembersCard ()
      {
      	memberName.text = LocalizationManager.GetText("NoMembers");
-     	memberEmail.text = LocalizationManager.GetText("Empty");
+     	memberEmail.text = LocalizationManager.GetText("EmptyGroup");
 
      	Vector3 Position = memberCard.transform.position;
      	foreach (User member in GroupManager.group.members)
@@ -182,6 +182,8 @@ public class GroupScreen : GenericScreen
 	public void DeleteGroup()
 	{
 		int groupID = GroupManager.group.id;
+
+		AlertsAPI.instance.makeToast("Excluindo grupo...", 1);
 
 		WWW removeRequest = GroupAPI.DeleteGroup(groupID);
 		ProcessDelete (removeRequest);

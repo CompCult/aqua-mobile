@@ -9,7 +9,7 @@
 	<PT Key = "Development"	Word = "Desenvolvimento"/>
 	<PT Key = "Name"	Word = "Nome"/>
 	<PT Key = "NoMembers"	Word = "Nenhum integrante"/>
-	<PT Key = "Empty"	Word = "Grupo vazio"/>
+	<PT Key = "EmptyGroup"	Word = "Grupo vazio"/>
 	<PT Key = "InviteMember"	Word = "Convidar novo integrante"/>
 	<PT Key = "YourGroups"	Word = "Seus grupos"/>
 	<PT Key = "NotInGroups"	Word = "Você não está em nenhum grupo"/>
@@ -45,13 +45,24 @@
 	<PT Key = "Quizzes"	Word = "Quizzes"/>
 	<PT Key = "GoldCoins"	Word = "Moedas de ouro"/>
 	<PT Key = "SilverCoins"	Word = "Moedas de prata"/>
-
 	<PT Key = "UseAquariumLocal" Word = "Use seu Aquarium para informar ao seu Áqueo Ancestral onde você está no mundo real!"/>
 	<PT Key = "ClickTo"	Word = "Clique para"/>
 	<PT Key = "SaveLocal"	Word = "Salvar sua localização"/>
 	<PT Key = "Continue"	Word = "Continuar"/>
-
 	<PT Key = "UseAquariumPhoto"	Word = "Capture uma foto interdimensional entre o mundo de Aqua e o mundo real com seu Aquarium!"/>
+	<PT Key = "Empty"	Word = "Vazio"/>
+	<PT Key = "Or"	Word = "ou"/>
+	<PT Key = "InsertSecretCode"	Word = "Inserir código secreto"/>
+	<PT Key = "SearchFor"	Word = "Procurar por"/>
+	<PT Key = "RollFingers"	Word = "Deslize os dedos pela tela para visualizar a lista por completo"/>
+
+	<PT Key = "MessageReady"	Word = "Mensagem pronta"/>
+	<PT Key = "AquariumReady"	Word = "Seu Aquarium Plane está com uma mensagem pronta para ser enviada a seu Áqueo Ancestral"/>
+	<PT Key = "ClickOnPlane"	Word = "Clique no Aquarium Plane para enviar sua mensagem ao seu Áqueo Ancestral"/>
+	<PT Key = "RecordVoice"	Word = "Gravar sua voz"/>
+	<PT Key = "ListenVoice"	Word = "Ouvir sua gravação"/>
+	<PT Key = "TouchToWrite"	Word = "Toque para escrever"/>
+	<PT Key = "FollowInstructions"	Word = "Siga as instruções do seu Aqueo Ancestral e escreva o que foi solicitado na missão"/>
 
 	<EN Key = "Email"	Word = "Email"/>
 	<EN Key = "Password"	Word = "Password"/>
@@ -62,7 +73,7 @@
 	<EN Key = "Development"	Word = "Development"/>
 	<EN Key = "Name"	Word = "Name"/>
 	<EN Key = "NoMembers"	Word = "No Members"/>
-	<EN Key = "Empty"	Word = "Empty"/>
+	<EN Key = "EmptyGroup"	Word = "Group empty"/>
 	<EN Key = "InviteMember"	Word = "Invite new member"/>
 	<EN Key = "PlayerEmail"	Word = "Player email"/>
 	<EN Key = "YourGroups"	Word = "Your Groups"/>
@@ -99,13 +110,24 @@
 	<EN Key = "Quizzes"	Word = "Quizzes"/>
 	<EN Key = "GoldCoins"	Word = "Gold Coins"/>
 	<EN Key = "SilverCoins"	Word = "Silver Coins"/>
-
 	<EN Key = "UseAquariumLocal" Word = "Use your Aquarium to inform your Ancestral Aqueo where you are in the real world!"/>
 	<EN Key = "ClickTo"	Word = "Click to"/>
 	<EN Key = "SaveLocal"	Word = "Save your place"/>
 	<EN Key = "Continue"	Word = "Continue"/>
-
 	<EN Key = "UseAquariumPhoto"	Word = "Capture an interdimensional photo between the Aqua world and the real world using your Aquarium!"/>
+	<EN Key = "Empty"	Word = "Empty"/>
+	<EN Key = "Or"	Word = "or"/>
+	<EN Key = "InsertSecretCode"	Word = "Insert a secret code"/>
+	<EN Key = "SearchFor"	Word = "Search for"/>
+	<EN Key = "RollFingers"	Word = "Roll your fingers accross the screen to view the list completely"/>
+
+	<EN Key = "MessageReady"	Word = "Message Ready"/>
+	<EN Key = "AquariumReady"	Word = "Your Aquarium Plane have a message ready to be send to your Elder Aqueo"/>
+	<EN Key = "ClickOnPlane"	Word = "Click in your Aquarium Plane to send your message to your Elder Aqueo"/>
+	<EN Key = "RecordVoice"	Word = "Record your voice"/>
+	<EN Key = "ListenVoice"	Word = "Listen your record"/>
+	<EN Key = "TouchToWrite"	Word = "Touch to write"/>
+	<EN Key = "FollowInstructions"	Word = "Follow your Elder Aqueo instructions and write what the missions asks for"/>
 
 	<!-- Buttons -->
 	<PT Key = "Register"	Word = "Registre-se"/>
@@ -120,6 +142,8 @@
 	<PT Key = "DeleteGroup"	Word = "Excluir grupo"/>
 	<PT Key = "ExitGroup"	Word = "Sair do grupo"/>
 	<PT Key = "CapturePhoto"	Word = "Capturar imagem"/>
+	<PT Key = "SearchPublicMissions"	Word = "Procurar por missões públicas"/>
+	<PT Key = "SearchPublicQuizzes"	Word = "Procurar por quizzes públicos"/>
 
 	<EN Key = "Register"	Word = "Register"/>
 	<EN Key = "Enter"	Word = "Enter"/>
@@ -133,6 +157,8 @@
 	<EN Key = "DeleteGroup"	Word = "Delete group"/>
 	<EN Key = "ExitGroup"	Word = "Exit group"/>
 	<EN Key = "CapturePhoto"	Word = "Capture Photo"/>
+	<EN Key = "SearchPublicMissions"	Word = "Search public missions"/>
+	<EN Key = "SearchPublicQuizzes"	Word = "Search public quizzes"/>
 
 	<!-- Dropdown Values -->
 	<PT Key = "Leak"	Word = "Vazamento"/>

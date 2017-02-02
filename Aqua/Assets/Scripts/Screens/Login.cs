@@ -10,7 +10,7 @@ using System.Text;
 public class Login : GenericScreen 
 {
 	public InputField emailField, passField;
-	public Text versionInfo, devInfo;
+	public Text devInfo;
 	public Toggle rememberMe;
 
 	private int devModeCounter = 0;
