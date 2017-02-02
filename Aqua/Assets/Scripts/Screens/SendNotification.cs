@@ -48,6 +48,8 @@ public class SendNotification : GenericScreen
 		{
 			Dropdown.options.Add(new Dropdown.OptionData() {text = value});
 		}
+
+		Dropdown.RefreshShownValue ();
 	}
 
 	public void ConfirmPhoto()

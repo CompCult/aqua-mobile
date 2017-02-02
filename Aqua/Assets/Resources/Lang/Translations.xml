@@ -2,7 +2,7 @@
 	<!-- Text fields -->
 	<PT Key = "Email"	Word = "E-mail"/>
 	<PT Key = "Password"	Word = "Senha"/>
-	<PT Key = "RepeatPassword"	Word = "Senha"/>
+	<PT Key = "RepeatPassword"	Word = "Repita sua senha"/>
 	<PT Key = "Remember"	Word = "Lembrar-me"/>
 	<PT Key = "NewUser?"	Word = "Não possui uma conta?"/>
 	<PT Key = "Welcome"	Word = "Bem-vindo(a)"/>
@@ -62,7 +62,7 @@
 	<PT Key = "RecordVoice"	Word = "Gravar sua voz"/>
 	<PT Key = "ListenVoice"	Word = "Ouvir sua gravação"/>
 	<PT Key = "TouchToWrite"	Word = "Toque para escrever"/>
-	<PT Key = "FollowInstructions"	Word = "Siga as instruções do seu Aqueo Ancestral e escreva o que foi solicitado na missão"/>
+	<PT Key = "FollowInstructions"	Word = "Siga as instruções do seu Áqueo Ancestral e escreva o que foi solicitado na missão"/>
 
 	<EN Key = "Email"	Word = "Email"/>
 	<EN Key = "Password"	Word = "Password"/>
