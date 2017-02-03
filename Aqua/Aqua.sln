@@ -1,9 +1,9 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqua", "Assembly-CSharp-firstpass.csproj", "{9A725C24-3BA1-67F2-4009-12BD62B9B6C6}"
+# Visual Studio 2008
+
+Project("{255F1B95-2B2C-4D55-66AD-E29C3460B3BA}") = "Aqua", "Assembly-CSharp-firstpass.csproj", "{9A725C24-3BA1-67F2-4009-12BD62B9B6C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqua", "Assembly-CSharp.csproj", "{F41C101C-71A2-CABD-76FD-62517701B988}"
+Project("{255F1B95-2B2C-4D55-66AD-E29C3460B3BA}") = "Aqua", "Assembly-CSharp.csproj", "{F41C101C-71A2-CABD-76FD-62517701B988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
